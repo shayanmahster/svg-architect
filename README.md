@@ -14,14 +14,14 @@
 
 ## ⚡ The Problem with AI-Generated SVGs
 
-When prompted to "Draw Batman" or "Generate an SVG character", LLMs (GPT-4, Claude, Gemini) notoriously fail:
-1. **Spatial Drift & Asymmetry:** LLMs eyeball coordinates token-by-token. Left and right eyes end up with different radii, floating ears, and skewed jawlines.
-2. **Flat Vector Mud:** Single flat fills (`fill="#ff0000"`) with zero ambient occlusion, no specular rim lighting, and no faceted planes.
+Even the most advanced reasoning models—including **Gemini 3.8 Flash**, **DeepSeek-Flash 4.1**, **Claude 3.7**, and **o3 / GPT-5**—notoriously struggle with 2D spatial reasoning when generating raw SVG tokens out-of-the-box:
+1. **Spatial Drift & Asymmetry:** Without pre-computation, models eyeball coordinates token-by-token. Left and right eyes end up with different radii, floating ears, and skewed jawlines.
+2. **Flat Vector Mud:** Models default to single flat fills (`fill="#ff0000"`) with zero ambient occlusion, no specular rim lighting, and no faceted planes.
 3. **Occlusion Hell (Painter's Algorithm Violations):** Layers render in random order—necks drawn on top of heads, ears hidden under backgrounds.
 
 ## 🎯 The Solution: The Spatial Blueprint Protocol
 
-`svg-architect` solves spatial hallucination by forcing LLMs to execute a **deterministic Mathematical Pre-Computation** *before* emitting XML:
+`svg-architect` solves spatial hallucination across **Gemini 3.8 Flash**, **DeepSeek-Flash 4.1**, and beyond by forcing models to execute a **deterministic Mathematical Pre-Computation** *before* emitting XML:
 
 ```mermaid
 flowchart LR
@@ -139,7 +139,7 @@ print(f"Quality Score: {report.score_out_of_100}/100")
 
 ## 🤝 Contributing
 
-Contributions, preset additions, and model harnesses (Claude 3.5, Gemini 1.5/2.0, GPT-4o) are welcome!
+Contributions, preset additions, and model harnesses (**Gemini 3.8 Flash / Pro**, **DeepSeek-Flash 4.1 / R1**, **Claude 3.7**, **o3 / GPT-5**) are welcome!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingVector`)
