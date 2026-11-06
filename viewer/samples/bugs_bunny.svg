@@ -1,253 +1,247 @@
-<!-- Stage B: Distilled Architect System Output (Bugs Bunny Masterpiece) -->
-          <!--
-            Coordinate & Layer Plan:
-            Canvas: 500x500 | Origin: Center (250, 250) | Symmetry Axis: X=250
-            Anatomical Lock: Bugs Bunny (Looney Tunes Concentric Rings, Tall Ears, Fluffy Cheeks, Buck Teeth, Carrot)
-            Hierarchy:
-              L0: Atmosphere & Iconic Concentric Warner Bros Target Rings (#7f1d1d, #c2410c, #d97706, #fbbf24)
-              L1: Slender Gray Rabbit Torso & White Tummy Fur with Relaxed Hip Stance
-              L2: Arms with White 4-Fingered Gloves & The Crunchy Orange Carrot (#ea580c + leafy green sprig)
-              L3: Head Cranium & Symmetrical Tall Expressive Rabbit Ears (Left [165, 18] <-> Right [335, 18])
-              L4: Fluffy White Cheeks, Split Muzzle, Iconic Buck Teeth & Pink Nose at [250, 175]
-              L5: Mischievous Lidded Eyes with Specular Glints & Whisker Whisk Details
-          -->
-          <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <!-- Target Bullseye Gradients -->
-              <radialGradient id="wbTargetGlow" cx="50%" cy="48%" r="52%">
-                <stop offset="0%" stop-color="#fef08a"/>
-                <stop offset="28%" stop-color="#f59e0b"/>
-                <stop offset="55%" stop-color="#ea580c"/>
-                <stop offset="78%" stop-color="#b91c1c"/>
-                <stop offset="100%" stop-color="#450a0a"/>
-              </radialGradient>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Radial Bullseye Background Gradients -->
+    <radialGradient id="bullseyeRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b91c1c"/>
+      <stop offset="60%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#450a0a"/>
+    </radialGradient>
+    <radialGradient id="ringOrange" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </radialGradient>
+    <radialGradient id="ringYellow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </radialGradient>
+    <radialGradient id="bullseyeCenterHole" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="85%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
 
-              <!-- Bugs Bunny Slate-Gray Fur (Left-Lit vs Right-Shadow) -->
-              <linearGradient id="bunnyGrayLit" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#cbd5e1"/>
-                <stop offset="35%" stop-color="#94a3b8"/>
-                <stop offset="100%" stop-color="#64748b"/>
-              </linearGradient>
+    <!-- Character Shading: Classic Looney Tunes Warm Gray -->
+    <linearGradient id="bunnyGrayLit" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a6b1c9"/>
+      <stop offset="100%" stop-color="#808ea4"/>
+    </linearGradient>
+    <linearGradient id="bunnyGrayShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6b788e"/>
+      <stop offset="100%" stop-color="#4d5768"/>
+    </linearGradient>
 
-              <linearGradient id="bunnyGrayShadow" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#64748b"/>
-                <stop offset="60%" stop-color="#475569"/>
-                <stop offset="100%" stop-color="#334155"/>
-              </linearGradient>
+    <!-- White Fur Shading (Cheeks, Belly, Gloves) -->
+    <linearGradient id="whiteFurGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="80%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
 
-              <!-- Inner Ear Pink Gradients -->
-              <linearGradient id="earPinkLit" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fce7f3"/>
-                <stop offset="45%" stop-color="#f472b6"/>
-                <stop offset="100%" stop-color="#db2777"/>
-              </linearGradient>
+    <!-- Ear Wells & Nose: Vibrant Coral Pink -->
+    <linearGradient id="earPinkLit" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fda4af"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="bunnyNose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
 
-              <!-- Fluffy White Fur & Glove Shading -->
-              <radialGradient id="whiteFurGrad" cx="45%" cy="35%" r="65%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="65%" stop-color="#f8fafc"/>
-                <stop offset="100%" stop-color="#e2e8f0"/>
-              </radialGradient>
+    <!-- Crunchy Carrot Shading -->
+    <linearGradient id="carrotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="40%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
 
-              <!-- Crunchy Carrot Gradients -->
-              <linearGradient id="carrotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fed7aa"/>
-                <stop offset="30%" stop-color="#fb923c"/>
-                <stop offset="75%" stop-color="#ea580c"/>
-                <stop offset="100%" stop-color="#9a3412"/>
-              </linearGradient>
+    <!-- Cartoon Cel Dropshadow -->
+    <filter id="looneyShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#020617" flood-opacity="0.55"/>
+    </filter>
+  </defs>
 
-              <!-- Leafy Green Carrot Top -->
-              <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#4ade80"/>
-                <stop offset="60%" stop-color="#16a34a"/>
-                <stop offset="100%" stop-color="#14532d"/>
-              </linearGradient>
+  <!-- =================================================== -->
+  <!-- LAYER 0: CLASSIC LOONEY TUNES BULLSEYE BACKDROP    -->
+  <!-- =================================================== -->
+  <g id="layer0-bullseye-bg">
+    <rect width="500" height="500" fill="url(#bullseyeRed)"/>
+    <circle cx="250" cy="250" r="225" fill="none" stroke="#dc2626" stroke-width="24"/>
+    <circle cx="250" cy="250" r="185" fill="none" stroke="url(#ringOrange)" stroke-width="22"/>
+    <circle cx="250" cy="250" r="150" fill="none" stroke="url(#ringYellow)" stroke-width="18"/>
+    <circle cx="250" cy="250" r="120" fill="none" stroke="url(#ringOrange)" stroke-width="16"/>
+    <circle cx="250" cy="250" r="95" fill="url(#bullseyeCenterHole)" stroke="#dc2626" stroke-width="10"/>
+  </g>
 
-              <!-- Nose Pink Gradient -->
-              <radialGradient id="bunnyNose" cx="40%" cy="30%" r="70%">
-                <stop offset="0%" stop-color="#ffe4e6"/>
-                <stop offset="45%" stop-color="#f43f5e"/>
-                <stop offset="100%" stop-color="#be123c"/>
-              </radialGradient>
+  <!-- =================================================== -->
+  <!-- LAYER 1: TALL RABBIT EARS (BACK SILHOUETTE)         -->
+  <!-- Left [165, 18] <-> Right [335, 18] (500 - X)       -->
+  <!-- =================================================== -->
+  <g id="layer1-ears" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
+    <!-- LEFT TALL RABBIT EAR -->
+    <path d="M 215,85 C 190,50 145,35 165,18 C 188,2 215,35 230,85 Z" fill="url(#bunnyGrayLit)"/>
+    <!-- Left Inner Pink Well -->
+    <path d="M 210,75 C 192,48 162,35 174,25 C 188,18 206,42 220,75 Z" fill="url(#earPinkLit)" stroke="none"/>
 
-              <!-- Cartoon Drop Shadows -->
-              <filter id="looneyShadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
-              </filter>
-            </defs>
+    <!-- RIGHT TALL RABBIT EAR (EXACT MIRROR: 500 - X) -->
+    <path d="M 285,85 C 310,50 355,35 335,18 C 312,2 285,35 270,85 Z" fill="url(#bunnyGrayShadow)"/>
+    <!-- Right Inner Pink Well -->
+    <path d="M 290,75 C 308,48 338,35 326,25 C 312,18 294,42 280,75 Z" fill="url(#earPinkLit)" stroke="none"/>
+  </g>
 
-            <!-- =================================================== -->
-            <!-- LAYER 0: CONCENTRIC LOONEY TUNES TARGET BULLSEYE    -->
-            <!-- =================================================== -->
-            <rect width="500" height="500" fill="#180404"/>
-            <!-- Concentric Bullseye Rings -->
-            <circle cx="250" cy="250" r="235" fill="url(#wbTargetGlow)"/>
-            <circle cx="250" cy="250" r="195" fill="none" stroke="#b91c1c" stroke-width="14"/>
-            <circle cx="250" cy="250" r="150" fill="none" stroke="#ea580c" stroke-width="14"/>
-            <circle cx="250" cy="250" r="105" fill="none" stroke="#f59e0b" stroke-width="12"/>
-            <circle cx="250" cy="250" r="62" fill="#7f1d1d" opacity="0.65"/>
+  <!-- =================================================== -->
+  <!-- LAYER 2: ANATOMICAL NECK & COLLAR RUFF (SEAM LOCK)  -->
+  <!-- Bridge extends Y=[185 to 295], overlapping cranium  -->
+  <!-- base and shoulder girdle: ZERO-GAP GUARANTEED!      -->
+  <!-- =================================================== -->
+  <g id="layer2-neck-seam" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
+    <!-- Slender Gray Neck Column (Left Lit Half) -->
+    <path d="M 250,185 L 222,185 L 220,240 L 185,290 L 250,290 Z" fill="url(#bunnyGrayLit)"/>
+    <!-- Slender Gray Neck Column (Right Shadow Half: Mirror 500 - X) -->
+    <path d="M 250,185 L 278,185 L 280,240 L 315,290 L 250,290 Z" fill="url(#bunnyGrayShadow)"/>
 
-            <!-- =================================================== -->
-            <!-- LAYER 1: SLENDER BODY, LEGS & WHITE TUMMY FUR       -->
-            <!-- Shoulders [185, 290] <-> [315, 290]                 -->
-            <!-- =================================================== -->
-            <g id="layer1-bunny-body" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
-              <!-- Slender Torso -->
-              <!-- Left Torso Half (Lit) -->
-              <path d="M 235,255 L 185,290 L 175,395 L 210,480 L 250,485 Z" fill="url(#bunnyGrayLit)"/>
-              <!-- Right Torso Half (Shadow: Mirror 500 - X) -->
-              <path d="M 265,255 L 315,290 L 325,395 L 290,480 L 250,485 Z" fill="url(#bunnyGrayShadow)"/>
+    <!-- Classic Warner Bros Fur Collar / Throat Ruff Under Chin -->
+    <!-- Locks head directly into chest with organic tufts -->
+    <path d="M 250,225 
+             C 235,230 215,242 220,256 
+             C 228,260 240,268 250,278 
+             C 260,268 272,260 280,256 
+             C 285,242 265,230 250,225 Z" 
+          fill="url(#whiteFurGrad)"/>
+    <!-- Collar Center Accent Crease -->
+    <line x1="250" y1="240" x2="250" y2="272" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
 
-              <!-- Fluffy White Oval Tummy Patch -->
-              <ellipse cx="250" cy="385" rx="42" ry="72" fill="url(#whiteFurGrad)" stroke="#090d16" stroke-width="4"/>
+  <!-- =================================================== -->
+  <!-- LAYER 3: SLENDER BODY, LEGS & WHITE TUMMY FUR       -->
+  <!-- Shoulders [185, 290] <-> [315, 290]                 -->
+  <!-- =================================================== -->
+  <g id="layer3-torso-body" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
+    <!-- Left Torso Half (Lit) -->
+    <path d="M 250,285 L 185,290 L 175,395 L 210,480 L 250,485 Z" fill="url(#bunnyGrayLit)"/>
+    <!-- Right Torso Half (Shadow: Mirror 500 - X) -->
+    <path d="M 250,285 L 315,290 L 325,395 L 290,480 L 250,485 Z" fill="url(#bunnyGrayShadow)"/>
 
-              <!-- Relaxed Rabbit Feet Base -->
-              <path d="M 170,480 C 135,480 120,495 140,500 L 225,500 C 235,492 215,480 170,480 Z" fill="url(#whiteFurGrad)"/>
-              <path d="M 330,480 C 365,480 380,495 360,500 L 275,500 C 265,492 285,480 330,480 Z" fill="url(#whiteFurGrad)"/>
-            </g>
+    <!-- Fluffy White Oval Tummy Patch -->
+    <ellipse cx="250" cy="385" rx="42" ry="72" fill="url(#whiteFurGrad)" stroke="#090d16" stroke-width="4"/>
 
-            <!-- =================================================== -->
-            <!-- LAYER 2: ARMS, WHITE GLOVES & CRUNCHY CARROT        -->
-            <!-- =================================================== -->
-            <g id="layer2-arms-carrot" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
-              <!-- Left Arm (Hand on Hip with Attitude) -->
-              <path d="M 185,290 C 145,320 135,365 155,405" fill="none"/>
-              <!-- Left 4-Fingered White Cartoon Glove -->
-              <ellipse cx="158" cy="405" rx="16" ry="14" fill="url(#whiteFurGrad)"/>
-              <!-- Glove Dart Seams -->
-              <line x1="152" y1="398" x2="164" y2="410" stroke="#64748b" stroke-width="2"/>
+    <!-- Relaxed Rabbit Feet Base -->
+    <path d="M 170,480 C 135,480 120,495 140,500 L 225,500 C 235,492 215,480 170,480 Z" fill="url(#whiteFurGrad)"/>
+    <path d="M 330,480 C 365,480 380,495 360,500 L 275,500 C 265,492 285,480 330,480 Z" fill="url(#whiteFurGrad)"/>
+  </g>
 
-              <!-- Right Arm (Raised casually holding the carrot) -->
-              <path d="M 315,290 C 355,310 380,285 365,245" fill="none"/>
+  <!-- =================================================== -->
+  <!-- LAYER 4: ARMS, WHITE GLOVES & CRUNCHY CARROT        -->
+  <!-- =================================================== -->
+  <g id="layer4-arms-carrot" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
+    <!-- Left Arm (Hand on Hip with Attitude) -->
+    <path d="M 185,290 C 145,320 135,365 155,405" fill="none"/>
+    <!-- Left 4-Fingered White Cartoon Glove -->
+    <ellipse cx="158" cy="405" rx="16" ry="14" fill="url(#whiteFurGrad)"/>
+    <!-- Glove Dart Seams -->
+    <line x1="152" y1="398" x2="164" y2="410" stroke="#64748b" stroke-width="2"/>
 
-              <!-- THE CRUNCHY CARROT! -->
-              <g id="carrot-prop">
-                <!-- Carrot Body -->
-                <polygon points="352,248 425,185 415,172 345,236" fill="url(#carrotGrad)"/>
-                <!-- Carrot Crunchy Horizontal Grooves -->
-                <line x1="365" y1="230" x2="378" y2="236" stroke="#9a3412" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="385" y1="212" x2="398" y2="218" stroke="#9a3412" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="402" y1="195" x2="412" y2="200" stroke="#9a3412" stroke-width="2" stroke-linecap="round"/>
+    <!-- Right Arm (Raised casually holding the carrot) -->
+    <path d="M 315,290 C 355,310 380,285 365,245" fill="none"/>
 
-                <!-- Leafy Green Carrot Top Sprig -->
-                <path d="M 420,178 C 435,160 455,165 445,150 C 430,158 432,142 418,155 C 414,142 398,152 412,172 Z" fill="url(#leafGrad)"/>
-              </g>
+    <!-- THE CRUNCHY CARROT! -->
+    <g id="carrot-prop">
+      <!-- Carrot Body -->
+      <polygon points="352,248 425,185 415,172 345,236" fill="url(#carrotGrad)"/>
+      <!-- Carrot Crunchy Horizontal Grooves -->
+      <line x1="365" y1="230" x2="378" y2="236" stroke="#9a3412" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="385" y1="212" x2="398" y2="218" stroke="#9a3412" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="402" y1="195" x2="412" y2="200" stroke="#9a3412" stroke-width="2" stroke-linecap="round"/>
 
-              <!-- Right Gloved Hand Gripping the Carrot -->
-              <ellipse cx="355" cy="242" rx="15" ry="13" fill="url(#whiteFurGrad)"/>
-              <circle cx="348" cy="236" r="6" fill="url(#whiteFurGrad)"/>
-              <circle cx="355" cy="232" r="6" fill="url(#whiteFurGrad)"/>
-              <circle cx="363" cy="235" r="6" fill="url(#whiteFurGrad)"/>
-            </g>
+      <!-- Leafy Green Carrot Top Sprig -->
+      <path d="M 420,178 C 435,160 455,165 445,150 C 430,158 432,142 418,155 C 414,142 398,152 412,172 Z" fill="url(#leafGrad)"/>
+    </g>
 
-            <!-- =================================================== -->
-            <!-- LAYER 3: TALL EARS & SLENDER CRANIUM                -->
-            <!-- Symmetrical Ears: Left [165, 18] <-> Right [335, 18]-->
-            <!-- =================================================== -->
-            <g id="layer3-ears-head" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
-              <!-- LEFT TALL RABBIT EAR -->
-              <path d="M 215,85 
-                       C 190,50 145,35 165,18 
-                       C 188,2 215,35 230,85 Z" 
-                    fill="url(#bunnyGrayLit)"/>
-              <!-- Left Inner Pink Well -->
-              <path d="M 210,75 
-                       C 192,48 162,35 174,25 
-                       C 188,18 206,42 220,75 Z" 
-                    fill="url(#earPinkLit)" 
-                    stroke="none"/>
+    <!-- Right Gloved Hand Gripping the Carrot -->
+    <ellipse cx="355" cy="242" rx="15" ry="13" fill="url(#whiteFurGrad)"/>
+    <circle cx="348" cy="236" r="6" fill="url(#whiteFurGrad)"/>
+    <circle cx="355" cy="232" r="6" fill="url(#whiteFurGrad)"/>
+    <circle cx="363" cy="235" r="6" fill="url(#whiteFurGrad)"/>
+  </g>
 
-              <!-- RIGHT TALL RABBIT EAR (EXACT MIRROR: 500 - X) -->
-              <path d="M 285,85 
-                       C 310,50 355,35 335,18 
-                       C 312,2 285,35 270,85 Z" 
-                    fill="url(#bunnyGrayShadow)"/>
-              <!-- Right Inner Pink Well -->
-              <path d="M 290,75 
-                       C 308,48 338,35 326,25 
-                       C 312,18 294,42 280,75 Z" 
-                    fill="url(#earPinkLit)" 
-                    stroke="none"/>
+  <!-- =================================================== -->
+  <!-- LAYER 5: HEAD CRANIUM, FLUFFY CHEEKS & SMIRK        -->
+  <!-- =================================================== -->
+  <g id="layer5-head-face" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
+    <!-- Main Upper Head Skull -->
+    <path d="M 215,85 C 230,78 270,78 285,85 C 300,120 300,165 285,185 L 215,185 C 200,165 200,120 215,85 Z" fill="url(#bunnyGrayLit)"/>
 
-              <!-- Main Upper Head Skull -->
-              <path d="M 215,85 C 230,78 270,78 285,85 C 300,120 300,165 285,185 L 215,185 C 200,165 200,120 215,85 Z" 
-                    fill="url(#bunnyGrayLit)"/>
-            </g>
+    <!-- Left Fluffy Tufted Cheek -->
+    <path d="M 220,175 
+             C 180,175 140,195 160,215 
+             C 145,220 162,235 175,235 
+             C 185,250 215,245 235,240 Z" 
+          fill="url(#whiteFurGrad)"/>
 
-            <!-- =================================================== -->
-            <!-- LAYER 4: FLUFFY WHITE CHEEKS, BUCK TEETH & NOSE     -->
-            <!-- Cheek Bounds [160, 205] <-> [340, 205]              -->
-            <!-- =================================================== -->
-            <g id="layer4-cheeks-muzzle" filter="url(#looneyShadow)" stroke="#090d16" stroke-width="4.5" stroke-linejoin="round">
-              <!-- Left Fluffy Tufted Cheek -->
-              <path d="M 220,175 
-                       C 180,175 140,195 160,215 
-                       C 145,220 162,235 175,235 
-                       C 185,250 215,245 235,240 Z" 
-                    fill="url(#whiteFurGrad)"/>
+    <!-- Right Fluffy Tufted Cheek (Mirror: 500 - X) -->
+    <path d="M 280,175 
+             C 320,175 360,195 340,215 
+             C 355,220 338,235 325,235 
+             C 315,250 285,245 265,240 Z" 
+          fill="url(#whiteFurGrad)"/>
 
-              <!-- Right Fluffy Tufted Cheek (Mirror: 500 - X) -->
-              <path d="M 280,175 
-                       C 320,175 360,195 340,215 
-                       C 355,220 338,235 325,235 
-                       C 315,250 285,245 265,240 Z" 
-                    fill="url(#whiteFurGrad)"/>
+    <!-- Cheerful Open Smirk / Mouth Line -->
+    <path d="M 218,212 C 235,238 265,238 282,212" fill="#7f1d1d" stroke="#090d16" stroke-width="4"/>
 
-              <!-- Cheerful Open Smirk / Mouth Line -->
-              <path d="M 218,212 C 235,238 265,238 282,212" fill="#7f1d1d" stroke="#090d16" stroke-width="4"/>
+    <!-- BUGS BUNNY'S FAMOUS BUCK TEETH! -->
+    <!-- Left Incisor -->
+    <rect x="238" y="215" width="11" height="18" rx="2" fill="#ffffff" stroke="#090d16" stroke-width="3.5"/>
+    <!-- Right Incisor -->
+    <rect x="251" y="215" width="11" height="18" rx="2" fill="#ffffff" stroke="#090d16" stroke-width="3.5"/>
 
-              <!-- BUGS BUNNY'S FAMOUS BUCK TEETH! -->
-              <!-- Left Incisor -->
-              <rect x="238" y="215" width="11" height="18" rx="2" fill="#ffffff" stroke="#090d16" stroke-width="3.5"/>
-              <!-- Right Incisor -->
-              <rect x="251" y="215" width="11" height="18" rx="2" fill="#ffffff" stroke="#090d16" stroke-width="3.5"/>
+    <!-- Split Muzzle Bulb Lobes -->
+    <ellipse cx="235" cy="195" rx="22" ry="16" fill="url(#whiteFurGrad)"/>
+    <ellipse cx="265" cy="195" rx="22" ry="16" fill="url(#whiteFurGrad)"/>
 
-              <!-- Split Muzzle Bulb Lobes -->
-              <ellipse cx="235" cy="195" rx="22" ry="16" fill="url(#whiteFurGrad)"/>
-              <ellipse cx="265" cy="195" rx="22" ry="16" fill="url(#whiteFurGrad)"/>
+    <!-- Whisker Dots -->
+    <circle cx="225" cy="192" r="2.5" fill="#090d16" stroke="none"/>
+    <circle cx="218" cy="198" r="2.5" fill="#090d16" stroke="none"/>
+    <circle cx="226" cy="204" r="2.5" fill="#090d16" stroke="none"/>
 
-              <!-- Whisker Dots -->
-              <circle cx="225" cy="192" r="2.5" fill="#090d16" stroke="none"/>
-              <circle cx="218" cy="198" r="2.5" fill="#090d16" stroke="none"/>
-              <circle cx="226" cy="204" r="2.5" fill="#090d16" stroke="none"/>
+    <circle cx="275" cy="192" r="2.5" fill="#090d16" stroke="none"/>
+    <circle cx="282" cy="198" r="2.5" fill="#090d16" stroke="none"/>
+    <circle cx="274" cy="204" r="2.5" fill="#090d16" stroke="none"/>
 
-              <circle cx="275" cy="192" r="2.5" fill="#090d16" stroke="none"/>
-              <circle cx="282" cy="198" r="2.5" fill="#090d16" stroke="none"/>
-              <circle cx="274" cy="204" r="2.5" fill="#090d16" stroke="none"/>
+    <!-- Cute Oval Pink Rabbit Button Nose -->
+    <ellipse cx="250" cy="178" rx="12" ry="8" fill="url(#bunnyNose)" stroke="#090d16" stroke-width="3.5"/>
+    <!-- Specular Nose Highlight -->
+    <ellipse cx="247" cy="176" rx="4" ry="2" fill="#ffffff" opacity="0.8" stroke="none"/>
+  </g>
 
-              <!-- Cute Oval Pink Rabbit Button Nose -->
-              <ellipse cx="250" cy="178" rx="12" ry="8" fill="url(#bunnyNose)" stroke="#090d16" stroke-width="3.5"/>
-              <!-- Specular Nose Highlight -->
-              <ellipse cx="247" cy="176" rx="4" ry="2" fill="#ffffff" opacity="0.8" stroke="none"/>
-            </g>
+  <!-- =================================================== -->
+  <!-- LAYER 6: MISCHIEVOUS CARTOON EYES & WHISKERS        -->
+  <!-- Left Eye [232, 138] <-> Right Eye [268, 138]        -->
+  <!-- =================================================== -->
+  <g id="layer6-eyes">
+    <!-- Left Eye Sclera (Tall Egg Shape) -->
+    <ellipse cx="232" cy="138" rx="16" ry="30" fill="#ffffff" stroke="#090d16" stroke-width="4"/>
+    <!-- Left Eyelid / Brow Curve (Slight smug half-lid) -->
+    <path d="M 218,126 Q 232,134 246,126" fill="none" stroke="#090d16" stroke-width="3.5"/>
+    <!-- Left Mischievous Pupil (Gazing toward viewer/carrot) -->
+    <ellipse cx="236" cy="142" rx="7" ry="11" fill="#090d16"/>
+    <circle cx="234" cy="138" r="2.5" fill="#ffffff"/>
 
-            <!-- =================================================== -->
-            <!-- LAYER 5: MISCHIEVOUS CARTOON EYES & WHISKERS        -->
-            <!-- Left Eye [232, 135] <-> Right Eye [268, 135]        -->
-            <!-- =================================================== -->
-            <g id="layer5-eyes">
-              <!-- Left Eye Sclera (Tall Egg Shape) -->
-              <ellipse cx="232" cy="138" rx="16" ry="30" fill="#ffffff" stroke="#090d16" stroke-width="4"/>
-              <!-- Left Eyelid / Brow Curve (Slight smug half-lid) -->
-              <path d="M 218,126 Q 232,134 246,126" fill="none" stroke="#090d16" stroke-width="3.5"/>
-              <!-- Left Mischievous Pupil (Gazing toward viewer/carrot) -->
-              <ellipse cx="236" cy="142" rx="7" ry="11" fill="#090d16"/>
-              <circle cx="234" cy="138" r="2.5" fill="#ffffff"/>
+    <!-- Right Eye Sclera (Exact Mirror: 500 - X) -->
+    <ellipse cx="268" cy="138" rx="16" ry="30" fill="#ffffff" stroke="#090d16" stroke-width="4"/>
+    <!-- Right Eyelid / Brow Curve -->
+    <path d="M 254,126 Q 268,134 282,126" fill="none" stroke="#090d16" stroke-width="3.5"/>
+    <!-- Right Mischievous Pupil -->
+    <ellipse cx="264" cy="142" rx="7" ry="11" fill="#090d16"/>
+    <circle cx="262" cy="138" r="2.5" fill="#ffffff"/>
 
-              <!-- Right Eye Sclera (Exact Mirror: 500 - X) -->
-              <ellipse cx="268" cy="138" rx="16" ry="30" fill="#ffffff" stroke="#090d16" stroke-width="4"/>
-              <!-- Right Eyelid / Brow Curve -->
-              <path d="M 254,126 Q 268,134 282,126" fill="none" stroke="#090d16" stroke-width="3.5"/>
-              <!-- Right Mischievous Pupil -->
-              <ellipse cx="264" cy="142" rx="7" ry="11" fill="#090d16"/>
-              <circle cx="262" cy="138" r="2.5" fill="#ffffff"/>
+    <!-- Long Springy Whiskers -->
+    <line x1="205" y1="195" x2="140" y2="185" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="205" y1="202" x2="135" y2="208" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
 
-              <!-- Long Springy Whiskers -->
-              <line x1="205" y1="195" x2="140" y2="185" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="205" y1="202" x2="135" y2="208" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
-
-              <line x1="295" y1="195" x2="360" y2="185" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="295" y1="202" x2="365" y2="208" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
-            </g>
-          </svg>
+    <line x1="295" y1="195" x2="360" y2="185" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="295" y1="202" x2="365" y2="208" stroke="#090d16" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+</svg>

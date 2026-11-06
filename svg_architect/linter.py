@@ -95,6 +95,20 @@ class SVGLinter:
             issues.append("Low Fidelity: Extremely few vector nodes (< 10 elements).")
             score -= 20
 
+        # Anatomical Continuity Check (detecting severed head / missing neck bridging)
+        # Check if head and body/torso IDs or comments exist, and verify bridging connector exists
+        lower_svg = svg_string.lower()
+        has_head = "head" in lower_svg or "cranium" in lower_svg or "face" in lower_svg
+        has_body = "body" in lower_svg or "torso" in lower_svg or "shoulder" in lower_svg
+        has_neck = "neck" in lower_svg or "collar" in lower_svg or "throat" in lower_svg or "seam" in lower_svg
+
+        if has_head and has_body and not has_neck:
+            issues.append(
+                "Anatomical Severing Risk: Character contains head and body layers but lacks an explicit overlapping "
+                "neck/collar connector, risking a floating/severed head."
+            )
+            score -= 10
+
         score = max(0, min(100, score))
 
         return LintReport(

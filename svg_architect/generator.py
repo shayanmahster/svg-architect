@@ -39,6 +39,10 @@ Write SVG elements strictly from back-to-front:
 * Angular Dominance: Use explicit <polygon> or L (LineTo) commands for structural geometry.
 * Bounded Beziers: Cubic (C) or Quadratic (Q) control points MUST remain bounded within start and end coordinates.
 
+### 5. Anatomical Continuity & Zero-Gap Seams (Anti-Severing Rule)
+* Ban Floating Craniums & Severed Limbs: Never leave an empty coordinate void between connected biological or mechanical assemblies.
+* Overlapping Neck Lock: For any character featuring a head and torso, you MUST draw a dedicated neck connector (or collar fur/mantle) in Layer 2 or Layer 3 whose geometry extends at least 15-25px behind the chin/cheeks (Y_top <= Head_Base_Y - 20) and at least 20px down into the shoulder girdle (Y_bottom >= Shoulder_Y). There must be continuous color coverage with zero horizontal gaps along the central symmetry axis (X = 250).
+
 ---
 
 # Mandatory Two-Stage Execution Protocol
