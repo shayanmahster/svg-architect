@@ -1,0 +1,164 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Soft comic-strip drop shadow -->
+    <filter id="comicShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <!-- Subtle warm comic depth gradients -->
+    <linearGradient id="bodyOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff9900"/>
+      <stop offset="70%" stop-color="#ff7700"/>
+      <stop offset="100%" stop-color="#e65c00"/>
+    </linearGradient>
+
+    <linearGradient id="muzzleCream" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff5d6"/>
+      <stop offset="70%" stop-color="#ffeaad"/>
+      <stop offset="100%" stop-color="#f5d687"/>
+    </linearGradient>
+
+    <linearGradient id="pinkNose" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff708f"/>
+      <stop offset="100%" stop-color="#eb2f59"/>
+    </linearGradient>
+
+    <radialGradient id="backdropGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff8800" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#ff8800" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Clip Paths for Droopy Lids -->
+    <clipPath id="leftEyeClip">
+      <ellipse cx="205" cy="210" rx="45" ry="62"/>
+    </clipPath>
+    <clipPath id="rightEyeClip">
+      <ellipse cx="295" cy="210" rx="45" ry="62"/>
+    </clipPath>
+  </defs>
+
+  <!-- LAYER 0: ATMOSPHERE / BACKGROUND -->
+  <rect width="500" height="500" fill="#111318"/>
+  <circle cx="250" cy="250" r="230" fill="url(#backdropGlow)"/>
+
+  <!-- LAYER 1: BACK SILHOUETTE (EARS) -->
+  <!-- Authentic small, rounded Garfield cat ears -->
+  <g stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Left Ear (Center around 165, 115) -->
+    <path d="M 135,145 C 130,100 150,80 172,82 C 190,84 200,105 202,130" fill="url(#bodyOrange)"/>
+    <!-- Left Inner Ear Pink Pad -->
+    <path d="M 148,135 C 145,108 156,96 168,98 C 178,100 184,115 186,130" fill="#ff99aa" stroke-width="4"/>
+    <!-- Left Ear Black Tabby Stripe on rim -->
+    <path d="M 134,120 L 148,124 L 138,136 Z" fill="#000000" stroke="none"/>
+
+    <!-- Right Ear (Mirror: 500 - X) -->
+    <path d="M 365,145 C 370,100 350,80 328,82 C 310,84 300,105 298,130" fill="url(#bodyOrange)"/>
+    <!-- Right Inner Ear Pink Pad -->
+    <path d="M 352,135 C 355,108 344,96 332,98 C 322,100 316,115 314,130" fill="#ff99aa" stroke-width="4"/>
+    <!-- Right Ear Black Tabby Stripe on rim -->
+    <path d="M 366,120 L 352,124 L 362,136 Z" fill="#000000" stroke="none"/>
+  </g>
+
+  <!-- LAYER 2: MAIN SQUASHED OVAL HEAD -->
+  <g filter="url(#comicShadow)" stroke="#000000" stroke-width="6" stroke-linejoin="round">
+    <!-- Garfield's wide pumpkin/burger-bun head shape -->
+    <path d="M 250,118 
+             C 175,118 120,135 105,170
+             C 85,215 65,260 65,300
+             C 65,365 140,410 250,410
+             C 360,410 435,365 435,300
+             C 435,260 415,215 395,170
+             C 380,135 325,118 250,118 Z" 
+          fill="url(#bodyOrange)"/>
+  </g>
+
+  <!-- LAYER 3: TABBY STRIPES -->
+  <g fill="#000000">
+    <!-- Forehead 3 Classic Tiger Stripes -->
+    <!-- Center Stripe -->
+    <polygon points="250,122 243,165 257,165"/>
+    <!-- Left Forehead Stripe -->
+    <polygon points="212,130 216,168 227,162"/>
+    <!-- Right Forehead Stripe (500 - X) -->
+    <polygon points="288,130 284,168 273,162"/>
+
+    <!-- Left Cheek Stripes (3 Inward Wedges) -->
+    <polygon points="66,252 118,258 100,270"/>
+    <polygon points="70,290 126,292 108,305"/>
+    <polygon points="80,328 128,324 115,338"/>
+
+    <!-- Right Cheek Stripes (Mirror 500 - X) -->
+    <polygon points="434,252 382,258 400,270"/>
+    <polygon points="430,290 374,292 392,305"/>
+    <polygon points="420,328 372,324 385,338"/>
+  </g>
+
+  <!-- LAYER 4: GIANT TOUCHING CARTOON EYES -->
+  <g stroke="#000000" stroke-width="6" stroke-linejoin="round">
+    <!-- Sclera: Two big white eggs touching seamlessly at Center X = 250 -->
+    <!-- Left Eye (Center 205, rx 45 -> right edge 250) -->
+    <ellipse cx="205" cy="210" rx="45" ry="62" fill="#ffffff"/>
+    <!-- Right Eye (Center 295, rx 45 -> left edge 250) -->
+    <ellipse cx="295" cy="210" rx="45" ry="62" fill="#ffffff"/>
+
+    <!-- Droopy / Cynical Sleepy Eyelids (Clipped) -->
+    <g clip-path="url(#leftEyeClip)">
+      <path d="M 150,140 L 260,140 L 260,215 Q 205,225 150,215 Z" fill="url(#bodyOrange)"/>
+      <path d="M 150,215 Q 205,225 260,215" fill="none" stroke="#000000" stroke-width="6"/>
+      <!-- Eyelid sleepy crease line -->
+      <line x1="162" y1="195" x2="248" y2="195" stroke="#cc5500" stroke-width="3"/>
+    </g>
+
+    <g clip-path="url(#rightEyeClip)">
+      <path d="M 240,140 L 350,140 L 350,215 Q 295,225 240,215 Z" fill="url(#bodyOrange)"/>
+      <path d="M 240,215 Q 295,225 350,215" fill="none" stroke="#000000" stroke-width="6"/>
+      <!-- Eyelid sleepy crease line -->
+      <line x1="252" y1="195" x2="338" y2="195" stroke="#cc5500" stroke-width="3"/>
+    </g>
+
+    <!-- Bored Pupils (Small glossy black ovals gazing slightly to viewer's right) -->
+    <!-- Left Pupil -->
+    <ellipse cx="218" cy="235" rx="8" ry="13" fill="#000000" stroke="none"/>
+    <circle cx="215" cy="230" r="2.5" fill="#ffffff" stroke="none"/>
+
+    <!-- Right Pupil -->
+    <ellipse cx="282" cy="235" rx="8" ry="13" fill="#000000" stroke="none"/>
+    <circle cx="279" cy="230" r="2.5" fill="#ffffff" stroke="none"/>
+  </g>
+
+  <!-- LAYER 5: ICONIC PUFFY WHISKER JOWLS & NOSE -->
+  <g filter="url(#comicShadow)" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Left Muzzle Cheek Lobe (Cream colored bulbous cheek) -->
+    <ellipse cx="182" cy="315" rx="68" ry="50" fill="url(#muzzleCream)"/>
+    <!-- Right Muzzle Cheek Lobe (Mirror: Center 500 - 182 = 318) -->
+    <ellipse cx="318" cy="315" rx="68" ry="50" fill="url(#muzzleCream)"/>
+
+    <!-- Center Jowl Crease & Smug Smirk -->
+    <path d="M 226,352 Q 250,370 274,352" fill="none"/>
+    
+    <!-- Fat Little Double Chin -->
+    <path d="M 234,378 Q 250,392 266,378" fill="none" stroke-width="5"/>
+  </g>
+
+  <!-- Whisker Dots (3 distinct black dots per cheek) -->
+  <g fill="#000000">
+    <!-- Left Cheek Dots -->
+    <circle cx="152" cy="308" r="5"/>
+    <circle cx="136" cy="324" r="5"/>
+    <circle cx="158" cy="336" r="5"/>
+
+    <!-- Right Cheek Dots (Mirror: 500 - X) -->
+    <circle cx="348" cy="308" r="5"/>
+    <circle cx="364" cy="324" r="5"/>
+    <circle cx="342" cy="336" r="5"/>
+  </g>
+
+  <!-- Signature Pink Button Nose (Center X = 250, Y = 265) -->
+  <g stroke="#000000" stroke-width="5.5" stroke-linejoin="round">
+    <!-- Oval Pink Button -->
+    <ellipse cx="250" cy="265" rx="25" ry="18" fill="url(#pinkNose)"/>
+    <!-- Specular Highlight Shine -->
+    <ellipse cx="244" cy="260" rx="9" ry="5" fill="#ffffff" opacity="0.8" stroke="none" transform="rotate(-15 244 260)"/>
+  </g>
+</svg>

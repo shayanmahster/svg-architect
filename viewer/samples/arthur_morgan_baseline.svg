@@ -1,0 +1,34 @@
+<!-- Stage A: Raw/Zero-Shot Arthur Morgan Baseline -->
+          <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <g id="arthur-baseline" stroke="#1c1917" stroke-width="3" stroke-linejoin="round">
+              <!-- RDR2 Sunset Backdrop -->
+              <rect width="500" height="500" fill="#7f1d1d"/>
+              <circle cx="250" cy="250" r="190" fill="#ea580c"/>
+
+              <!-- Coat & Shoulders -->
+              <path d="M 50,480 L 150,360 L 350,360 L 450,480 L 480,500 L 20,500 Z" fill="#92400e"/>
+              <!-- Blue Shirt -->
+              <polygon points="210,330 250,360 290,330 280,450 220,450" fill="#0284c7"/>
+              <!-- Red Bandana -->
+              <polygon points="215,320 250,365 285,320" fill="#dc2626"/>
+
+              <!-- Face & Beard -->
+              <path d="M 180,180 L 175,260 L 210,315 L 250,325 L 290,315 L 325,260 L 320,180 Z" fill="#fed7aa"/>
+              <path d="M 185,250 C 190,310 230,325 250,325 C 270,325 310,310 315,250 Z" fill="#78350f"/>
+              <!-- Mustache -->
+              <path d="M 220,260 Q 250,250 280,260 Q 250,275 220,260 Z" fill="#451a03"/>
+
+              <!-- Eyes & Nose -->
+              <ellipse cx="215" cy="205" rx="8" ry="5" fill="#ffffff"/>
+              <circle cx="215" cy="205" r="3" fill="#000000"/>
+              <ellipse cx="285" cy="205" rx="8" ry="5" fill="#ffffff"/>
+              <circle cx="285" cy="205" r="3" fill="#000000"/>
+              <polygon points="245,200 255,200 258,240 242,240" fill="#fbcfe8"/>
+
+              <!-- Cowboy Hat (Flat Brown) -->
+              <!-- Crown -->
+              <path d="M 190,140 L 195,70 L 250,60 L 305,70 L 310,140 Z" fill="#451a03"/>
+              <!-- Curved Brim -->
+              <path d="M 70,160 Q 250,130 430,160 Q 250,185 70,160 Z" fill="#291307"/>
+            </g>
+          </svg>

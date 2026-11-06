@@ -1,0 +1,267 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Spider-Sense Aura -->
+    <radialGradient id="spiderSenseAura" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#e62429" stop-opacity="0.35"/>
+      <stop offset="45%" stop-color="#b11317" stop-opacity="0.15"/>
+      <stop offset="85%" stop-color="#070b14" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Suit Blue Gradients -->
+    <linearGradient id="suitBlueGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="40%" stop-color="#0f2a56"/>
+      <stop offset="100%" stop-color="#06132b"/>
+    </linearGradient>
+
+    <linearGradient id="suitBlueGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2a56"/>
+      <stop offset="60%" stop-color="#06132b"/>
+      <stop offset="100%" stop-color="#020814"/>
+    </linearGradient>
+
+    <!-- Torso Red Gradient -->
+    <linearGradient id="torsoCenterRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f02830"/>
+      <stop offset="40%" stop-color="#d91c24"/>
+      <stop offset="100%" stop-color="#8a0e13"/>
+    </linearGradient>
+
+    <!-- 3D Crimson Mask Gradient -->
+    <radialGradient id="maskVolume3D" cx="42%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#ff3b44"/>
+      <stop offset="35%" stop-color="#f02830"/>
+      <stop offset="75%" stop-color="#b91319"/>
+      <stop offset="100%" stop-color="#73080d"/>
+    </radialGradient>
+
+    <linearGradient id="maskShadowPlaneRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- Eye Lens Gradients -->
+    <radialGradient id="lensShadingLeft" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="65%" stop-color="#f8fafc"/>
+      <stop offset="90%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </radialGradient>
+
+    <radialGradient id="lensShadingRight" cx="60%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="65%" stop-color="#f1f5f9"/>
+      <stop offset="90%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="maskDepthShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+
+    <filter id="eyeSpecularGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="emblemShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+
+    <clipPath id="maskBoundaryClip">
+      <path d="M 250,55 
+               C 210,55 175,70 148,175 
+               C 130,240 172,295 250,335 
+               C 328,295 370,240 352,175 
+               C 325,70 290,55 250,55 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- =================================================== -->
+  <!-- LAYER 0: ATMOSPHERE & BACKGROUND                    -->
+  <!-- =================================================== -->
+  <rect width="500" height="500" fill="#070b14"/>
+  <circle cx="250" cy="200" r="230" fill="url(#spiderSenseAura)"/>
+
+  <!-- =================================================== -->
+  <!-- LAYER 1: SHOULDERS & TORSO BASE                     -->
+  <!-- =================================================== -->
+  <g id="layer1-torso-base" filter="url(#maskDepthShadow)">
+    <polygon points="145,340 250,355 355,340 375,500 125,500" 
+             fill="url(#torsoCenterRed)" 
+             stroke="#0a0c10" 
+             stroke-width="3.5"/>
+
+    <polygon points="55,410 145,340 250,355 210,500 0,500 0,430" 
+             fill="url(#suitBlueGradLeft)" 
+             stroke="#0a0c10" 
+             stroke-width="3.5" 
+             stroke-linejoin="round"/>
+
+    <polygon points="445,410 355,340 250,355 290,500 500,500 500,430" 
+             fill="url(#suitBlueGradRight)" 
+             stroke="#0a0c10" 
+             stroke-width="3.5" 
+             stroke-linejoin="round"/>
+
+    <path d="M 160,385 Q 205,405 250,400 Q 295,405 340,385" fill="none" stroke="#660a0e" stroke-width="3"/>
+    <line x1="250" y1="355" x2="250" y2="500" stroke="#660a0e" stroke-width="2.5"/>
+
+    <g stroke="#111318" stroke-width="1.8" opacity="0.75" fill="none">
+      <line x1="200" y1="365" x2="180" y2="500"/>
+      <line x1="300" y1="365" x2="320" y2="500"/>
+      <path d="M 145,385 Q 250,405 355,385"/>
+      <path d="M 135,430 Q 250,450 365,430"/>
+      <path d="M 130,475 Q 250,495 370,475"/>
+    </g>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 2: THE ICONIC BLACK SPIDER EMBLEM ON CHEST    -->
+  <!-- =================================================== -->
+  <g id="chest-spider-emblem" filter="url(#emblemShadow)" fill="#020617" stroke="#000000" stroke-width="1.2">
+    <!-- Spider Body Core -->
+    <circle cx="250" cy="405" r="4.5"/>
+    <ellipse cx="250" cy="422" rx="7" ry="15"/>
+
+    <!-- 4 UPPER LEGS (Pointing Up over Pectorals) -->
+    <polyline points="247,412 225,392 215,365 210,368" fill="none" stroke="#020617" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="253,412 275,392 285,365 290,368" fill="none" stroke="#020617" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="247,416 218,405 200,388 195,390" fill="none" stroke="#020617" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="253,416 282,405 300,388 305,390" fill="none" stroke="#020617" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- 4 LOWER LEGS (Pointing Down toward Abs) -->
+    <polyline points="247,425 215,435 205,465 202,472" fill="none" stroke="#020617" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="253,425 285,435 295,465 298,472" fill="none" stroke="#020617" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="248,432 222,450 216,482 214,488" fill="none" stroke="#020617" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="252,432 278,450 284,482 286,488" fill="none" stroke="#020617" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 3: NECK / TRAPEZIUS BRIDGE                    -->
+  <!-- =================================================== -->
+  <g id="layer3-neck">
+    <polygon points="172,285 250,335 250,355 145,340" fill="#8a0e13" stroke="#0a0c10" stroke-width="2"/>
+    <polygon points="328,285 250,335 250,355 355,340" fill="#660a0e" stroke="#0a0c10" stroke-width="2"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 4: HEAD MASK (CRIMSON CRANIUM)                -->
+  <!-- =================================================== -->
+  <g id="layer4-mask-base" filter="url(#maskDepthShadow)">
+    <path d="M 250,55 
+             C 210,55 175,70 148,175 
+             C 130,240 172,295 250,335 
+             C 328,295 370,240 352,175 
+             C 325,70 290,55 250,55 Z" 
+          fill="url(#maskVolume3D)" 
+          stroke="#0a0c10" 
+          stroke-width="5" 
+          stroke-linejoin="round"/>
+
+    <path d="M 250,55 
+             C 290,55 325,70 352,175 
+             C 370,240 328,295 250,335 Z" 
+          fill="url(#maskShadowPlaneRight)" 
+          clip-path="url(#maskBoundaryClip)"/>
+
+    <path d="M 250,56 C 212,56 178,71 150,175 C 134,238 174,292 248,333" 
+          fill="none" 
+          stroke="rgba(255,255,255,0.4)" 
+          stroke-width="1.2" 
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 5: CLEAN MASK WEB MATRIX (FABRIC TEXTURE)     -->
+  <!-- =================================================== -->
+  <g id="layer5-mask-webs" clip-path="url(#maskBoundaryClip)">
+    <line x1="250" y1="55" x2="250" y2="335" stroke="#111318" stroke-width="2"/>
+
+    <!-- Subtle Spoke Rays -->
+    <g stroke="#111318" stroke-width="1.6" stroke-linecap="round" opacity="0.85">
+      <line x1="250" y1="210" x2="250" y2="55"/>
+      <line x1="250" y1="210" x2="220" y2="58"/>
+      <line x1="250" y1="210" x2="280" y2="58"/>
+      <line x1="250" y1="210" x2="182" y2="70"/>
+      <line x1="250" y1="210" x2="318" y2="70"/>
+      <line x1="250" y1="210" x2="152" y2="105"/>
+      <line x1="250" y1="210" x2="348" y2="105"/>
+      <line x1="250" y1="210" x2="138" y2="155"/>
+      <line x1="250" y1="210" x2="362" y2="155"/>
+      <line x1="250" y1="210" x2="152" y2="235"/>
+      <line x1="250" y1="210" x2="348" y2="235"/>
+      <line x1="250" y1="210" x2="175" y2="278"/>
+      <line x1="250" y1="210" x2="325" y2="278"/>
+      <line x1="250" y1="210" x2="215" y2="318"/>
+      <line x1="250" y1="210" x2="285" y2="318"/>
+      <line x1="250" y1="210" x2="250" y2="335"/>
+    </g>
+
+    <!-- Concentric Web Rings -->
+    <g stroke="#111318" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.85">
+      <path d="M 218,165 Q 234,172 250,172 Q 266,172 282,165"/>
+      <path d="M 195,135 Q 222,148 250,148 Q 278,148 305,135"/>
+      <path d="M 172,105 Q 211,122 250,122 Q 289,122 328,105"/>
+      <path d="M 180,72 Q 215,95 250,95 Q 285,95 320,72"/>
+      <path d="M 224,265 Q 237,258 250,258 Q 263,258 276,265"/>
+      <path d="M 205,292 Q 227,282 250,282 Q 273,282 295,292"/>
+      <path d="M 192,315 Q 221,304 250,304 Q 279,304 308,315"/>
+    </g>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 6: ICONIC WHITE SPIDER-EYES / LENSES          -->
+  <!-- =================================================== -->
+  <g id="layer6-lenses" filter="url(#eyeSpecularGlow)">
+    <path d="M 236,220 
+             L 162,162 
+             C 152,198 165,244 238,236 
+             Z" 
+          fill="#0a0c10" 
+          stroke="#000000" 
+          stroke-width="5" 
+          stroke-linejoin="round"/>
+
+    <path d="M 230,218 
+             L 172,172 
+             C 164,198 174,234 231,227 
+             Z" 
+          fill="url(#lensShadingLeft)" 
+          stroke="#334155" 
+          stroke-width="1.2"/>
+
+    <path d="M 176,174 L 226,216" 
+          fill="none" 
+          stroke="#ffffff" 
+          stroke-width="2.5" 
+          stroke-linecap="round"/>
+
+    <path d="M 264,220 
+             L 338,162 
+             C 348,198 335,244 262,236 
+             Z" 
+          fill="#0a0c10" 
+          stroke="#000000" 
+          stroke-width="5" 
+          stroke-linejoin="round"/>
+
+    <path d="M 270,218 
+             L 328,172 
+             C 336,198 326,234 269,227 
+             Z" 
+          fill="url(#lensShadingRight)" 
+          stroke="#334155" 
+          stroke-width="1.2"/>
+
+    <path d="M 324,174 L 274,216" 
+          fill="none" 
+          stroke="#ffffff" 
+          stroke-width="2.5" 
+          stroke-linecap="round"/>
+  </g>
+</svg>

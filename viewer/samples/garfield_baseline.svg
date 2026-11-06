@@ -1,0 +1,65 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <g id="garfield-baseline" stroke="#18181b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Left Ear (Freehand Path) -->
+              <path d="M140,165 C125,100 160,80 185,115 C200,135 205,160 205,175" fill="#f97316"/>
+              <path d="M152,150 C145,118 165,105 178,125" fill="#fda4af" stroke-width="4"/>
+
+              <!-- Right Ear (Slightly asymmetric freehand Path) -->
+              <path d="M372,165 C388,100 350,82 328,115 C312,135 306,160 306,175" fill="#f97316"/>
+              <path d="M360,150 C368,118 348,105 334,125" fill="#fda4af" stroke-width="4"/>
+
+              <!-- Main Head Oval -->
+              <ellipse cx="256" cy="275" rx="175" ry="145" fill="#fb923c"/>
+
+              <!-- Forehead Stripes (Freehand simple black polygons) -->
+              <path d="M256,135 L250,175 L262,175 Z" fill="#18181b" stroke="none"/>
+              <path d="M225,142 L228,172 L237,168 Z" fill="#18181b" stroke="none"/>
+              <path d="M287,142 L284,172 L275,168 Z" fill="#18181b" stroke="none"/>
+
+              <!-- Cheek Stripes Left -->
+              <path d="M90,265 L135,268 L110,285 Z" fill="#18181b" stroke="none"/>
+              <path d="M96,298 L138,295 L116,312 Z" fill="#18181b" stroke="none"/>
+
+              <!-- Cheek Stripes Right -->
+              <path d="M422,265 L377,268 L402,285 Z" fill="#18181b" stroke="none"/>
+              <path d="M416,298 L374,295 L396,312 Z" fill="#18181b" stroke="none"/>
+
+              <!-- Eyes (White large ovals) -->
+              <!-- Left Eye -->
+              <ellipse cx="218" cy="225" rx="44" ry="62" fill="#ffffff"/>
+              <!-- Right Eye -->
+              <ellipse cx="294" cy="225" rx="44" ry="62" fill="#ffffff"/>
+
+              <!-- Sleepy Eyelids (Orange covers top half) -->
+              <path d="M174,225 C174,180 200,165 218,165 C236,165 262,180 262,225 Z" fill="#fb923c"/>
+              <path d="M250,225 C250,180 276,165 294,165 C312,165 338,180 338,225 Z" fill="#fb923c"/>
+
+              <!-- Droopy Eyelid Lines -->
+              <line x1="174" y1="225" x2="262" y2="225" stroke="#18181b" stroke-width="6"/>
+              <line x1="250" y1="225" x2="338" y2="225" stroke="#18181b" stroke-width="6"/>
+
+              <!-- Pupils (Tiny black sleepy ovals near bottom) -->
+              <ellipse cx="225" cy="242" rx="7" ry="11" fill="#18181b" stroke="none"/>
+              <ellipse cx="287" cy="242" rx="7" ry="11" fill="#18181b" stroke="none"/>
+
+              <!-- Puffy Muzzle / Cheeks -->
+              <ellipse cx="205" cy="318" rx="60" ry="46" fill="#fed7aa"/>
+              <ellipse cx="307" cy="318" rx="60" ry="46" fill="#fed7aa"/>
+
+              <!-- Whisker Dots -->
+              <circle cx="185" cy="312" r="4" fill="#18181b" stroke="none"/>
+              <circle cx="170" cy="324" r="4" fill="#18181b" stroke="none"/>
+              <circle cx="192" cy="332" r="4" fill="#18181b" stroke="none"/>
+
+              <circle cx="327" cy="312" r="4" fill="#18181b" stroke="none"/>
+              <circle cx="342" cy="324" r="4" fill="#18181b" stroke="none"/>
+              <circle cx="320" cy="332" r="4" fill="#18181b" stroke="none"/>
+
+              <!-- Bulbous Pink Nose -->
+              <ellipse cx="256" cy="272" rx="28" ry="20" fill="#fb7185"/>
+
+              <!-- Smug Mouth / Chin Line -->
+              <path d="M228,348 C242,364 270,364 284,348" fill="none"/>
+              <path d="M236,375 C246,386 266,386 276,375" fill="none"/>
+            </g>
+          </svg>

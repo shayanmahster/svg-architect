@@ -1,0 +1,285 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- RDR2 Poster Palette Gradients -->
+    <radialGradient id="rdrBlazingSun" cx="50%" cy="32%" r="48%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="20%" stop-color="#ffae00"/>
+      <stop offset="55%" stop-color="#ff9d00"/>
+      <stop offset="85%" stop-color="#cc0e14"/>
+      <stop offset="100%" stop-color="#a8070c"/>
+    </radialGradient>
+
+    <linearGradient id="skyCrimsonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7a0307"/>
+      <stop offset="40%" stop-color="#a8070c"/>
+      <stop offset="85%" stop-color="#cc0e14"/>
+      <stop offset="100%" stop-color="#800509"/>
+    </linearGradient>
+
+    <!-- Coat Leather Gradients -->
+    <linearGradient id="coatLeatherLit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d1712"/>
+      <stop offset="50%" stop-color="#1a0d0a"/>
+      <stop offset="100%" stop-color="#0d0707"/>
+    </linearGradient>
+
+    <linearGradient id="coatLeatherShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0d0a"/>
+      <stop offset="70%" stop-color="#0d0707"/>
+      <stop offset="100%" stop-color="#050303"/>
+    </linearGradient>
+
+    <!-- Hat Distressed Leather -->
+    <linearGradient id="hatCrownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#301c16"/>
+      <stop offset="40%" stop-color="#1f120e"/>
+      <stop offset="100%" stop-color="#0d0707"/>
+    </linearGradient>
+
+    <!-- Sunburned Skin Facets -->
+    <linearGradient id="skinSunburnedLit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e6b"/>
+      <stop offset="45%" stop-color="#d96b38"/>
+      <stop offset="100%" stop-color="#a63d1a"/>
+    </linearGradient>
+
+    <linearGradient id="skinSunburnedShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a63d1a"/>
+      <stop offset="55%" stop-color="#8c2514"/>
+      <stop offset="100%" stop-color="#4a1107"/>
+    </linearGradient>
+
+    <!-- Twisted Rope Hatband -->
+    <linearGradient id="ropeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#bf8c52"/>
+      <stop offset="50%" stop-color="#9e7340"/>
+      <stop offset="100%" stop-color="#694a24"/>
+    </linearGradient>
+
+    <!-- High-Contrast Poster Drop Shadow -->
+    <filter id="rdrPosterShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#050202" flood-opacity="0.95"/>
+    </filter>
+  </defs>
+
+  <!-- =================================================== -->
+  <!-- LAYER 0: ATMOSPHERE & RDR2 POSTER SUNSET            -->
+  <!-- =================================================== -->
+  <rect width="500" height="500" fill="url(#skyCrimsonGrad)"/>
+  <circle cx="250" cy="210" r="195" fill="url(#rdrBlazingSun)"/>
+
+  <!-- Distant Pine Tree & Mesa Horizon Silhouettes -->
+  <g fill="#210305" opacity="0.85">
+    <polygon points="0,325 75,295 130,318 205,282 250,298 320,270 395,305 450,285 500,310 500,370 0,370"/>
+    <polygon points="40,305 46,285 52,305"/>
+    <polygon points="48,300 55,278 62,300"/>
+    <polygon points="58,304 63,288 68,304"/>
+    <polygon points="175,295 181,275 187,295"/>
+    <polygon points="183,290 190,268 197,290"/>
+    <polygon points="340,282 346,262 352,282"/>
+    <polygon points="348,278 355,255 362,278"/>
+  </g>
+
+  <!-- Flying Outlaw Vultures -->
+  <path d="M 95,95 Q 105,87 115,95 Q 125,87 135,95 Q 115,91 95,95 Z" fill="#140203"/>
+  <path d="M 370,80 Q 378,73 386,80 Q 394,73 402,80 Q 386,76 370,80 Z" fill="#140203"/>
+
+  <!-- =================================================== -->
+  <!-- LAYER 1: COAT & BANDANA BASE                        -->
+  <!-- Anchors: Shoulders [65, 430] <-> [435, 430]         -->
+  <!-- Bandana V-Tip: [250, 425]                           -->
+  <!-- =================================================== -->
+  <g id="layer1-coat-bandana" filter="url(#rdrPosterShadow)">
+    <!-- Left Shoulder (Lit) -->
+    <polygon points="155,345 65,430 0,500 215,500 205,385" 
+             fill="url(#coatLeatherLit)" 
+             stroke="#0d0707" 
+             stroke-width="4" 
+             stroke-linejoin="round"/>
+
+    <!-- Right Shoulder (Shadow: Mirror 500 - X) -->
+    <polygon points="345,345 435,430 500,500 285,500 295,385" 
+             fill="url(#coatLeatherShadow)" 
+             stroke="#0d0707" 
+             stroke-width="4" 
+             stroke-linejoin="round"/>
+
+    <!-- Lapels -->
+    <polygon points="155,345 190,445 220,385 175,345" fill="#2d1712" stroke="#0d0707" stroke-width="2.5"/>
+    <polygon points="345,345 310,445 280,385 325,345" fill="#150a08" stroke="#0d0707" stroke-width="2.5"/>
+
+    <!-- Blue Shirt Collar -->
+    <polygon points="215,355 250,370 285,355 275,440 225,440" fill="#1e3a5f" stroke="#0d0707" stroke-width="2"/>
+
+    <!-- Black Neckerchief Bandana with Deep V-Tip [250, 425] -->
+    <polygon points="205,330 250,425 250,358 178,338" 
+             fill="#1a1214" 
+             stroke="#0d090a" 
+             stroke-width="3" 
+             stroke-linejoin="round"/>
+
+    <polygon points="295,330 250,425 250,358 322,338" 
+             fill="#0d090a" 
+             stroke="#050304" 
+             stroke-width="3" 
+             stroke-linejoin="round"/>
+
+    <path d="M 218,348 Q 242,388 250,425 Q 258,388 282,348" fill="none" stroke="#2b1c20" stroke-width="2.5"/>
+    <ellipse cx="250" cy="355" rx="8" ry="6" fill="#0d090a" stroke="#000000" stroke-width="2"/>
+    <line x1="250" y1="355" x2="250" y2="425" stroke="#000000" stroke-width="2.5"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 2: NECK & LOWER FACE (RUGGED BEARD & JAW)     -->
+  <!-- Jaw Corners [190, 292] <-> [310, 292]               -->
+  <!-- Chin Bottom [250, 332]                              -->
+  <!-- =================================================== -->
+  <g id="layer2-neck-face" filter="url(#rdrPosterShadow)">
+    <polygon points="190,292 250,332 250,365 180,345" fill="#a63d1a" stroke="#0d0707" stroke-width="2"/>
+    <polygon points="310,292 250,332 250,365 320,345" fill="#8c2514" stroke="#0d0707" stroke-width="2"/>
+
+    <!-- Cheekbones: [182, 225] <-> [318, 225] -->
+    <polygon points="250,195 182,225 178,255 190,292 250,332" 
+             fill="url(#skinSunburnedLit)" 
+             stroke="#0d0707" 
+             stroke-width="3" 
+             stroke-linejoin="round"/>
+
+    <polygon points="250,195 318,225 322,255 310,292 250,332" 
+             fill="url(#skinSunburnedShadow)" 
+             stroke="#0d0707" 
+             stroke-width="3" 
+             stroke-linejoin="round"/>
+
+    <!-- Full Outlaw Beard (#24110c) -->
+    <path d="M 178,245 
+             L 190,292 
+             L 218,325 
+             L 250,332 
+             L 282,325 
+             L 310,292 
+             L 322,245 
+             C 310,278 285,302 250,302 
+             C 215,302 190,278 178,245 Z" 
+          fill="#24110c" 
+          stroke="#0d0707" 
+          stroke-width="2.8"/>
+
+    <!-- Outlaw Mustache -->
+    <path d="M 215,268 
+             C 230,256 245,256 250,260 
+             C 255,256 270,256 285,268 
+             C 275,285 258,282 250,278 
+             C 242,282 225,285 215,268 Z" 
+          fill="#160a07" 
+          stroke="#0d0707" 
+          stroke-width="2.2"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 3: UPPER FACE, NOSE & PIERCING GLINT EYES     -->
+  <!-- Eye Centers [212, 206] <-> [288, 206]               -->
+  <!-- =================================================== -->
+  <g id="layer3-upper-face">
+    <polygon points="250,195 240,248 250,256" fill="url(#skinSunburnedLit)" stroke="#0d0707" stroke-width="1.8"/>
+    <polygon points="250,195 260,248 250,256" fill="url(#skinSunburnedShadow)" stroke="#0d0707" stroke-width="1.8"/>
+    <line x1="250" y1="195" x2="250" y2="256" stroke="#ffae00" stroke-width="1.2" opacity="0.6"/>
+
+    <!-- Hunter Eyes: [212, 206] <-> [288, 206] -->
+    <polygon points="198,206 212,200 226,208 212,212" fill="#ffffff" stroke="#0d0707" stroke-width="1.8"/>
+    <circle cx="212" cy="206" r="3.4" fill="#0c4a6e"/>
+    <circle cx="212" cy="206" r="1.6" fill="#000000"/>
+    <circle cx="210" cy="204" r="0.8" fill="#ffffff"/>
+    <path d="M 194,200 Q 212,194 228,202" fill="none" stroke="#160a07" stroke-width="3.2" stroke-linecap="round"/>
+
+    <polygon points="302,206 288,200 274,208 288,212" fill="#ffffff" stroke="#0d0707" stroke-width="1.8"/>
+    <circle cx="288" cy="206" r="3.4" fill="#0c4a6e"/>
+    <circle cx="288" cy="206" r="1.6" fill="#000000"/>
+    <circle cx="286" cy="204" r="0.8" fill="#ffffff"/>
+    <path d="M 306,200 Q 288,194 272,202" fill="none" stroke="#160a07" stroke-width="3.2" stroke-linecap="round"/>
+
+    <!-- Heavy Cast Shadow (#140606) -->
+    <polygon points="120,165 380,152 355,216 250,230 145,216" fill="#140606" opacity="0.75"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 4: ARTHUR'S GAMBLER HAT                       -->
+  <!-- Hat Crown Peaks: [195, 68] <-> [305, 68]            -->
+  <!-- Hat Pinch: [250, 78], Rope: [172, 138] <-> [328, 138]-->
+  <!-- Asymmetrical Brim Tips: [82, 165] <-> [418, 152]    -->
+  <!-- =================================================== -->
+  <g id="layer4-gambler-hat" filter="url(#rdrPosterShadow)">
+    <path d="M 172,138 
+             L 182,85 
+             C 185,70 195,68 215,68 
+             L 250,78 
+             L 285,68 
+             C 305,68 315,70 318,85 
+             L 328,138 Z" 
+          fill="url(#hatCrownGrad)" 
+          stroke="#0d0707" 
+          stroke-width="3.8" 
+          stroke-linejoin="round"/>
+
+    <path d="M 215,68 L 250,118 L 285,68" fill="none" stroke="#0a0503" stroke-width="2.8"/>
+    <line x1="250" y1="78" x2="250" y2="128" stroke="#0a0503" stroke-width="2.5"/>
+
+    <!-- Twisted Rope Band (#9e7340) -->
+    <path d="M 172,138 Q 250,146 328,138" fill="none" stroke="url(#ropeGrad)" stroke-width="6.5" stroke-linecap="round"/>
+    <path d="M 172,138 Q 250,146 328,138" fill="none" stroke="#fef08a" stroke-width="1.6" stroke-dasharray="6,4" stroke-linecap="round"/>
+
+    <!-- Wide Curved Brim with Outlaw Asymmetrical Tilt -->
+    <path d="M 82,165 
+             C 125,138 190,136 250,142 
+             C 310,134 375,130 418,152 
+             C 385,188 315,195 250,192 
+             C 185,195 115,188 82,165 Z" 
+          fill="#1c0f0b" 
+          stroke="#0d0707" 
+          stroke-width="4.2" 
+          stroke-linejoin="round"/>
+
+    <!-- Brim Underside -->
+    <path d="M 96,166 C 155,178 250,184 345,176 C 382,170 405,158 412,154 C 375,186 312,192 250,190 C 188,192 125,186 96,166 Z" 
+          fill="#0a0503"/>
+
+    <!-- Gold Specular Rim -->
+    <path d="M 82,165 C 125,138 190,136 250,142 C 310,134 375,130 418,152" 
+          fill="none" 
+          stroke="#ffae00" 
+          stroke-width="1.8" 
+          stroke-linecap="round" 
+          opacity="0.85"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 5: RDR2 FOREGROUND VIGNETTE & OUTLAW RIDERS   -->
+  <!-- =================================================== -->
+  <g id="layer5-outlaw-riders" fill="#0d0707">
+    <path d="M 0,465 Q 120,455 250,460 Q 380,455 500,465 L 500,500 L 0,500 Z"/>
+
+    <!-- Outlaw Rider 1 on Horseback (Left) -->
+    <ellipse cx="65" cy="468" rx="20" ry="11"/>
+    <path d="M 78,465 L 90,448 L 82,445 L 72,460 Z"/>
+    <polygon points="88,446 94,440 92,448"/>
+    <line x1="52" y1="474" x2="48" y2="495" stroke="#0d0707" stroke-width="2.5"/>
+    <line x1="58" y1="474" x2="56" y2="495" stroke="#0d0707" stroke-width="2.2"/>
+    <line x1="75" y1="474" x2="78" y2="495" stroke="#0d0707" stroke-width="2.5"/>
+    <line x1="82" y1="474" x2="86" y2="495" stroke="#0d0707" stroke-width="2.2"/>
+    <ellipse cx="64" cy="454" rx="6" ry="9"/>
+    <circle cx="64" cy="443" r="3.5"/>
+    <line x1="56" y1="442" x2="72" y2="442" stroke="#0d0707" stroke-width="2"/>
+
+    <!-- Outlaw Rider 2 on Horseback (Right - Galloping) -->
+    <ellipse cx="435" cy="468" rx="22" ry="11"/>
+    <path d="M 420,465 L 406,448 L 414,445 L 426,460 Z"/>
+    <polygon points="408,446 402,440 404,448"/>
+    <line x1="448" y1="474" x2="456" y2="495" stroke="#0d0707" stroke-width="2.5"/>
+    <line x1="442" y1="474" x2="446" y2="495" stroke="#0d0707" stroke-width="2.2"/>
+    <line x1="422" y1="474" x2="415" y2="495" stroke="#0d0707" stroke-width="2.5"/>
+    <ellipse cx="436" cy="454" rx="6" ry="9"/>
+    <circle cx="436" cy="443" r="3.5"/>
+    <line x1="428" y1="442" x2="444" y2="442" stroke="#0d0707" stroke-width="2"/>
+    <line x1="432" y1="452" x2="448" y2="435" stroke="#0d0707" stroke-width="1.8"/>
+  </g>
+</svg>

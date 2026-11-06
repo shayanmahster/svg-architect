@@ -1,0 +1,142 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Lighting & Shading Gradients -->
+    <radialGradient id="moonAura" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.22"/>
+      <stop offset="50%" stop-color="#1e293b" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Cowl Faceted Armor Gradients (Left-Lit vs Right-Shadow) -->
+    <linearGradient id="cowlLitLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="45%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <linearGradient id="cowlShadowRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Jaw Skin Tone Gradients (Left-Lit vs Right-Shadow) -->
+    <linearGradient id="skinLit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffedd5"/>
+      <stop offset="50%" stop-color="#fed7aa"/>
+      <stop offset="100%" stop-color="#fba468"/>
+    </linearGradient>
+
+    <linearGradient id="skinShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="50%" stop-color="#c2410c"/>
+      <stop offset="100%" stop-color="#7c2d12"/>
+    </linearGradient>
+
+    <!-- Eye Radiant Glow -->
+    <linearGradient id="eyeGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <!-- Filters: Deep Armor Drop Shadow & Eye Emission -->
+    <filter id="knightShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+
+    <filter id="eyeGlowFilter" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: ATMOSPHERE / BACKGROUND -->
+  <rect width="500" height="500" fill="#07090e"/>
+  <circle cx="250" cy="240" r="210" fill="url(#moonAura)"/>
+
+  <!-- LAYER 1: BACK SILHOUETTE & CAPE MANTLE -->
+  <g filter="url(#knightShadow)">
+    <polygon points="120,480 170,395 330,395 380,480 250,500" fill="#0b0f19" stroke="#000000" stroke-width="4"/>
+    <polygon points="120,480 170,395 250,440 210,490" fill="#1e293b"/>
+    <polygon points="380,480 330,395 250,440 290,490" fill="#0f172a"/>
+  </g>
+
+  <!-- LAYER 2: RAZOR BAT EARS (STRICT MATHEMATICAL SYMMETRY: X_R = 500 - X_L) -->
+  <g filter="url(#knightShadow)">
+    <!-- Left Ear Outer Facet -->
+    <polygon points="140,140 155,30 195,115" fill="url(#cowlLitLeft)" stroke="#020617" stroke-width="4" stroke-linejoin="round"/>
+    <polygon points="155,30 175,110 195,115" fill="#64748b" opacity="0.4"/>
+    <line x1="155" y1="30" x2="140" y2="140" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+
+    <!-- Right Ear Outer Facet (Exact Mirror: 500 - X) -->
+    <polygon points="360,140 345,30 305,115" fill="url(#cowlShadowRight)" stroke="#020617" stroke-width="4" stroke-linejoin="round"/>
+    <polygon points="345,30 325,110 305,115" fill="#020617" opacity="0.6"/>
+    <line x1="345" y1="30" x2="360" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  </g>
+
+  <!-- LAYER 3: PRIMARY STRUCTURAL MASS (PLANE SPLIT DOWN CENTER X=250) -->
+  <g filter="url(#knightShadow)">
+    <!-- Left-Lit Skull Facet -->
+    <polygon points="250,115 195,115 140,140 115,275 165,395 250,440" 
+             fill="url(#cowlLitLeft)" 
+             stroke="#020617" 
+             stroke-width="5" 
+             stroke-linejoin="round"/>
+
+    <!-- Right-Shadow Skull Facet (Exact Mirror: X_R = 500 - X_L) -->
+    <polygon points="250,115 305,115 360,140 385,275 335,395 250,440" 
+             fill="url(#cowlShadowRight)" 
+             stroke="#020617" 
+             stroke-width="5" 
+             stroke-linejoin="round"/>
+
+    <!-- Center Structural Apex Line (X=250) -->
+    <line x1="250" y1="115" x2="250" y2="280" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+    <path d="M 140,140 L 115,275 L 165,395" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+  </g>
+
+  <!-- LAYER 4: BROW FURROW, NOSE GUARD & LOWER JAW ASSEMBLY -->
+  <!-- Chiseled Forehead Wedge -->
+  <polygon points="250,150 205,170 250,195 295,170" fill="#0f172a" stroke="#000000" stroke-width="3"/>
+  <polygon points="250,195 170,205 165,225 215,222 250,210" fill="url(#cowlLitLeft)" stroke="#000000" stroke-width="3"/>
+  <polygon points="250,195 330,205 335,225 285,222 250,210" fill="url(#cowlShadowRight)" stroke="#000000" stroke-width="3"/>
+
+  <!-- Angular Chiseled Cowl Nose Guard -->
+  <polygon points="250,210 234,272 250,284" fill="url(#cowlLitLeft)" stroke="#000000" stroke-width="2.5"/>
+  <polygon points="250,210 266,272 250,284" fill="url(#cowlShadowRight)" stroke="#000000" stroke-width="2.5"/>
+  <line x1="250" y1="210" x2="250" y2="284" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+
+  <!-- HUMAN LOWER JAW IN COWL CUTOUT -->
+  <g id="human-jaw" filter="url(#knightShadow)">
+    <polygon points="250,284 178,290 188,385 250,420" fill="url(#skinLit)" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+    <polygon points="250,284 322,290 312,385 250,420" fill="url(#skinShadow)" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+    <polygon points="250,284 230,315 270,315" fill="#7c2d12" opacity="0.6"/>
+
+    <!-- Stern Mouth & Chin Cleft -->
+    <line x1="215" y1="352" x2="285" y2="352" stroke="#451a03" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="215" y1="352" x2="210" y2="356" stroke="#451a03" stroke-width="3" stroke-linecap="round"/>
+    <line x1="285" y1="352" x2="290" y2="356" stroke="#451a03" stroke-width="3" stroke-linecap="round"/>
+    <line x1="250" y1="392" x2="250" y2="408" stroke="#451a03" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="232" y1="416" x2="250" y2="420" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+  </g>
+
+  <!-- Cowl Cutout Edge Bevel -->
+  <polyline points="178,290 188,385 250,420 312,385 322,290" fill="none" stroke="#020617" stroke-width="6"/>
+  <polyline points="178,290 250,284 322,290" fill="none" stroke="#020617" stroke-width="5"/>
+
+  <!-- LAYER 5: FOCAL FOREGROUND DETAILS (WHITE SLIT BAT-EYES) -->
+  <g filter="url(#eyeGlowFilter)">
+    <polygon points="174,226 232,234 222,244 176,234" fill="url(#eyeGlowGrad)" stroke="#020617" stroke-width="3.5" stroke-linejoin="miter"/>
+    <polygon points="326,226 268,234 278,244 324,234" fill="url(#eyeGlowGrad)" stroke="#020617" stroke-width="3.5" stroke-linejoin="miter"/>
+    <line x1="184" y1="230" x2="224" y2="236" stroke="#ffffff" stroke-width="1.5"/>
+    <line x1="316" y1="230" x2="276" y2="236" stroke="#ffffff" stroke-width="1.5"/>
+  </g>
+
+  <!-- Master Specular 1px Edge Glints on Cowl Peaks -->
+  <path d="M 205,170 L 250,195 L 295,170" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+  <line x1="170" y1="205" x2="250" y2="195" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+</svg>
