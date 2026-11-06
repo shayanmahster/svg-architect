@@ -7,11 +7,10 @@ name = "svg-architect"
 version = "0.1.0"
 description = "Deterministic Spatial Blueprint Engine for Production-Grade Generative Vector Graphics (SVGs) with LLMs"
 readme = "README.md"
-authors = [{ name = "Maher & Antigravity" }]
-license = { text = "MIT" }
+authors = [{ name = "Shayan Master (@shayanmahster)" }]
+license = "MIT"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Multimedia :: Graphics",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -24,3 +23,9 @@ dependencies = [
 
 [project.scripts]
 svg-architect = "svg_architect.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["svg_architect*"]
+
+[tool.setuptools.package-data]
+svg_architect = ["*"]
