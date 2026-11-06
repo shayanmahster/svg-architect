@@ -257,6 +257,7 @@
     <div class="toolbar">
       <label style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">Preset Subject:</label>
       <select id="presetSelector" class="select-input" onchange="loadPreset(this.value)">
+        <option value="bugs">Bugs Bunny (Looney Tunes Classic)</option>
         <option value="arthur">Arthur Morgan (RDR2 Poster Art)</option>
         <option value="spiderman">Spider-Man (Queens Web-Warrior)</option>
         <option value="batman">Batman (The Dark Knight Cowl)</option>
@@ -376,7 +377,1307 @@
   </main>
 
   <script>
-    const PRESETS = {"arthur": {"title": "Arthur Morgan (RDR2 Poster Art)", "baseline": "<!-- Stage A: Raw/Zero-Shot Arthur Morgan Baseline -->\n          <svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">\n            <g id=\"arthur-baseline\" stroke=\"#1c1917\" stroke-width=\"3\" stroke-linejoin=\"round\">\n              <!-- RDR2 Sunset Backdrop -->\n              <rect width=\"500\" height=\"500\" fill=\"#7f1d1d\"/>\n              <circle cx=\"250\" cy=\"250\" r=\"190\" fill=\"#ea580c\"/>\n\n              <!-- Coat & Shoulders -->\n              <path d=\"M 50,480 L 150,360 L 350,360 L 450,480 L 480,500 L 20,500 Z\" fill=\"#92400e\"/>\n              <!-- Blue Shirt -->\n              <polygon points=\"210,330 250,360 290,330 280,450 220,450\" fill=\"#0284c7\"/>\n              <!-- Red Bandana -->\n              <polygon points=\"215,320 250,365 285,320\" fill=\"#dc2626\"/>\n\n              <!-- Face & Beard -->\n              <path d=\"M 180,180 L 175,260 L 210,315 L 250,325 L 290,315 L 325,260 L 320,180 Z\" fill=\"#fed7aa\"/>\n              <path d=\"M 185,250 C 190,310 230,325 250,325 C 270,325 310,310 315,250 Z\" fill=\"#78350f\"/>\n              <!-- Mustache -->\n              <path d=\"M 220,260 Q 250,250 280,260 Q 250,275 220,260 Z\" fill=\"#451a03\"/>\n\n              <!-- Eyes & Nose -->\n              <ellipse cx=\"215\" cy=\"205\" rx=\"8\" ry=\"5\" fill=\"#ffffff\"/>\n              <circle cx=\"215\" cy=\"205\" r=\"3\" fill=\"#000000\"/>\n              <ellipse cx=\"285\" cy=\"205\" rx=\"8\" ry=\"5\" fill=\"#ffffff\"/>\n              <circle cx=\"285\" cy=\"205\" r=\"3\" fill=\"#000000\"/>\n              <polygon points=\"245,200 255,200 258,240 242,240\" fill=\"#fbcfe8\"/>\n\n              <!-- Cowboy Hat (Flat Brown) -->\n              <!-- Crown -->\n              <path d=\"M 190,140 L 195,70 L 250,60 L 305,70 L 310,140 Z\" fill=\"#451a03\"/>\n              <!-- Curved Brim -->\n              <path d=\"M 70,160 Q 250,130 430,160 Q 250,185 70,160 Z\" fill=\"#291307\"/>\n            </g>\n          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">\n  <defs>\n    <!-- RDR2 Poster Palette Gradients -->\n    <radialGradient id=\"rdrBlazingSun\" cx=\"50%\" cy=\"32%\" r=\"48%\">\n      <stop offset=\"0%\" stop-color=\"#fffbeb\"/>\n      <stop offset=\"20%\" stop-color=\"#ffae00\"/>\n      <stop offset=\"55%\" stop-color=\"#ff9d00\"/>\n      <stop offset=\"85%\" stop-color=\"#cc0e14\"/>\n      <stop offset=\"100%\" stop-color=\"#a8070c\"/>\n    </radialGradient>\n\n    <linearGradient id=\"skyCrimsonGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#7a0307\"/>\n      <stop offset=\"40%\" stop-color=\"#a8070c\"/>\n      <stop offset=\"85%\" stop-color=\"#cc0e14\"/>\n      <stop offset=\"100%\" stop-color=\"#800509\"/>\n    </linearGradient>\n\n    <!-- Coat Leather Gradients -->\n    <linearGradient id=\"coatLeatherLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#2d1712\"/>\n      <stop offset=\"50%\" stop-color=\"#1a0d0a\"/>\n      <stop offset=\"100%\" stop-color=\"#0d0707\"/>\n    </linearGradient>\n\n    <linearGradient id=\"coatLeatherShadow\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#1a0d0a\"/>\n      <stop offset=\"70%\" stop-color=\"#0d0707\"/>\n      <stop offset=\"100%\" stop-color=\"#050303\"/>\n    </linearGradient>\n\n    <!-- Hat Distressed Leather -->\n    <linearGradient id=\"hatCrownGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#301c16\"/>\n      <stop offset=\"40%\" stop-color=\"#1f120e\"/>\n      <stop offset=\"100%\" stop-color=\"#0d0707\"/>\n    </linearGradient>\n\n    <!-- Sunburned Skin Facets -->\n    <linearGradient id=\"skinSunburnedLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#f59e6b\"/>\n      <stop offset=\"45%\" stop-color=\"#d96b38\"/>\n      <stop offset=\"100%\" stop-color=\"#a63d1a\"/>\n    </linearGradient>\n\n    <linearGradient id=\"skinSunburnedShadow\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#a63d1a\"/>\n      <stop offset=\"55%\" stop-color=\"#8c2514\"/>\n      <stop offset=\"100%\" stop-color=\"#4a1107\"/>\n    </linearGradient>\n\n    <!-- Twisted Rope Hatband -->\n    <linearGradient id=\"ropeGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n      <stop offset=\"0%\" stop-color=\"#bf8c52\"/>\n      <stop offset=\"50%\" stop-color=\"#9e7340\"/>\n      <stop offset=\"100%\" stop-color=\"#694a24\"/>\n    </linearGradient>\n\n    <!-- High-Contrast Poster Drop Shadow -->\n    <filter id=\"rdrPosterShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">\n      <feDropShadow dx=\"0\" dy=\"16\" stdDeviation=\"14\" flood-color=\"#050202\" flood-opacity=\"0.95\"/>\n    </filter>\n  </defs>\n\n  <!-- =================================================== -->\n  <!-- LAYER 0: ATMOSPHERE & RDR2 POSTER SUNSET            -->\n  <!-- =================================================== -->\n  <rect width=\"500\" height=\"500\" fill=\"url(#skyCrimsonGrad)\"/>\n  <circle cx=\"250\" cy=\"210\" r=\"195\" fill=\"url(#rdrBlazingSun)\"/>\n\n  <!-- Distant Pine Tree & Mesa Horizon Silhouettes -->\n  <g fill=\"#210305\" opacity=\"0.85\">\n    <polygon points=\"0,325 75,295 130,318 205,282 250,298 320,270 395,305 450,285 500,310 500,370 0,370\"/>\n    <polygon points=\"40,305 46,285 52,305\"/>\n    <polygon points=\"48,300 55,278 62,300\"/>\n    <polygon points=\"58,304 63,288 68,304\"/>\n    <polygon points=\"175,295 181,275 187,295\"/>\n    <polygon points=\"183,290 190,268 197,290\"/>\n    <polygon points=\"340,282 346,262 352,282\"/>\n    <polygon points=\"348,278 355,255 362,278\"/>\n  </g>\n\n  <!-- Flying Outlaw Vultures -->\n  <path d=\"M 95,95 Q 105,87 115,95 Q 125,87 135,95 Q 115,91 95,95 Z\" fill=\"#140203\"/>\n  <path d=\"M 370,80 Q 378,73 386,80 Q 394,73 402,80 Q 386,76 370,80 Z\" fill=\"#140203\"/>\n\n  <!-- =================================================== -->\n  <!-- LAYER 1: COAT & BANDANA BASE                        -->\n  <!-- Anchors: Shoulders [65, 430] <-> [435, 430]         -->\n  <!-- Bandana V-Tip: [250, 425]                           -->\n  <!-- =================================================== -->\n  <g id=\"layer1-coat-bandana\" filter=\"url(#rdrPosterShadow)\">\n    <!-- Left Shoulder (Lit) -->\n    <polygon points=\"155,345 65,430 0,500 215,500 205,385\" \n             fill=\"url(#coatLeatherLit)\" \n             stroke=\"#0d0707\" \n             stroke-width=\"4\" \n             stroke-linejoin=\"round\"/>\n\n    <!-- Right Shoulder (Shadow: Mirror 500 - X) -->\n    <polygon points=\"345,345 435,430 500,500 285,500 295,385\" \n             fill=\"url(#coatLeatherShadow)\" \n             stroke=\"#0d0707\" \n             stroke-width=\"4\" \n             stroke-linejoin=\"round\"/>\n\n    <!-- Lapels -->\n    <polygon points=\"155,345 190,445 220,385 175,345\" fill=\"#2d1712\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>\n    <polygon points=\"345,345 310,445 280,385 325,345\" fill=\"#150a08\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>\n\n    <!-- Blue Shirt Collar -->\n    <polygon points=\"215,355 250,370 285,355 275,440 225,440\" fill=\"#1e3a5f\" stroke=\"#0d0707\" stroke-width=\"2\"/>\n\n    <!-- Black Neckerchief Bandana with Deep V-Tip [250, 425] -->\n    <polygon points=\"205,330 250,425 250,358 178,338\" \n             fill=\"#1a1214\" \n             stroke=\"#0d090a\" \n             stroke-width=\"3\" \n             stroke-linejoin=\"round\"/>\n\n    <polygon points=\"295,330 250,425 250,358 322,338\" \n             fill=\"#0d090a\" \n             stroke=\"#050304\" \n             stroke-width=\"3\" \n             stroke-linejoin=\"round\"/>\n\n    <path d=\"M 218,348 Q 242,388 250,425 Q 258,388 282,348\" fill=\"none\" stroke=\"#2b1c20\" stroke-width=\"2.5\"/>\n    <ellipse cx=\"250\" cy=\"355\" rx=\"8\" ry=\"6\" fill=\"#0d090a\" stroke=\"#000000\" stroke-width=\"2\"/>\n    <line x1=\"250\" y1=\"355\" x2=\"250\" y2=\"425\" stroke=\"#000000\" stroke-width=\"2.5\"/>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 2: NECK & LOWER FACE (RUGGED BEARD & JAW)     -->\n  <!-- Jaw Corners [190, 292] <-> [310, 292]               -->\n  <!-- Chin Bottom [250, 332]                              -->\n  <!-- =================================================== -->\n  <g id=\"layer2-neck-face\" filter=\"url(#rdrPosterShadow)\">\n    <polygon points=\"190,292 250,332 250,365 180,345\" fill=\"#a63d1a\" stroke=\"#0d0707\" stroke-width=\"2\"/>\n    <polygon points=\"310,292 250,332 250,365 320,345\" fill=\"#8c2514\" stroke=\"#0d0707\" stroke-width=\"2\"/>\n\n    <!-- Cheekbones: [182, 225] <-> [318, 225] -->\n    <polygon points=\"250,195 182,225 178,255 190,292 250,332\" \n             fill=\"url(#skinSunburnedLit)\" \n             stroke=\"#0d0707\" \n             stroke-width=\"3\" \n             stroke-linejoin=\"round\"/>\n\n    <polygon points=\"250,195 318,225 322,255 310,292 250,332\" \n             fill=\"url(#skinSunburnedShadow)\" \n             stroke=\"#0d0707\" \n             stroke-width=\"3\" \n             stroke-linejoin=\"round\"/>\n\n    <!-- Full Outlaw Beard (#24110c) -->\n    <path d=\"M 178,245 \n             L 190,292 \n             L 218,325 \n             L 250,332 \n             L 282,325 \n             L 310,292 \n             L 322,245 \n             C 310,278 285,302 250,302 \n             C 215,302 190,278 178,245 Z\" \n          fill=\"#24110c\" \n          stroke=\"#0d0707\" \n          stroke-width=\"2.8\"/>\n\n    <!-- Outlaw Mustache -->\n    <path d=\"M 215,268 \n             C 230,256 245,256 250,260 \n             C 255,256 270,256 285,268 \n             C 275,285 258,282 250,278 \n             C 242,282 225,285 215,268 Z\" \n          fill=\"#160a07\" \n          stroke=\"#0d0707\" \n          stroke-width=\"2.2\"/>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 3: UPPER FACE, NOSE & PIERCING GLINT EYES     -->\n  <!-- Eye Centers [212, 206] <-> [288, 206]               -->\n  <!-- =================================================== -->\n  <g id=\"layer3-upper-face\">\n    <polygon points=\"250,195 240,248 250,256\" fill=\"url(#skinSunburnedLit)\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>\n    <polygon points=\"250,195 260,248 250,256\" fill=\"url(#skinSunburnedShadow)\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>\n    <line x1=\"250\" y1=\"195\" x2=\"250\" y2=\"256\" stroke=\"#ffae00\" stroke-width=\"1.2\" opacity=\"0.6\"/>\n\n    <!-- Hunter Eyes: [212, 206] <-> [288, 206] -->\n    <polygon points=\"198,206 212,200 226,208 212,212\" fill=\"#ffffff\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>\n    <circle cx=\"212\" cy=\"206\" r=\"3.4\" fill=\"#0c4a6e\"/>\n    <circle cx=\"212\" cy=\"206\" r=\"1.6\" fill=\"#000000\"/>\n    <circle cx=\"210\" cy=\"204\" r=\"0.8\" fill=\"#ffffff\"/>\n    <path d=\"M 194,200 Q 212,194 228,202\" fill=\"none\" stroke=\"#160a07\" stroke-width=\"3.2\" stroke-linecap=\"round\"/>\n\n    <polygon points=\"302,206 288,200 274,208 288,212\" fill=\"#ffffff\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>\n    <circle cx=\"288\" cy=\"206\" r=\"3.4\" fill=\"#0c4a6e\"/>\n    <circle cx=\"288\" cy=\"206\" r=\"1.6\" fill=\"#000000\"/>\n    <circle cx=\"286\" cy=\"204\" r=\"0.8\" fill=\"#ffffff\"/>\n    <path d=\"M 306,200 Q 288,194 272,202\" fill=\"none\" stroke=\"#160a07\" stroke-width=\"3.2\" stroke-linecap=\"round\"/>\n\n    <!-- Heavy Cast Shadow (#140606) -->\n    <polygon points=\"120,165 380,152 355,216 250,230 145,216\" fill=\"#140606\" opacity=\"0.75\"/>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 4: ARTHUR'S GAMBLER HAT                       -->\n  <!-- Hat Crown Peaks: [195, 68] <-> [305, 68]            -->\n  <!-- Hat Pinch: [250, 78], Rope: [172, 138] <-> [328, 138]-->\n  <!-- Asymmetrical Brim Tips: [82, 165] <-> [418, 152]    -->\n  <!-- =================================================== -->\n  <g id=\"layer4-gambler-hat\" filter=\"url(#rdrPosterShadow)\">\n    <path d=\"M 172,138 \n             L 182,85 \n             C 185,70 195,68 215,68 \n             L 250,78 \n             L 285,68 \n             C 305,68 315,70 318,85 \n             L 328,138 Z\" \n          fill=\"url(#hatCrownGrad)\" \n          stroke=\"#0d0707\" \n          stroke-width=\"3.8\" \n          stroke-linejoin=\"round\"/>\n\n    <path d=\"M 215,68 L 250,118 L 285,68\" fill=\"none\" stroke=\"#0a0503\" stroke-width=\"2.8\"/>\n    <line x1=\"250\" y1=\"78\" x2=\"250\" y2=\"128\" stroke=\"#0a0503\" stroke-width=\"2.5\"/>\n\n    <!-- Twisted Rope Band (#9e7340) -->\n    <path d=\"M 172,138 Q 250,146 328,138\" fill=\"none\" stroke=\"url(#ropeGrad)\" stroke-width=\"6.5\" stroke-linecap=\"round\"/>\n    <path d=\"M 172,138 Q 250,146 328,138\" fill=\"none\" stroke=\"#fef08a\" stroke-width=\"1.6\" stroke-dasharray=\"6,4\" stroke-linecap=\"round\"/>\n\n    <!-- Wide Curved Brim with Outlaw Asymmetrical Tilt -->\n    <path d=\"M 82,165 \n             C 125,138 190,136 250,142 \n             C 310,134 375,130 418,152 \n             C 385,188 315,195 250,192 \n             C 185,195 115,188 82,165 Z\" \n          fill=\"#1c0f0b\" \n          stroke=\"#0d0707\" \n          stroke-width=\"4.2\" \n          stroke-linejoin=\"round\"/>\n\n    <!-- Brim Underside -->\n    <path d=\"M 96,166 C 155,178 250,184 345,176 C 382,170 405,158 412,154 C 375,186 312,192 250,190 C 188,192 125,186 96,166 Z\" \n          fill=\"#0a0503\"/>\n\n    <!-- Gold Specular Rim -->\n    <path d=\"M 82,165 C 125,138 190,136 250,142 C 310,134 375,130 418,152\" \n          fill=\"none\" \n          stroke=\"#ffae00\" \n          stroke-width=\"1.8\" \n          stroke-linecap=\"round\" \n          opacity=\"0.85\"/>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 5: RDR2 FOREGROUND VIGNETTE & OUTLAW RIDERS   -->\n  <!-- =================================================== -->\n  <g id=\"layer5-outlaw-riders\" fill=\"#0d0707\">\n    <path d=\"M 0,465 Q 120,455 250,460 Q 380,455 500,465 L 500,500 L 0,500 Z\"/>\n\n    <!-- Outlaw Rider 1 on Horseback (Left) -->\n    <ellipse cx=\"65\" cy=\"468\" rx=\"20\" ry=\"11\"/>\n    <path d=\"M 78,465 L 90,448 L 82,445 L 72,460 Z\"/>\n    <polygon points=\"88,446 94,440 92,448\"/>\n    <line x1=\"52\" y1=\"474\" x2=\"48\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>\n    <line x1=\"58\" y1=\"474\" x2=\"56\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.2\"/>\n    <line x1=\"75\" y1=\"474\" x2=\"78\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>\n    <line x1=\"82\" y1=\"474\" x2=\"86\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.2\"/>\n    <ellipse cx=\"64\" cy=\"454\" rx=\"6\" ry=\"9\"/>\n    <circle cx=\"64\" cy=\"443\" r=\"3.5\"/>\n    <line x1=\"56\" y1=\"442\" x2=\"72\" y2=\"442\" stroke=\"#0d0707\" stroke-width=\"2\"/>\n\n    <!-- Outlaw Rider 2 on Horseback (Right - Galloping) -->\n    <ellipse cx=\"435\" cy=\"468\" rx=\"22\" ry=\"11\"/>\n    <path d=\"M 420,465 L 406,448 L 414,445 L 426,460 Z\"/>\n    <polygon points=\"408,446 402,440 404,448\"/>\n    <line x1=\"448\" y1=\"474\" x2=\"456\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>\n    <line x1=\"442\" y1=\"474\" x2=\"446\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.2\"/>\n    <line x1=\"422\" y1=\"474\" x2=\"415\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>\n    <ellipse cx=\"436\" cy=\"454\" rx=\"6\" ry=\"9\"/>\n    <circle cx=\"436\" cy=\"443\" r=\"3.5\"/>\n    <line x1=\"428\" y1=\"442\" x2=\"444\" y2=\"442\" stroke=\"#0d0707\" stroke-width=\"2\"/>\n    <line x1=\"432\" y1=\"452\" x2=\"448\" y2=\"435\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>\n  </g>\n</svg>"}, "spiderman": {"title": "Spider-Man (Queens Web-Warrior)", "baseline": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">\n            <g id=\"spiderman-baseline\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\">\n              <!-- Background -->\n              <rect width=\"500\" height=\"500\" fill=\"#1e293b\"/>\n              <circle cx=\"250\" cy=\"250\" r=\"180\" fill=\"#0284c7\" opacity=\"0.4\"/>\n\n              <!-- Shoulders -->\n              <path d=\"M 100,480 L 160,390 L 340,390 L 400,480 Z\" fill=\"#ef4444\"/>\n\n              <!-- Head Base (Flat red oval) -->\n              <ellipse cx=\"250\" cy=\"260\" rx=\"140\" ry=\"170\" fill=\"#dc2626\"/>\n\n              <!-- Simple Freehand Web Lines -->\n              <line x1=\"250\" y1=\"90\" x2=\"250\" y2=\"430\" stroke=\"#18181b\" stroke-width=\"2.5\"/>\n              <line x1=\"110\" y1=\"260\" x2=\"390\" y2=\"260\" stroke=\"#18181b\" stroke-width=\"2.5\"/>\n              <line x1=\"150\" y1=\"140\" x2=\"350\" y2=\"380\" stroke=\"#18181b\" stroke-width=\"2.5\"/>\n              <line x1=\"150\" y1=\"380\" x2=\"350\" y2=\"140\" stroke=\"#18181b\" stroke-width=\"2.5\"/>\n\n              <!-- Rough Web Arcs -->\n              <ellipse cx=\"250\" cy=\"260\" rx=\"60\" ry=\"70\" fill=\"none\" stroke=\"#18181b\" stroke-width=\"2\"/>\n              <ellipse cx=\"250\" cy=\"260\" rx=\"100\" ry=\"120\" fill=\"none\" stroke=\"#18181b\" stroke-width=\"2\"/>\n\n              <!-- Eyes (Simple Flat White Triangles with Black Border) -->\n              <polygon points=\"140,180 230,230 160,280\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"10\"/>\n              <polygon points=\"360,180 270,230 340,280\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"10\"/>\n            </g>\n          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">\n  <defs>\n    <!-- Background Spider-Sense Aura -->\n    <radialGradient id=\"spiderSenseAura\" cx=\"50%\" cy=\"35%\" r=\"60%\">\n      <stop offset=\"0%\" stop-color=\"#e62429\" stop-opacity=\"0.35\"/>\n      <stop offset=\"45%\" stop-color=\"#b11317\" stop-opacity=\"0.15\"/>\n      <stop offset=\"85%\" stop-color=\"#070b14\" stop-opacity=\"0\"/>\n    </radialGradient>\n\n    <!-- Suit Blue Gradients -->\n    <linearGradient id=\"suitBlueGradLeft\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#1d4ed8\"/>\n      <stop offset=\"40%\" stop-color=\"#0f2a56\"/>\n      <stop offset=\"100%\" stop-color=\"#06132b\"/>\n    </linearGradient>\n\n    <linearGradient id=\"suitBlueGradRight\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#0f2a56\"/>\n      <stop offset=\"60%\" stop-color=\"#06132b\"/>\n      <stop offset=\"100%\" stop-color=\"#020814\"/>\n    </linearGradient>\n\n    <!-- Torso Red Gradient -->\n    <linearGradient id=\"torsoCenterRed\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#f02830\"/>\n      <stop offset=\"40%\" stop-color=\"#d91c24\"/>\n      <stop offset=\"100%\" stop-color=\"#8a0e13\"/>\n    </linearGradient>\n\n    <!-- 3D Crimson Mask Gradient -->\n    <radialGradient id=\"maskVolume3D\" cx=\"42%\" cy=\"38%\" r=\"65%\">\n      <stop offset=\"0%\" stop-color=\"#ff3b44\"/>\n      <stop offset=\"35%\" stop-color=\"#f02830\"/>\n      <stop offset=\"75%\" stop-color=\"#b91319\"/>\n      <stop offset=\"100%\" stop-color=\"#73080d\"/>\n    </radialGradient>\n\n    <linearGradient id=\"maskShadowPlaneRight\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n      <stop offset=\"0%\" stop-color=\"#000000\" stop-opacity=\"0\"/>\n      <stop offset=\"100%\" stop-color=\"#000000\" stop-opacity=\"0.45\"/>\n    </linearGradient>\n\n    <!-- Eye Lens Gradients -->\n    <radialGradient id=\"lensShadingLeft\" cx=\"40%\" cy=\"30%\" r=\"70%\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\"/>\n      <stop offset=\"65%\" stop-color=\"#f8fafc\"/>\n      <stop offset=\"90%\" stop-color=\"#cbd5e1\"/>\n      <stop offset=\"100%\" stop-color=\"#94a3b8\"/>\n    </radialGradient>\n\n    <radialGradient id=\"lensShadingRight\" cx=\"60%\" cy=\"30%\" r=\"70%\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\"/>\n      <stop offset=\"65%\" stop-color=\"#f1f5f9\"/>\n      <stop offset=\"90%\" stop-color=\"#94a3b8\"/>\n      <stop offset=\"100%\" stop-color=\"#64748b\"/>\n    </radialGradient>\n\n    <!-- Filters -->\n    <filter id=\"maskDepthShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">\n      <feDropShadow dx=\"0\" dy=\"14\" stdDeviation=\"12\" flood-color=\"#000000\" flood-opacity=\"0.8\"/>\n    </filter>\n\n    <filter id=\"eyeSpecularGlow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">\n      <feGaussianBlur stdDeviation=\"3\" result=\"blur\"/>\n      <feMerge>\n        <feMergeNode in=\"blur\"/>\n        <feMergeNode in=\"SourceGraphic\"/>\n      </feMerge>\n    </filter>\n\n    <filter id=\"emblemShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">\n      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"3\" flood-color=\"#000000\" flood-opacity=\"0.7\"/>\n    </filter>\n\n    <clipPath id=\"maskBoundaryClip\">\n      <path d=\"M 250,55 \n               C 210,55 175,70 148,175 \n               C 130,240 172,295 250,335 \n               C 328,295 370,240 352,175 \n               C 325,70 290,55 250,55 Z\"/>\n    </clipPath>\n  </defs>\n\n  <!-- =================================================== -->\n  <!-- LAYER 0: ATMOSPHERE & BACKGROUND                    -->\n  <!-- =================================================== -->\n  <rect width=\"500\" height=\"500\" fill=\"#070b14\"/>\n  <circle cx=\"250\" cy=\"200\" r=\"230\" fill=\"url(#spiderSenseAura)\"/>\n\n  <!-- =================================================== -->\n  <!-- LAYER 1: SHOULDERS & TORSO BASE                     -->\n  <!-- =================================================== -->\n  <g id=\"layer1-torso-base\" filter=\"url(#maskDepthShadow)\">\n    <polygon points=\"145,340 250,355 355,340 375,500 125,500\" \n             fill=\"url(#torsoCenterRed)\" \n             stroke=\"#0a0c10\" \n             stroke-width=\"3.5\"/>\n\n    <polygon points=\"55,410 145,340 250,355 210,500 0,500 0,430\" \n             fill=\"url(#suitBlueGradLeft)\" \n             stroke=\"#0a0c10\" \n             stroke-width=\"3.5\" \n             stroke-linejoin=\"round\"/>\n\n    <polygon points=\"445,410 355,340 250,355 290,500 500,500 500,430\" \n             fill=\"url(#suitBlueGradRight)\" \n             stroke=\"#0a0c10\" \n             stroke-width=\"3.5\" \n             stroke-linejoin=\"round\"/>\n\n    <path d=\"M 160,385 Q 205,405 250,400 Q 295,405 340,385\" fill=\"none\" stroke=\"#660a0e\" stroke-width=\"3\"/>\n    <line x1=\"250\" y1=\"355\" x2=\"250\" y2=\"500\" stroke=\"#660a0e\" stroke-width=\"2.5\"/>\n\n    <g stroke=\"#111318\" stroke-width=\"1.8\" opacity=\"0.75\" fill=\"none\">\n      <line x1=\"200\" y1=\"365\" x2=\"180\" y2=\"500\"/>\n      <line x1=\"300\" y1=\"365\" x2=\"320\" y2=\"500\"/>\n      <path d=\"M 145,385 Q 250,405 355,385\"/>\n      <path d=\"M 135,430 Q 250,450 365,430\"/>\n      <path d=\"M 130,475 Q 250,495 370,475\"/>\n    </g>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 2: THE ICONIC BLACK SPIDER EMBLEM ON CHEST    -->\n  <!-- =================================================== -->\n  <g id=\"chest-spider-emblem\" filter=\"url(#emblemShadow)\" fill=\"#020617\" stroke=\"#000000\" stroke-width=\"1.2\">\n    <!-- Spider Body Core -->\n    <circle cx=\"250\" cy=\"405\" r=\"4.5\"/>\n    <ellipse cx=\"250\" cy=\"422\" rx=\"7\" ry=\"15\"/>\n\n    <!-- 4 UPPER LEGS (Pointing Up over Pectorals) -->\n    <polyline points=\"247,412 225,392 215,365 210,368\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <polyline points=\"253,412 275,392 285,365 290,368\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <polyline points=\"247,416 218,405 200,388 195,390\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <polyline points=\"253,416 282,405 300,388 305,390\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n\n    <!-- 4 LOWER LEGS (Pointing Down toward Abs) -->\n    <polyline points=\"247,425 215,435 205,465 202,472\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <polyline points=\"253,425 285,435 295,465 298,472\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <polyline points=\"248,432 222,450 216,482 214,488\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n    <polyline points=\"252,432 278,450 284,482 286,488\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 3: NECK / TRAPEZIUS BRIDGE                    -->\n  <!-- =================================================== -->\n  <g id=\"layer3-neck\">\n    <polygon points=\"172,285 250,335 250,355 145,340\" fill=\"#8a0e13\" stroke=\"#0a0c10\" stroke-width=\"2\"/>\n    <polygon points=\"328,285 250,335 250,355 355,340\" fill=\"#660a0e\" stroke=\"#0a0c10\" stroke-width=\"2\"/>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 4: HEAD MASK (CRIMSON CRANIUM)                -->\n  <!-- =================================================== -->\n  <g id=\"layer4-mask-base\" filter=\"url(#maskDepthShadow)\">\n    <path d=\"M 250,55 \n             C 210,55 175,70 148,175 \n             C 130,240 172,295 250,335 \n             C 328,295 370,240 352,175 \n             C 325,70 290,55 250,55 Z\" \n          fill=\"url(#maskVolume3D)\" \n          stroke=\"#0a0c10\" \n          stroke-width=\"5\" \n          stroke-linejoin=\"round\"/>\n\n    <path d=\"M 250,55 \n             C 290,55 325,70 352,175 \n             C 370,240 328,295 250,335 Z\" \n          fill=\"url(#maskShadowPlaneRight)\" \n          clip-path=\"url(#maskBoundaryClip)\"/>\n\n    <path d=\"M 250,56 C 212,56 178,71 150,175 C 134,238 174,292 248,333\" \n          fill=\"none\" \n          stroke=\"rgba(255,255,255,0.4)\" \n          stroke-width=\"1.2\" \n          stroke-linecap=\"round\"/>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 5: CLEAN MASK WEB MATRIX (FABRIC TEXTURE)     -->\n  <!-- =================================================== -->\n  <g id=\"layer5-mask-webs\" clip-path=\"url(#maskBoundaryClip)\">\n    <line x1=\"250\" y1=\"55\" x2=\"250\" y2=\"335\" stroke=\"#111318\" stroke-width=\"2\"/>\n\n    <!-- Subtle Spoke Rays -->\n    <g stroke=\"#111318\" stroke-width=\"1.6\" stroke-linecap=\"round\" opacity=\"0.85\">\n      <line x1=\"250\" y1=\"210\" x2=\"250\" y2=\"55\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"220\" y2=\"58\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"280\" y2=\"58\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"182\" y2=\"70\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"318\" y2=\"70\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"152\" y2=\"105\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"348\" y2=\"105\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"138\" y2=\"155\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"362\" y2=\"155\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"152\" y2=\"235\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"348\" y2=\"235\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"175\" y2=\"278\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"325\" y2=\"278\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"215\" y2=\"318\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"285\" y2=\"318\"/>\n      <line x1=\"250\" y1=\"210\" x2=\"250\" y2=\"335\"/>\n    </g>\n\n    <!-- Concentric Web Rings -->\n    <g stroke=\"#111318\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" opacity=\"0.85\">\n      <path d=\"M 218,165 Q 234,172 250,172 Q 266,172 282,165\"/>\n      <path d=\"M 195,135 Q 222,148 250,148 Q 278,148 305,135\"/>\n      <path d=\"M 172,105 Q 211,122 250,122 Q 289,122 328,105\"/>\n      <path d=\"M 180,72 Q 215,95 250,95 Q 285,95 320,72\"/>\n      <path d=\"M 224,265 Q 237,258 250,258 Q 263,258 276,265\"/>\n      <path d=\"M 205,292 Q 227,282 250,282 Q 273,282 295,292\"/>\n      <path d=\"M 192,315 Q 221,304 250,304 Q 279,304 308,315\"/>\n    </g>\n  </g>\n\n  <!-- =================================================== -->\n  <!-- LAYER 6: ICONIC WHITE SPIDER-EYES / LENSES          -->\n  <!-- =================================================== -->\n  <g id=\"layer6-lenses\" filter=\"url(#eyeSpecularGlow)\">\n    <path d=\"M 236,220 \n             L 162,162 \n             C 152,198 165,244 238,236 \n             Z\" \n          fill=\"#0a0c10\" \n          stroke=\"#000000\" \n          stroke-width=\"5\" \n          stroke-linejoin=\"round\"/>\n\n    <path d=\"M 230,218 \n             L 172,172 \n             C 164,198 174,234 231,227 \n             Z\" \n          fill=\"url(#lensShadingLeft)\" \n          stroke=\"#334155\" \n          stroke-width=\"1.2\"/>\n\n    <path d=\"M 176,174 L 226,216\" \n          fill=\"none\" \n          stroke=\"#ffffff\" \n          stroke-width=\"2.5\" \n          stroke-linecap=\"round\"/>\n\n    <path d=\"M 264,220 \n             L 338,162 \n             C 348,198 335,244 262,236 \n             Z\" \n          fill=\"#0a0c10\" \n          stroke=\"#000000\" \n          stroke-width=\"5\" \n          stroke-linejoin=\"round\"/>\n\n    <path d=\"M 270,218 \n             L 328,172 \n             C 336,198 326,234 269,227 \n             Z\" \n          fill=\"url(#lensShadingRight)\" \n          stroke=\"#334155\" \n          stroke-width=\"1.2\"/>\n\n    <path d=\"M 324,174 L 274,216\" \n          fill=\"none\" \n          stroke=\"#ffffff\" \n          stroke-width=\"2.5\" \n          stroke-linecap=\"round\"/>\n  </g>\n</svg>"}, "batman": {"title": "Batman (The Dark Knight Cowl)", "baseline": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">\n            <g id=\"batman-baseline\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\">\n              <!-- Background -->\n              <rect width=\"500\" height=\"500\" fill=\"#1e293b\"/>\n              <circle cx=\"250\" cy=\"250\" r=\"180\" fill=\"#334155\"/>\n\n              <!-- Cape / Shoulders -->\n              <path d=\"M 80,480 L 170,390 L 330,390 L 420,480 Z\" fill=\"#0f172a\"/>\n\n              <!-- Cowl & Ears (Freehand flat path with asymmetry) -->\n              <path d=\"M 150,110 L 140,40 L 180,95 L 320,95 L 360,40 L 350,110 L 375,250 L 340,380 L 160,380 L 125,250 Z\" \n                    fill=\"#18181b\"/>\n\n              <!-- Cowl Eye Openings -->\n              <polygon points=\"180,225 230,235 220,245 175,235\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"3\"/>\n              <polygon points=\"320,225 270,235 280,245 325,235\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"3\"/>\n\n              <!-- Nose Guard (Simple flat triangle) -->\n              <polygon points=\"250,220 235,275 265,275\" fill=\"#27272a\"/>\n\n              <!-- Mouth Cutout (Flat Skin Polygon) -->\n              <polygon points=\"185,295 240,285 260,285 315,295 305,385 250,405 195,385\" fill=\"#fed7aa\"/>\n\n              <!-- Mouth Line -->\n              <line x1=\"220\" y1=\"350\" x2=\"280\" y2=\"350\" stroke=\"#000000\" stroke-width=\"3\"/>\n              <!-- Chin line -->\n              <line x1=\"240\" y1=\"380\" x2=\"260\" y2=\"380\" stroke=\"#000000\" stroke-width=\"2\"/>\n            </g>\n          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">\n  <defs>\n    <!-- Lighting & Shading Gradients -->\n    <radialGradient id=\"moonAura\" cx=\"50%\" cy=\"45%\" r=\"55%\">\n      <stop offset=\"0%\" stop-color=\"#38bdf8\" stop-opacity=\"0.22\"/>\n      <stop offset=\"50%\" stop-color=\"#1e293b\" stop-opacity=\"0.12\"/>\n      <stop offset=\"100%\" stop-color=\"#020617\" stop-opacity=\"0\"/>\n    </radialGradient>\n\n    <!-- Cowl Faceted Armor Gradients (Left-Lit vs Right-Shadow) -->\n    <linearGradient id=\"cowlLitLeft\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#475569\"/>\n      <stop offset=\"45%\" stop-color=\"#334155\"/>\n      <stop offset=\"100%\" stop-color=\"#1e293b\"/>\n    </linearGradient>\n\n    <linearGradient id=\"cowlShadowRight\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#1e293b\"/>\n      <stop offset=\"50%\" stop-color=\"#0f172a\"/>\n      <stop offset=\"100%\" stop-color=\"#020617\"/>\n    </linearGradient>\n\n    <!-- Jaw Skin Tone Gradients (Left-Lit vs Right-Shadow) -->\n    <linearGradient id=\"skinLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#ffedd5\"/>\n      <stop offset=\"50%\" stop-color=\"#fed7aa\"/>\n      <stop offset=\"100%\" stop-color=\"#fba468\"/>\n    </linearGradient>\n\n    <linearGradient id=\"skinShadow\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#ea580c\"/>\n      <stop offset=\"50%\" stop-color=\"#c2410c\"/>\n      <stop offset=\"100%\" stop-color=\"#7c2d12\"/>\n    </linearGradient>\n\n    <!-- Eye Radiant Glow -->\n    <linearGradient id=\"eyeGlowGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n      <stop offset=\"0%\" stop-color=\"#ffffff\"/>\n      <stop offset=\"40%\" stop-color=\"#e0f2fe\"/>\n      <stop offset=\"100%\" stop-color=\"#38bdf8\"/>\n    </linearGradient>\n\n    <!-- Filters: Deep Armor Drop Shadow & Eye Emission -->\n    <filter id=\"knightShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">\n      <feDropShadow dx=\"0\" dy=\"16\" stdDeviation=\"14\" flood-color=\"#000000\" flood-opacity=\"0.8\"/>\n    </filter>\n\n    <filter id=\"eyeGlowFilter\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\">\n      <feGaussianBlur stdDeviation=\"6\" result=\"glow\"/>\n      <feMerge>\n        <feMergeNode in=\"glow\"/>\n        <feMergeNode in=\"SourceGraphic\"/>\n      </feMerge>\n    </filter>\n  </defs>\n\n  <!-- LAYER 0: ATMOSPHERE / BACKGROUND -->\n  <rect width=\"500\" height=\"500\" fill=\"#07090e\"/>\n  <circle cx=\"250\" cy=\"240\" r=\"210\" fill=\"url(#moonAura)\"/>\n\n  <!-- LAYER 1: BACK SILHOUETTE & CAPE MANTLE -->\n  <g filter=\"url(#knightShadow)\">\n    <polygon points=\"120,480 170,395 330,395 380,480 250,500\" fill=\"#0b0f19\" stroke=\"#000000\" stroke-width=\"4\"/>\n    <polygon points=\"120,480 170,395 250,440 210,490\" fill=\"#1e293b\"/>\n    <polygon points=\"380,480 330,395 250,440 290,490\" fill=\"#0f172a\"/>\n  </g>\n\n  <!-- LAYER 2: RAZOR BAT EARS (STRICT MATHEMATICAL SYMMETRY: X_R = 500 - X_L) -->\n  <g filter=\"url(#knightShadow)\">\n    <!-- Left Ear Outer Facet -->\n    <polygon points=\"140,140 155,30 195,115\" fill=\"url(#cowlLitLeft)\" stroke=\"#020617\" stroke-width=\"4\" stroke-linejoin=\"round\"/>\n    <polygon points=\"155,30 175,110 195,115\" fill=\"#64748b\" opacity=\"0.4\"/>\n    <line x1=\"155\" y1=\"30\" x2=\"140\" y2=\"140\" stroke=\"rgba(255,255,255,0.4)\" stroke-width=\"1.2\"/>\n\n    <!-- Right Ear Outer Facet (Exact Mirror: 500 - X) -->\n    <polygon points=\"360,140 345,30 305,115\" fill=\"url(#cowlShadowRight)\" stroke=\"#020617\" stroke-width=\"4\" stroke-linejoin=\"round\"/>\n    <polygon points=\"345,30 325,110 305,115\" fill=\"#020617\" opacity=\"0.6\"/>\n    <line x1=\"345\" y1=\"30\" x2=\"360\" y2=\"140\" stroke=\"rgba(255,255,255,0.15)\" stroke-width=\"1\"/>\n  </g>\n\n  <!-- LAYER 3: PRIMARY STRUCTURAL MASS (PLANE SPLIT DOWN CENTER X=250) -->\n  <g filter=\"url(#knightShadow)\">\n    <!-- Left-Lit Skull Facet -->\n    <polygon points=\"250,115 195,115 140,140 115,275 165,395 250,440\" \n             fill=\"url(#cowlLitLeft)\" \n             stroke=\"#020617\" \n             stroke-width=\"5\" \n             stroke-linejoin=\"round\"/>\n\n    <!-- Right-Shadow Skull Facet (Exact Mirror: X_R = 500 - X_L) -->\n    <polygon points=\"250,115 305,115 360,140 385,275 335,395 250,440\" \n             fill=\"url(#cowlShadowRight)\" \n             stroke=\"#020617\" \n             stroke-width=\"5\" \n             stroke-linejoin=\"round\"/>\n\n    <!-- Center Structural Apex Line (X=250) -->\n    <line x1=\"250\" y1=\"115\" x2=\"250\" y2=\"280\" stroke=\"rgba(255,255,255,0.25)\" stroke-width=\"1.5\"/>\n    <path d=\"M 140,140 L 115,275 L 165,395\" fill=\"none\" stroke=\"rgba(255,255,255,0.35)\" stroke-width=\"1.2\"/>\n  </g>\n\n  <!-- LAYER 4: BROW FURROW, NOSE GUARD & LOWER JAW ASSEMBLY -->\n  <!-- Chiseled Forehead Wedge -->\n  <polygon points=\"250,150 205,170 250,195 295,170\" fill=\"#0f172a\" stroke=\"#000000\" stroke-width=\"3\"/>\n  <polygon points=\"250,195 170,205 165,225 215,222 250,210\" fill=\"url(#cowlLitLeft)\" stroke=\"#000000\" stroke-width=\"3\"/>\n  <polygon points=\"250,195 330,205 335,225 285,222 250,210\" fill=\"url(#cowlShadowRight)\" stroke=\"#000000\" stroke-width=\"3\"/>\n\n  <!-- Angular Chiseled Cowl Nose Guard -->\n  <polygon points=\"250,210 234,272 250,284\" fill=\"url(#cowlLitLeft)\" stroke=\"#000000\" stroke-width=\"2.5\"/>\n  <polygon points=\"250,210 266,272 250,284\" fill=\"url(#cowlShadowRight)\" stroke=\"#000000\" stroke-width=\"2.5\"/>\n  <line x1=\"250\" y1=\"210\" x2=\"250\" y2=\"284\" stroke=\"rgba(255,255,255,0.5)\" stroke-width=\"1.5\"/>\n\n  <!-- HUMAN LOWER JAW IN COWL CUTOUT -->\n  <g id=\"human-jaw\" filter=\"url(#knightShadow)\">\n    <polygon points=\"250,284 178,290 188,385 250,420\" fill=\"url(#skinLit)\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\"/>\n    <polygon points=\"250,284 322,290 312,385 250,420\" fill=\"url(#skinShadow)\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\"/>\n    <polygon points=\"250,284 230,315 270,315\" fill=\"#7c2d12\" opacity=\"0.6\"/>\n\n    <!-- Stern Mouth & Chin Cleft -->\n    <line x1=\"215\" y1=\"352\" x2=\"285\" y2=\"352\" stroke=\"#451a03\" stroke-width=\"4.5\" stroke-linecap=\"round\"/>\n    <line x1=\"215\" y1=\"352\" x2=\"210\" y2=\"356\" stroke=\"#451a03\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n    <line x1=\"285\" y1=\"352\" x2=\"290\" y2=\"356\" stroke=\"#451a03\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n    <line x1=\"250\" y1=\"392\" x2=\"250\" y2=\"408\" stroke=\"#451a03\" stroke-width=\"3.5\" stroke-linecap=\"round\"/>\n    <line x1=\"232\" y1=\"416\" x2=\"250\" y2=\"420\" stroke=\"rgba(255,255,255,0.4)\" stroke-width=\"1.5\"/>\n  </g>\n\n  <!-- Cowl Cutout Edge Bevel -->\n  <polyline points=\"178,290 188,385 250,420 312,385 322,290\" fill=\"none\" stroke=\"#020617\" stroke-width=\"6\"/>\n  <polyline points=\"178,290 250,284 322,290\" fill=\"none\" stroke=\"#020617\" stroke-width=\"5\"/>\n\n  <!-- LAYER 5: FOCAL FOREGROUND DETAILS (WHITE SLIT BAT-EYES) -->\n  <g filter=\"url(#eyeGlowFilter)\">\n    <polygon points=\"174,226 232,234 222,244 176,234\" fill=\"url(#eyeGlowGrad)\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linejoin=\"miter\"/>\n    <polygon points=\"326,226 268,234 278,244 324,234\" fill=\"url(#eyeGlowGrad)\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linejoin=\"miter\"/>\n    <line x1=\"184\" y1=\"230\" x2=\"224\" y2=\"236\" stroke=\"#ffffff\" stroke-width=\"1.5\"/>\n    <line x1=\"316\" y1=\"230\" x2=\"276\" y2=\"236\" stroke=\"#ffffff\" stroke-width=\"1.5\"/>\n  </g>\n\n  <!-- Master Specular 1px Edge Glints on Cowl Peaks -->\n  <path d=\"M 205,170 L 250,195 L 295,170\" fill=\"none\" stroke=\"rgba(255,255,255,0.4)\" stroke-width=\"1.2\"/>\n  <line x1=\"170\" y1=\"205\" x2=\"250\" y2=\"195\" stroke=\"rgba(255,255,255,0.35)\" stroke-width=\"1.2\"/>\n</svg>"}, "garfield": {"title": "Garfield (Jim Davis Classic Comic)", "baseline": "<svg viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">\n            <g id=\"garfield-baseline\" stroke=\"#18181b\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n              <!-- Left Ear (Freehand Path) -->\n              <path d=\"M140,165 C125,100 160,80 185,115 C200,135 205,160 205,175\" fill=\"#f97316\"/>\n              <path d=\"M152,150 C145,118 165,105 178,125\" fill=\"#fda4af\" stroke-width=\"4\"/>\n\n              <!-- Right Ear (Slightly asymmetric freehand Path) -->\n              <path d=\"M372,165 C388,100 350,82 328,115 C312,135 306,160 306,175\" fill=\"#f97316\"/>\n              <path d=\"M360,150 C368,118 348,105 334,125\" fill=\"#fda4af\" stroke-width=\"4\"/>\n\n              <!-- Main Head Oval -->\n              <ellipse cx=\"256\" cy=\"275\" rx=\"175\" ry=\"145\" fill=\"#fb923c\"/>\n\n              <!-- Forehead Stripes (Freehand simple black polygons) -->\n              <path d=\"M256,135 L250,175 L262,175 Z\" fill=\"#18181b\" stroke=\"none\"/>\n              <path d=\"M225,142 L228,172 L237,168 Z\" fill=\"#18181b\" stroke=\"none\"/>\n              <path d=\"M287,142 L284,172 L275,168 Z\" fill=\"#18181b\" stroke=\"none\"/>\n\n              <!-- Cheek Stripes Left -->\n              <path d=\"M90,265 L135,268 L110,285 Z\" fill=\"#18181b\" stroke=\"none\"/>\n              <path d=\"M96,298 L138,295 L116,312 Z\" fill=\"#18181b\" stroke=\"none\"/>\n\n              <!-- Cheek Stripes Right -->\n              <path d=\"M422,265 L377,268 L402,285 Z\" fill=\"#18181b\" stroke=\"none\"/>\n              <path d=\"M416,298 L374,295 L396,312 Z\" fill=\"#18181b\" stroke=\"none\"/>\n\n              <!-- Eyes (White large ovals) -->\n              <!-- Left Eye -->\n              <ellipse cx=\"218\" cy=\"225\" rx=\"44\" ry=\"62\" fill=\"#ffffff\"/>\n              <!-- Right Eye -->\n              <ellipse cx=\"294\" cy=\"225\" rx=\"44\" ry=\"62\" fill=\"#ffffff\"/>\n\n              <!-- Sleepy Eyelids (Orange covers top half) -->\n              <path d=\"M174,225 C174,180 200,165 218,165 C236,165 262,180 262,225 Z\" fill=\"#fb923c\"/>\n              <path d=\"M250,225 C250,180 276,165 294,165 C312,165 338,180 338,225 Z\" fill=\"#fb923c\"/>\n\n              <!-- Droopy Eyelid Lines -->\n              <line x1=\"174\" y1=\"225\" x2=\"262\" y2=\"225\" stroke=\"#18181b\" stroke-width=\"6\"/>\n              <line x1=\"250\" y1=\"225\" x2=\"338\" y2=\"225\" stroke=\"#18181b\" stroke-width=\"6\"/>\n\n              <!-- Pupils (Tiny black sleepy ovals near bottom) -->\n              <ellipse cx=\"225\" cy=\"242\" rx=\"7\" ry=\"11\" fill=\"#18181b\" stroke=\"none\"/>\n              <ellipse cx=\"287\" cy=\"242\" rx=\"7\" ry=\"11\" fill=\"#18181b\" stroke=\"none\"/>\n\n              <!-- Puffy Muzzle / Cheeks -->\n              <ellipse cx=\"205\" cy=\"318\" rx=\"60\" ry=\"46\" fill=\"#fed7aa\"/>\n              <ellipse cx=\"307\" cy=\"318\" rx=\"60\" ry=\"46\" fill=\"#fed7aa\"/>\n\n              <!-- Whisker Dots -->\n              <circle cx=\"185\" cy=\"312\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>\n              <circle cx=\"170\" cy=\"324\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>\n              <circle cx=\"192\" cy=\"332\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>\n\n              <circle cx=\"327\" cy=\"312\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>\n              <circle cx=\"342\" cy=\"324\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>\n              <circle cx=\"320\" cy=\"332\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>\n\n              <!-- Bulbous Pink Nose -->\n              <ellipse cx=\"256\" cy=\"272\" rx=\"28\" ry=\"20\" fill=\"#fb7185\"/>\n\n              <!-- Smug Mouth / Chin Line -->\n              <path d=\"M228,348 C242,364 270,364 284,348\" fill=\"none\"/>\n              <path d=\"M236,375 C246,386 266,386 276,375\" fill=\"none\"/>\n            </g>\n          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">\n  <defs>\n    <!-- Soft comic-strip drop shadow -->\n    <filter id=\"comicShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">\n      <feDropShadow dx=\"0\" dy=\"10\" stdDeviation=\"10\" flood-color=\"#000000\" flood-opacity=\"0.45\"/>\n    </filter>\n\n    <!-- Subtle warm comic depth gradients -->\n    <linearGradient id=\"bodyOrange\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#ff9900\"/>\n      <stop offset=\"70%\" stop-color=\"#ff7700\"/>\n      <stop offset=\"100%\" stop-color=\"#e65c00\"/>\n    </linearGradient>\n\n    <linearGradient id=\"muzzleCream\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#fff5d6\"/>\n      <stop offset=\"70%\" stop-color=\"#ffeaad\"/>\n      <stop offset=\"100%\" stop-color=\"#f5d687\"/>\n    </linearGradient>\n\n    <linearGradient id=\"pinkNose\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#ff708f\"/>\n      <stop offset=\"100%\" stop-color=\"#eb2f59\"/>\n    </linearGradient>\n\n    <radialGradient id=\"backdropGlow\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n      <stop offset=\"0%\" stop-color=\"#ff8800\" stop-opacity=\"0.25\"/>\n      <stop offset=\"70%\" stop-color=\"#ff8800\" stop-opacity=\"0.05\"/>\n      <stop offset=\"100%\" stop-color=\"#000000\" stop-opacity=\"0\"/>\n    </radialGradient>\n\n    <!-- Clip Paths for Droopy Lids -->\n    <clipPath id=\"leftEyeClip\">\n      <ellipse cx=\"205\" cy=\"210\" rx=\"45\" ry=\"62\"/>\n    </clipPath>\n    <clipPath id=\"rightEyeClip\">\n      <ellipse cx=\"295\" cy=\"210\" rx=\"45\" ry=\"62\"/>\n    </clipPath>\n  </defs>\n\n  <!-- LAYER 0: ATMOSPHERE / BACKGROUND -->\n  <rect width=\"500\" height=\"500\" fill=\"#111318\"/>\n  <circle cx=\"250\" cy=\"250\" r=\"230\" fill=\"url(#backdropGlow)\"/>\n\n  <!-- LAYER 1: BACK SILHOUETTE (EARS) -->\n  <!-- Authentic small, rounded Garfield cat ears -->\n  <g stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\" stroke-linecap=\"round\">\n    <!-- Left Ear (Center around 165, 115) -->\n    <path d=\"M 135,145 C 130,100 150,80 172,82 C 190,84 200,105 202,130\" fill=\"url(#bodyOrange)\"/>\n    <!-- Left Inner Ear Pink Pad -->\n    <path d=\"M 148,135 C 145,108 156,96 168,98 C 178,100 184,115 186,130\" fill=\"#ff99aa\" stroke-width=\"4\"/>\n    <!-- Left Ear Black Tabby Stripe on rim -->\n    <path d=\"M 134,120 L 148,124 L 138,136 Z\" fill=\"#000000\" stroke=\"none\"/>\n\n    <!-- Right Ear (Mirror: 500 - X) -->\n    <path d=\"M 365,145 C 370,100 350,80 328,82 C 310,84 300,105 298,130\" fill=\"url(#bodyOrange)\"/>\n    <!-- Right Inner Ear Pink Pad -->\n    <path d=\"M 352,135 C 355,108 344,96 332,98 C 322,100 316,115 314,130\" fill=\"#ff99aa\" stroke-width=\"4\"/>\n    <!-- Right Ear Black Tabby Stripe on rim -->\n    <path d=\"M 366,120 L 352,124 L 362,136 Z\" fill=\"#000000\" stroke=\"none\"/>\n  </g>\n\n  <!-- LAYER 2: MAIN SQUASHED OVAL HEAD -->\n  <g filter=\"url(#comicShadow)\" stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\">\n    <!-- Garfield's wide pumpkin/burger-bun head shape -->\n    <path d=\"M 250,118 \n             C 175,118 120,135 105,170\n             C 85,215 65,260 65,300\n             C 65,365 140,410 250,410\n             C 360,410 435,365 435,300\n             C 435,260 415,215 395,170\n             C 380,135 325,118 250,118 Z\" \n          fill=\"url(#bodyOrange)\"/>\n  </g>\n\n  <!-- LAYER 3: TABBY STRIPES -->\n  <g fill=\"#000000\">\n    <!-- Forehead 3 Classic Tiger Stripes -->\n    <!-- Center Stripe -->\n    <polygon points=\"250,122 243,165 257,165\"/>\n    <!-- Left Forehead Stripe -->\n    <polygon points=\"212,130 216,168 227,162\"/>\n    <!-- Right Forehead Stripe (500 - X) -->\n    <polygon points=\"288,130 284,168 273,162\"/>\n\n    <!-- Left Cheek Stripes (3 Inward Wedges) -->\n    <polygon points=\"66,252 118,258 100,270\"/>\n    <polygon points=\"70,290 126,292 108,305\"/>\n    <polygon points=\"80,328 128,324 115,338\"/>\n\n    <!-- Right Cheek Stripes (Mirror 500 - X) -->\n    <polygon points=\"434,252 382,258 400,270\"/>\n    <polygon points=\"430,290 374,292 392,305\"/>\n    <polygon points=\"420,328 372,324 385,338\"/>\n  </g>\n\n  <!-- LAYER 4: GIANT TOUCHING CARTOON EYES -->\n  <g stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\">\n    <!-- Sclera: Two big white eggs touching seamlessly at Center X = 250 -->\n    <!-- Left Eye (Center 205, rx 45 -> right edge 250) -->\n    <ellipse cx=\"205\" cy=\"210\" rx=\"45\" ry=\"62\" fill=\"#ffffff\"/>\n    <!-- Right Eye (Center 295, rx 45 -> left edge 250) -->\n    <ellipse cx=\"295\" cy=\"210\" rx=\"45\" ry=\"62\" fill=\"#ffffff\"/>\n\n    <!-- Droopy / Cynical Sleepy Eyelids (Clipped) -->\n    <g clip-path=\"url(#leftEyeClip)\">\n      <path d=\"M 150,140 L 260,140 L 260,215 Q 205,225 150,215 Z\" fill=\"url(#bodyOrange)\"/>\n      <path d=\"M 150,215 Q 205,225 260,215\" fill=\"none\" stroke=\"#000000\" stroke-width=\"6\"/>\n      <!-- Eyelid sleepy crease line -->\n      <line x1=\"162\" y1=\"195\" x2=\"248\" y2=\"195\" stroke=\"#cc5500\" stroke-width=\"3\"/>\n    </g>\n\n    <g clip-path=\"url(#rightEyeClip)\">\n      <path d=\"M 240,140 L 350,140 L 350,215 Q 295,225 240,215 Z\" fill=\"url(#bodyOrange)\"/>\n      <path d=\"M 240,215 Q 295,225 350,215\" fill=\"none\" stroke=\"#000000\" stroke-width=\"6\"/>\n      <!-- Eyelid sleepy crease line -->\n      <line x1=\"252\" y1=\"195\" x2=\"338\" y2=\"195\" stroke=\"#cc5500\" stroke-width=\"3\"/>\n    </g>\n\n    <!-- Bored Pupils (Small glossy black ovals gazing slightly to viewer's right) -->\n    <!-- Left Pupil -->\n    <ellipse cx=\"218\" cy=\"235\" rx=\"8\" ry=\"13\" fill=\"#000000\" stroke=\"none\"/>\n    <circle cx=\"215\" cy=\"230\" r=\"2.5\" fill=\"#ffffff\" stroke=\"none\"/>\n\n    <!-- Right Pupil -->\n    <ellipse cx=\"282\" cy=\"235\" rx=\"8\" ry=\"13\" fill=\"#000000\" stroke=\"none\"/>\n    <circle cx=\"279\" cy=\"230\" r=\"2.5\" fill=\"#ffffff\" stroke=\"none\"/>\n  </g>\n\n  <!-- LAYER 5: ICONIC PUFFY WHISKER JOWLS & NOSE -->\n  <g filter=\"url(#comicShadow)\" stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\" stroke-linecap=\"round\">\n    <!-- Left Muzzle Cheek Lobe (Cream colored bulbous cheek) -->\n    <ellipse cx=\"182\" cy=\"315\" rx=\"68\" ry=\"50\" fill=\"url(#muzzleCream)\"/>\n    <!-- Right Muzzle Cheek Lobe (Mirror: Center 500 - 182 = 318) -->\n    <ellipse cx=\"318\" cy=\"315\" rx=\"68\" ry=\"50\" fill=\"url(#muzzleCream)\"/>\n\n    <!-- Center Jowl Crease & Smug Smirk -->\n    <path d=\"M 226,352 Q 250,370 274,352\" fill=\"none\"/>\n    \n    <!-- Fat Little Double Chin -->\n    <path d=\"M 234,378 Q 250,392 266,378\" fill=\"none\" stroke-width=\"5\"/>\n  </g>\n\n  <!-- Whisker Dots (3 distinct black dots per cheek) -->\n  <g fill=\"#000000\">\n    <!-- Left Cheek Dots -->\n    <circle cx=\"152\" cy=\"308\" r=\"5\"/>\n    <circle cx=\"136\" cy=\"324\" r=\"5\"/>\n    <circle cx=\"158\" cy=\"336\" r=\"5\"/>\n\n    <!-- Right Cheek Dots (Mirror: 500 - X) -->\n    <circle cx=\"348\" cy=\"308\" r=\"5\"/>\n    <circle cx=\"364\" cy=\"324\" r=\"5\"/>\n    <circle cx=\"342\" cy=\"336\" r=\"5\"/>\n  </g>\n\n  <!-- Signature Pink Button Nose (Center X = 250, Y = 265) -->\n  <g stroke=\"#000000\" stroke-width=\"5.5\" stroke-linejoin=\"round\">\n    <!-- Oval Pink Button -->\n    <ellipse cx=\"250\" cy=\"265\" rx=\"25\" ry=\"18\" fill=\"url(#pinkNose)\"/>\n    <!-- Specular Highlight Shine -->\n    <ellipse cx=\"244\" cy=\"260\" rx=\"9\" ry=\"5\" fill=\"#ffffff\" opacity=\"0.8\" stroke=\"none\" transform=\"rotate(-15 244 260)\"/>\n  </g>\n</svg>"}};
+    const PRESETS = {"bugs": {"title": "Bugs Bunny (Looney Tunes Classic)", "baseline": "<!-- Stage A: Raw/Zero-Shot Bugs Bunny Baseline -->
+          <svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+            <g id=\"bugs-baseline\" stroke=\"#000000\" stroke-width=\"3\" stroke-linejoin=\"round\">
+              <!-- Looney Tunes Red Target -->
+              <rect width=\"500\" height=\"500\" fill=\"#1e293b\"/>
+              <circle cx=\"250\" cy=\"250\" r=\"220\" fill=\"#dc2626\"/>
+              <circle cx=\"250\" cy=\"250\" r=\"160\" fill=\"#ea580c\"/>
+              <circle cx=\"250\" cy=\"250\" r=\"100\" fill=\"#fbbf24\"/>
+
+              <!-- Ears (Freehand flat grey & pink) -->
+              <path d=\"M 210,100 C 180,20 160,10 170,10 C 180,10 210,50 225,100 Z\" fill=\"#94a3b8\"/>
+              <path d=\"M 180,30 C 185,25 200,60 215,95\" stroke=\"#f472b6\" stroke-width=\"6\"/>
+
+              <path d=\"M 275,100 C 290,50 320,10 330,10 C 340,10 320,20 290,100 Z\" fill=\"#94a3b8\"/>
+              <path d=\"M 320,30 C 315,25 300,60 285,95\" stroke=\"#f472b6\" stroke-width=\"6\"/>
+
+              <!-- Body -->
+              <path d=\"M 200,280 L 170,420 L 330,420 L 300,280 Z\" fill=\"#94a3b8\"/>
+              <ellipse cx=\"250\" cy=\"350\" rx=\"35\" ry=\"50\" fill=\"#ffffff\"/>
+
+              <!-- Head -->
+              <ellipse cx=\"250\" cy=\"180\" rx=\"60\" ry=\"70\" fill=\"#94a3b8\"/>
+              <!-- Cheeks -->
+              <circle cx=\"205\" cy=\"210\" r=\"30\" fill=\"#ffffff\"/>
+              <circle cx=\"295\" cy=\"210\" r=\"30\" fill=\"#ffffff\"/>
+
+              <!-- Buck Teeth -->
+              <rect x=\"242\" y=\"225\" width=\"8\" height=\"15\" fill=\"#ffffff\"/>
+              <rect x=\"250\" y=\"225\" width=\"8\" height=\"15\" fill=\"#ffffff\"/>
+
+              <!-- Nose -->
+              <ellipse cx=\"250\" cy=\"195\" rx=\"8\" ry=\"6\" fill=\"#f472b6\"/>
+
+              <!-- Eyes -->
+              <ellipse cx=\"235\" cy=\"150\" rx=\"10\" ry=\"18\" fill=\"#ffffff\"/>
+              <circle cx=\"238\" cy=\"152\" r=\"4\" fill=\"#000000\"/>
+              <ellipse cx=\"265\" cy=\"150\" rx=\"10\" ry=\"18\" fill=\"#ffffff\"/>
+              <circle cx=\"262\" cy=\"152\" r=\"4\" fill=\"#000000\"/>
+
+              <!-- Carrot -->
+              <polygon points=\"320,280 380,240 370,230\" fill=\"#ea580c\"/>
+              <path d=\"M 380,240 L 405,225\" stroke=\"#22c55e\" stroke-width=\"4\"/>
+            </g>
+          </svg>", "architect": "<!-- Stage B: Distilled Architect System Output (Bugs Bunny Masterpiece) -->
+          <!--
+            Coordinate & Layer Plan:
+            Canvas: 500x500 | Origin: Center (250, 250) | Symmetry Axis: X=250
+            Anatomical Lock: Bugs Bunny (Looney Tunes Concentric Rings, Tall Ears, Fluffy Cheeks, Buck Teeth, Carrot)
+            Hierarchy:
+              L0: Atmosphere & Iconic Concentric Warner Bros Target Rings (#7f1d1d, #c2410c, #d97706, #fbbf24)
+              L1: Slender Gray Rabbit Torso & White Tummy Fur with Relaxed Hip Stance
+              L2: Arms with White 4-Fingered Gloves & The Crunchy Orange Carrot (#ea580c + leafy green sprig)
+              L3: Head Cranium & Symmetrical Tall Expressive Rabbit Ears (Left [165, 18] <-> Right [335, 18])
+              L4: Fluffy White Cheeks, Split Muzzle, Iconic Buck Teeth & Pink Nose at [250, 175]
+              L5: Mischievous Lidded Eyes with Specular Glints & Whisker Whisk Details
+          -->
+          <svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+            <defs>
+              <!-- Target Bullseye Gradients -->
+              <radialGradient id=\"wbTargetGlow\" cx=\"50%\" cy=\"48%\" r=\"52%\">
+                <stop offset=\"0%\" stop-color=\"#fef08a\"/>
+                <stop offset=\"28%\" stop-color=\"#f59e0b\"/>
+                <stop offset=\"55%\" stop-color=\"#ea580c\"/>
+                <stop offset=\"78%\" stop-color=\"#b91c1c\"/>
+                <stop offset=\"100%\" stop-color=\"#450a0a\"/>
+              </radialGradient>
+
+              <!-- Bugs Bunny Slate-Gray Fur (Left-Lit vs Right-Shadow) -->
+              <linearGradient id=\"bunnyGrayLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+                <stop offset=\"0%\" stop-color=\"#cbd5e1\"/>
+                <stop offset=\"35%\" stop-color=\"#94a3b8\"/>
+                <stop offset=\"100%\" stop-color=\"#64748b\"/>
+              </linearGradient>
+
+              <linearGradient id=\"bunnyGrayShadow\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+                <stop offset=\"0%\" stop-color=\"#64748b\"/>
+                <stop offset=\"60%\" stop-color=\"#475569\"/>
+                <stop offset=\"100%\" stop-color=\"#334155\"/>
+              </linearGradient>
+
+              <!-- Inner Ear Pink Gradients -->
+              <linearGradient id=\"earPinkLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+                <stop offset=\"0%\" stop-color=\"#fce7f3\"/>
+                <stop offset=\"45%\" stop-color=\"#f472b6\"/>
+                <stop offset=\"100%\" stop-color=\"#db2777\"/>
+              </linearGradient>
+
+              <!-- Fluffy White Fur & Glove Shading -->
+              <radialGradient id=\"whiteFurGrad\" cx=\"45%\" cy=\"35%\" r=\"65%\">
+                <stop offset=\"0%\" stop-color=\"#ffffff\"/>
+                <stop offset=\"65%\" stop-color=\"#f8fafc\"/>
+                <stop offset=\"100%\" stop-color=\"#e2e8f0\"/>
+              </radialGradient>
+
+              <!-- Crunchy Carrot Gradients -->
+              <linearGradient id=\"carrotGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+                <stop offset=\"0%\" stop-color=\"#fed7aa\"/>
+                <stop offset=\"30%\" stop-color=\"#fb923c\"/>
+                <stop offset=\"75%\" stop-color=\"#ea580c\"/>
+                <stop offset=\"100%\" stop-color=\"#9a3412\"/>
+              </linearGradient>
+
+              <!-- Leafy Green Carrot Top -->
+              <linearGradient id=\"leafGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+                <stop offset=\"0%\" stop-color=\"#4ade80\"/>
+                <stop offset=\"60%\" stop-color=\"#16a34a\"/>
+                <stop offset=\"100%\" stop-color=\"#14532d\"/>
+              </linearGradient>
+
+              <!-- Nose Pink Gradient -->
+              <radialGradient id=\"bunnyNose\" cx=\"40%\" cy=\"30%\" r=\"70%\">
+                <stop offset=\"0%\" stop-color=\"#ffe4e6\"/>
+                <stop offset=\"45%\" stop-color=\"#f43f5e\"/>
+                <stop offset=\"100%\" stop-color=\"#be123c\"/>
+              </radialGradient>
+
+              <!-- Cartoon Drop Shadows -->
+              <filter id=\"looneyShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+                <feDropShadow dx=\"0\" dy=\"12\" stdDeviation=\"12\" flood-color=\"#000000\" flood-opacity=\"0.6\"/>
+              </filter>
+            </defs>
+
+            <!-- =================================================== -->
+            <!-- LAYER 0: CONCENTRIC LOONEY TUNES TARGET BULLSEYE    -->
+            <!-- =================================================== -->
+            <rect width=\"500\" height=\"500\" fill=\"#180404\"/>
+            <!-- Concentric Bullseye Rings -->
+            <circle cx=\"250\" cy=\"250\" r=\"235\" fill=\"url(#wbTargetGlow)\"/>
+            <circle cx=\"250\" cy=\"250\" r=\"195\" fill=\"none\" stroke=\"#b91c1c\" stroke-width=\"14\"/>
+            <circle cx=\"250\" cy=\"250\" r=\"150\" fill=\"none\" stroke=\"#ea580c\" stroke-width=\"14\"/>
+            <circle cx=\"250\" cy=\"250\" r=\"105\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"12\"/>
+            <circle cx=\"250\" cy=\"250\" r=\"62\" fill=\"#7f1d1d\" opacity=\"0.65\"/>
+
+            <!-- =================================================== -->
+            <!-- LAYER 1: SLENDER BODY, LEGS & WHITE TUMMY FUR       -->
+            <!-- Shoulders [185, 290] <-> [315, 290]                 -->
+            <!-- =================================================== -->
+            <g id=\"layer1-bunny-body\" filter=\"url(#looneyShadow)\" stroke=\"#090d16\" stroke-width=\"4.5\" stroke-linejoin=\"round\">
+              <!-- Slender Torso -->
+              <!-- Left Torso Half (Lit) -->
+              <path d=\"M 235,255 L 185,290 L 175,395 L 210,480 L 250,485 Z\" fill=\"url(#bunnyGrayLit)\"/>
+              <!-- Right Torso Half (Shadow: Mirror 500 - X) -->
+              <path d=\"M 265,255 L 315,290 L 325,395 L 290,480 L 250,485 Z\" fill=\"url(#bunnyGrayShadow)\"/>
+
+              <!-- Fluffy White Oval Tummy Patch -->
+              <ellipse cx=\"250\" cy=\"385\" rx=\"42\" ry=\"72\" fill=\"url(#whiteFurGrad)\" stroke=\"#090d16\" stroke-width=\"4\"/>
+
+              <!-- Relaxed Rabbit Feet Base -->
+              <path d=\"M 170,480 C 135,480 120,495 140,500 L 225,500 C 235,492 215,480 170,480 Z\" fill=\"url(#whiteFurGrad)\"/>
+              <path d=\"M 330,480 C 365,480 380,495 360,500 L 275,500 C 265,492 285,480 330,480 Z\" fill=\"url(#whiteFurGrad)\"/>
+            </g>
+
+            <!-- =================================================== -->
+            <!-- LAYER 2: ARMS, WHITE GLOVES & CRUNCHY CARROT        -->
+            <!-- =================================================== -->
+            <g id=\"layer2-arms-carrot\" filter=\"url(#looneyShadow)\" stroke=\"#090d16\" stroke-width=\"4.5\" stroke-linejoin=\"round\">
+              <!-- Left Arm (Hand on Hip with Attitude) -->
+              <path d=\"M 185,290 C 145,320 135,365 155,405\" fill=\"none\"/>
+              <!-- Left 4-Fingered White Cartoon Glove -->
+              <ellipse cx=\"158\" cy=\"405\" rx=\"16\" ry=\"14\" fill=\"url(#whiteFurGrad)\"/>
+              <!-- Glove Dart Seams -->
+              <line x1=\"152\" y1=\"398\" x2=\"164\" y2=\"410\" stroke=\"#64748b\" stroke-width=\"2\"/>
+
+              <!-- Right Arm (Raised casually holding the carrot) -->
+              <path d=\"M 315,290 C 355,310 380,285 365,245\" fill=\"none\"/>
+
+              <!-- THE CRUNCHY CARROT! -->
+              <g id=\"carrot-prop\">
+                <!-- Carrot Body -->
+                <polygon points=\"352,248 425,185 415,172 345,236\" fill=\"url(#carrotGrad)\"/>
+                <!-- Carrot Crunchy Horizontal Grooves -->
+                <line x1=\"365\" y1=\"230\" x2=\"378\" y2=\"236\" stroke=\"#9a3412\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>
+                <line x1=\"385\" y1=\"212\" x2=\"398\" y2=\"218\" stroke=\"#9a3412\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>
+                <line x1=\"402\" y1=\"195\" x2=\"412\" y2=\"200\" stroke=\"#9a3412\" stroke-width=\"2\" stroke-linecap=\"round\"/>
+
+                <!-- Leafy Green Carrot Top Sprig -->
+                <path d=\"M 420,178 C 435,160 455,165 445,150 C 430,158 432,142 418,155 C 414,142 398,152 412,172 Z\" fill=\"url(#leafGrad)\"/>
+              </g>
+
+              <!-- Right Gloved Hand Gripping the Carrot -->
+              <ellipse cx=\"355\" cy=\"242\" rx=\"15\" ry=\"13\" fill=\"url(#whiteFurGrad)\"/>
+              <circle cx=\"348\" cy=\"236\" r=\"6\" fill=\"url(#whiteFurGrad)\"/>
+              <circle cx=\"355\" cy=\"232\" r=\"6\" fill=\"url(#whiteFurGrad)\"/>
+              <circle cx=\"363\" cy=\"235\" r=\"6\" fill=\"url(#whiteFurGrad)\"/>
+            </g>
+
+            <!-- =================================================== -->
+            <!-- LAYER 3: TALL EARS & SLENDER CRANIUM                -->
+            <!-- Symmetrical Ears: Left [165, 18] <-> Right [335, 18]-->
+            <!-- =================================================== -->
+            <g id=\"layer3-ears-head\" filter=\"url(#looneyShadow)\" stroke=\"#090d16\" stroke-width=\"4.5\" stroke-linejoin=\"round\">
+              <!-- LEFT TALL RABBIT EAR -->
+              <path d=\"M 215,85 
+                       C 190,50 145,35 165,18 
+                       C 188,2 215,35 230,85 Z\" 
+                    fill=\"url(#bunnyGrayLit)\"/>
+              <!-- Left Inner Pink Well -->
+              <path d=\"M 210,75 
+                       C 192,48 162,35 174,25 
+                       C 188,18 206,42 220,75 Z\" 
+                    fill=\"url(#earPinkLit)\" 
+                    stroke=\"none\"/>
+
+              <!-- RIGHT TALL RABBIT EAR (EXACT MIRROR: 500 - X) -->
+              <path d=\"M 285,85 
+                       C 310,50 355,35 335,18 
+                       C 312,2 285,35 270,85 Z\" 
+                    fill=\"url(#bunnyGrayShadow)\"/>
+              <!-- Right Inner Pink Well -->
+              <path d=\"M 290,75 
+                       C 308,48 338,35 326,25 
+                       C 312,18 294,42 280,75 Z\" 
+                    fill=\"url(#earPinkLit)\" 
+                    stroke=\"none\"/>
+
+              <!-- Main Upper Head Skull -->
+              <path d=\"M 215,85 C 230,78 270,78 285,85 C 300,120 300,165 285,185 L 215,185 C 200,165 200,120 215,85 Z\" 
+                    fill=\"url(#bunnyGrayLit)\"/>
+            </g>
+
+            <!-- =================================================== -->
+            <!-- LAYER 4: FLUFFY WHITE CHEEKS, BUCK TEETH & NOSE     -->
+            <!-- Cheek Bounds [160, 205] <-> [340, 205]              -->
+            <!-- =================================================== -->
+            <g id=\"layer4-cheeks-muzzle\" filter=\"url(#looneyShadow)\" stroke=\"#090d16\" stroke-width=\"4.5\" stroke-linejoin=\"round\">
+              <!-- Left Fluffy Tufted Cheek -->
+              <path d=\"M 220,175 
+                       C 180,175 140,195 160,215 
+                       C 145,220 162,235 175,235 
+                       C 185,250 215,245 235,240 Z\" 
+                    fill=\"url(#whiteFurGrad)\"/>
+
+              <!-- Right Fluffy Tufted Cheek (Mirror: 500 - X) -->
+              <path d=\"M 280,175 
+                       C 320,175 360,195 340,215 
+                       C 355,220 338,235 325,235 
+                       C 315,250 285,245 265,240 Z\" 
+                    fill=\"url(#whiteFurGrad)\"/>
+
+              <!-- Cheerful Open Smirk / Mouth Line -->
+              <path d=\"M 218,212 C 235,238 265,238 282,212\" fill=\"#7f1d1d\" stroke=\"#090d16\" stroke-width=\"4\"/>
+
+              <!-- BUGS BUNNY'S FAMOUS BUCK TEETH! -->
+              <!-- Left Incisor -->
+              <rect x=\"238\" y=\"215\" width=\"11\" height=\"18\" rx=\"2\" fill=\"#ffffff\" stroke=\"#090d16\" stroke-width=\"3.5\"/>
+              <!-- Right Incisor -->
+              <rect x=\"251\" y=\"215\" width=\"11\" height=\"18\" rx=\"2\" fill=\"#ffffff\" stroke=\"#090d16\" stroke-width=\"3.5\"/>
+
+              <!-- Split Muzzle Bulb Lobes -->
+              <ellipse cx=\"235\" cy=\"195\" rx=\"22\" ry=\"16\" fill=\"url(#whiteFurGrad)\"/>
+              <ellipse cx=\"265\" cy=\"195\" rx=\"22\" ry=\"16\" fill=\"url(#whiteFurGrad)\"/>
+
+              <!-- Whisker Dots -->
+              <circle cx=\"225\" cy=\"192\" r=\"2.5\" fill=\"#090d16\" stroke=\"none\"/>
+              <circle cx=\"218\" cy=\"198\" r=\"2.5\" fill=\"#090d16\" stroke=\"none\"/>
+              <circle cx=\"226\" cy=\"204\" r=\"2.5\" fill=\"#090d16\" stroke=\"none\"/>
+
+              <circle cx=\"275\" cy=\"192\" r=\"2.5\" fill=\"#090d16\" stroke=\"none\"/>
+              <circle cx=\"282\" cy=\"198\" r=\"2.5\" fill=\"#090d16\" stroke=\"none\"/>
+              <circle cx=\"274\" cy=\"204\" r=\"2.5\" fill=\"#090d16\" stroke=\"none\"/>
+
+              <!-- Cute Oval Pink Rabbit Button Nose -->
+              <ellipse cx=\"250\" cy=\"178\" rx=\"12\" ry=\"8\" fill=\"url(#bunnyNose)\" stroke=\"#090d16\" stroke-width=\"3.5\"/>
+              <!-- Specular Nose Highlight -->
+              <ellipse cx=\"247\" cy=\"176\" rx=\"4\" ry=\"2\" fill=\"#ffffff\" opacity=\"0.8\" stroke=\"none\"/>
+            </g>
+
+            <!-- =================================================== -->
+            <!-- LAYER 5: MISCHIEVOUS CARTOON EYES & WHISKERS        -->
+            <!-- Left Eye [232, 135] <-> Right Eye [268, 135]        -->
+            <!-- =================================================== -->
+            <g id=\"layer5-eyes\">
+              <!-- Left Eye Sclera (Tall Egg Shape) -->
+              <ellipse cx=\"232\" cy=\"138\" rx=\"16\" ry=\"30\" fill=\"#ffffff\" stroke=\"#090d16\" stroke-width=\"4\"/>
+              <!-- Left Eyelid / Brow Curve (Slight smug half-lid) -->
+              <path d=\"M 218,126 Q 232,134 246,126\" fill=\"none\" stroke=\"#090d16\" stroke-width=\"3.5\"/>
+              <!-- Left Mischievous Pupil (Gazing toward viewer/carrot) -->
+              <ellipse cx=\"236\" cy=\"142\" rx=\"7\" ry=\"11\" fill=\"#090d16\"/>
+              <circle cx=\"234\" cy=\"138\" r=\"2.5\" fill=\"#ffffff\"/>
+
+              <!-- Right Eye Sclera (Exact Mirror: 500 - X) -->
+              <ellipse cx=\"268\" cy=\"138\" rx=\"16\" ry=\"30\" fill=\"#ffffff\" stroke=\"#090d16\" stroke-width=\"4\"/>
+              <!-- Right Eyelid / Brow Curve -->
+              <path d=\"M 254,126 Q 268,134 282,126\" fill=\"none\" stroke=\"#090d16\" stroke-width=\"3.5\"/>
+              <!-- Right Mischievous Pupil -->
+              <ellipse cx=\"264\" cy=\"142\" rx=\"7\" ry=\"11\" fill=\"#090d16\"/>
+              <circle cx=\"262\" cy=\"138\" r=\"2.5\" fill=\"#ffffff\"/>
+
+              <!-- Long Springy Whiskers -->
+              <line x1=\"205\" y1=\"195\" x2=\"140\" y2=\"185\" stroke=\"#090d16\" stroke-width=\"2.2\" stroke-linecap=\"round\"/>
+              <line x1=\"205\" y1=\"202\" x2=\"135\" y2=\"208\" stroke=\"#090d16\" stroke-width=\"2.2\" stroke-linecap=\"round\"/>
+
+              <line x1=\"295\" y1=\"195\" x2=\"360\" y2=\"185\" stroke=\"#090d16\" stroke-width=\"2.2\" stroke-linecap=\"round\"/>
+              <line x1=\"295\" y1=\"202\" x2=\"365\" y2=\"208\" stroke=\"#090d16\" stroke-width=\"2.2\" stroke-linecap=\"round\"/>
+            </g>
+          </svg>"}, "arthur": {"title": "Arthur Morgan (RDR2 Poster Art)", "baseline": "<!-- Stage A: Raw/Zero-Shot Arthur Morgan Baseline -->
+          <svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+            <g id=\"arthur-baseline\" stroke=\"#1c1917\" stroke-width=\"3\" stroke-linejoin=\"round\">
+              <!-- RDR2 Sunset Backdrop -->
+              <rect width=\"500\" height=\"500\" fill=\"#7f1d1d\"/>
+              <circle cx=\"250\" cy=\"250\" r=\"190\" fill=\"#ea580c\"/>
+
+              <!-- Coat & Shoulders -->
+              <path d=\"M 50,480 L 150,360 L 350,360 L 450,480 L 480,500 L 20,500 Z\" fill=\"#92400e\"/>
+              <!-- Blue Shirt -->
+              <polygon points=\"210,330 250,360 290,330 280,450 220,450\" fill=\"#0284c7\"/>
+              <!-- Red Bandana -->
+              <polygon points=\"215,320 250,365 285,320\" fill=\"#dc2626\"/>
+
+              <!-- Face & Beard -->
+              <path d=\"M 180,180 L 175,260 L 210,315 L 250,325 L 290,315 L 325,260 L 320,180 Z\" fill=\"#fed7aa\"/>
+              <path d=\"M 185,250 C 190,310 230,325 250,325 C 270,325 310,310 315,250 Z\" fill=\"#78350f\"/>
+              <!-- Mustache -->
+              <path d=\"M 220,260 Q 250,250 280,260 Q 250,275 220,260 Z\" fill=\"#451a03\"/>
+
+              <!-- Eyes & Nose -->
+              <ellipse cx=\"215\" cy=\"205\" rx=\"8\" ry=\"5\" fill=\"#ffffff\"/>
+              <circle cx=\"215\" cy=\"205\" r=\"3\" fill=\"#000000\"/>
+              <ellipse cx=\"285\" cy=\"205\" rx=\"8\" ry=\"5\" fill=\"#ffffff\"/>
+              <circle cx=\"285\" cy=\"205\" r=\"3\" fill=\"#000000\"/>
+              <polygon points=\"245,200 255,200 258,240 242,240\" fill=\"#fbcfe8\"/>
+
+              <!-- Cowboy Hat (Flat Brown) -->
+              <!-- Crown -->
+              <path d=\"M 190,140 L 195,70 L 250,60 L 305,70 L 310,140 Z\" fill=\"#451a03\"/>
+              <!-- Curved Brim -->
+              <path d=\"M 70,160 Q 250,130 430,160 Q 250,185 70,160 Z\" fill=\"#291307\"/>
+            </g>
+          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+  <defs>
+    <!-- RDR2 Poster Palette Gradients -->
+    <radialGradient id=\"rdrBlazingSun\" cx=\"50%\" cy=\"32%\" r=\"48%\">
+      <stop offset=\"0%\" stop-color=\"#fffbeb\"/>
+      <stop offset=\"20%\" stop-color=\"#ffae00\"/>
+      <stop offset=\"55%\" stop-color=\"#ff9d00\"/>
+      <stop offset=\"85%\" stop-color=\"#cc0e14\"/>
+      <stop offset=\"100%\" stop-color=\"#a8070c\"/>
+    </radialGradient>
+
+    <linearGradient id=\"skyCrimsonGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#7a0307\"/>
+      <stop offset=\"40%\" stop-color=\"#a8070c\"/>
+      <stop offset=\"85%\" stop-color=\"#cc0e14\"/>
+      <stop offset=\"100%\" stop-color=\"#800509\"/>
+    </linearGradient>
+
+    <!-- Coat Leather Gradients -->
+    <linearGradient id=\"coatLeatherLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#2d1712\"/>
+      <stop offset=\"50%\" stop-color=\"#1a0d0a\"/>
+      <stop offset=\"100%\" stop-color=\"#0d0707\"/>
+    </linearGradient>
+
+    <linearGradient id=\"coatLeatherShadow\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#1a0d0a\"/>
+      <stop offset=\"70%\" stop-color=\"#0d0707\"/>
+      <stop offset=\"100%\" stop-color=\"#050303\"/>
+    </linearGradient>
+
+    <!-- Hat Distressed Leather -->
+    <linearGradient id=\"hatCrownGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#301c16\"/>
+      <stop offset=\"40%\" stop-color=\"#1f120e\"/>
+      <stop offset=\"100%\" stop-color=\"#0d0707\"/>
+    </linearGradient>
+
+    <!-- Sunburned Skin Facets -->
+    <linearGradient id=\"skinSunburnedLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#f59e6b\"/>
+      <stop offset=\"45%\" stop-color=\"#d96b38\"/>
+      <stop offset=\"100%\" stop-color=\"#a63d1a\"/>
+    </linearGradient>
+
+    <linearGradient id=\"skinSunburnedShadow\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#a63d1a\"/>
+      <stop offset=\"55%\" stop-color=\"#8c2514\"/>
+      <stop offset=\"100%\" stop-color=\"#4a1107\"/>
+    </linearGradient>
+
+    <!-- Twisted Rope Hatband -->
+    <linearGradient id=\"ropeGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">
+      <stop offset=\"0%\" stop-color=\"#bf8c52\"/>
+      <stop offset=\"50%\" stop-color=\"#9e7340\"/>
+      <stop offset=\"100%\" stop-color=\"#694a24\"/>
+    </linearGradient>
+
+    <!-- High-Contrast Poster Drop Shadow -->
+    <filter id=\"rdrPosterShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+      <feDropShadow dx=\"0\" dy=\"16\" stdDeviation=\"14\" flood-color=\"#050202\" flood-opacity=\"0.95\"/>
+    </filter>
+  </defs>
+
+  <!-- =================================================== -->
+  <!-- LAYER 0: ATMOSPHERE & RDR2 POSTER SUNSET            -->
+  <!-- =================================================== -->
+  <rect width=\"500\" height=\"500\" fill=\"url(#skyCrimsonGrad)\"/>
+  <circle cx=\"250\" cy=\"210\" r=\"195\" fill=\"url(#rdrBlazingSun)\"/>
+
+  <!-- Distant Pine Tree & Mesa Horizon Silhouettes -->
+  <g fill=\"#210305\" opacity=\"0.85\">
+    <polygon points=\"0,325 75,295 130,318 205,282 250,298 320,270 395,305 450,285 500,310 500,370 0,370\"/>
+    <polygon points=\"40,305 46,285 52,305\"/>
+    <polygon points=\"48,300 55,278 62,300\"/>
+    <polygon points=\"58,304 63,288 68,304\"/>
+    <polygon points=\"175,295 181,275 187,295\"/>
+    <polygon points=\"183,290 190,268 197,290\"/>
+    <polygon points=\"340,282 346,262 352,282\"/>
+    <polygon points=\"348,278 355,255 362,278\"/>
+  </g>
+
+  <!-- Flying Outlaw Vultures -->
+  <path d=\"M 95,95 Q 105,87 115,95 Q 125,87 135,95 Q 115,91 95,95 Z\" fill=\"#140203\"/>
+  <path d=\"M 370,80 Q 378,73 386,80 Q 394,73 402,80 Q 386,76 370,80 Z\" fill=\"#140203\"/>
+
+  <!-- =================================================== -->
+  <!-- LAYER 1: COAT & BANDANA BASE                        -->
+  <!-- Anchors: Shoulders [65, 430] <-> [435, 430]         -->
+  <!-- Bandana V-Tip: [250, 425]                           -->
+  <!-- =================================================== -->
+  <g id=\"layer1-coat-bandana\" filter=\"url(#rdrPosterShadow)\">
+    <!-- Left Shoulder (Lit) -->
+    <polygon points=\"155,345 65,430 0,500 215,500 205,385\" 
+             fill=\"url(#coatLeatherLit)\" 
+             stroke=\"#0d0707\" 
+             stroke-width=\"4\" 
+             stroke-linejoin=\"round\"/>
+
+    <!-- Right Shoulder (Shadow: Mirror 500 - X) -->
+    <polygon points=\"345,345 435,430 500,500 285,500 295,385\" 
+             fill=\"url(#coatLeatherShadow)\" 
+             stroke=\"#0d0707\" 
+             stroke-width=\"4\" 
+             stroke-linejoin=\"round\"/>
+
+    <!-- Lapels -->
+    <polygon points=\"155,345 190,445 220,385 175,345\" fill=\"#2d1712\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>
+    <polygon points=\"345,345 310,445 280,385 325,345\" fill=\"#150a08\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>
+
+    <!-- Blue Shirt Collar -->
+    <polygon points=\"215,355 250,370 285,355 275,440 225,440\" fill=\"#1e3a5f\" stroke=\"#0d0707\" stroke-width=\"2\"/>
+
+    <!-- Black Neckerchief Bandana with Deep V-Tip [250, 425] -->
+    <polygon points=\"205,330 250,425 250,358 178,338\" 
+             fill=\"#1a1214\" 
+             stroke=\"#0d090a\" 
+             stroke-width=\"3\" 
+             stroke-linejoin=\"round\"/>
+
+    <polygon points=\"295,330 250,425 250,358 322,338\" 
+             fill=\"#0d090a\" 
+             stroke=\"#050304\" 
+             stroke-width=\"3\" 
+             stroke-linejoin=\"round\"/>
+
+    <path d=\"M 218,348 Q 242,388 250,425 Q 258,388 282,348\" fill=\"none\" stroke=\"#2b1c20\" stroke-width=\"2.5\"/>
+    <ellipse cx=\"250\" cy=\"355\" rx=\"8\" ry=\"6\" fill=\"#0d090a\" stroke=\"#000000\" stroke-width=\"2\"/>
+    <line x1=\"250\" y1=\"355\" x2=\"250\" y2=\"425\" stroke=\"#000000\" stroke-width=\"2.5\"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 2: NECK & LOWER FACE (RUGGED BEARD & JAW)     -->
+  <!-- Jaw Corners [190, 292] <-> [310, 292]               -->
+  <!-- Chin Bottom [250, 332]                              -->
+  <!-- =================================================== -->
+  <g id=\"layer2-neck-face\" filter=\"url(#rdrPosterShadow)\">
+    <polygon points=\"190,292 250,332 250,365 180,345\" fill=\"#a63d1a\" stroke=\"#0d0707\" stroke-width=\"2\"/>
+    <polygon points=\"310,292 250,332 250,365 320,345\" fill=\"#8c2514\" stroke=\"#0d0707\" stroke-width=\"2\"/>
+
+    <!-- Cheekbones: [182, 225] <-> [318, 225] -->
+    <polygon points=\"250,195 182,225 178,255 190,292 250,332\" 
+             fill=\"url(#skinSunburnedLit)\" 
+             stroke=\"#0d0707\" 
+             stroke-width=\"3\" 
+             stroke-linejoin=\"round\"/>
+
+    <polygon points=\"250,195 318,225 322,255 310,292 250,332\" 
+             fill=\"url(#skinSunburnedShadow)\" 
+             stroke=\"#0d0707\" 
+             stroke-width=\"3\" 
+             stroke-linejoin=\"round\"/>
+
+    <!-- Full Outlaw Beard (#24110c) -->
+    <path d=\"M 178,245 
+             L 190,292 
+             L 218,325 
+             L 250,332 
+             L 282,325 
+             L 310,292 
+             L 322,245 
+             C 310,278 285,302 250,302 
+             C 215,302 190,278 178,245 Z\" 
+          fill=\"#24110c\" 
+          stroke=\"#0d0707\" 
+          stroke-width=\"2.8\"/>
+
+    <!-- Outlaw Mustache -->
+    <path d=\"M 215,268 
+             C 230,256 245,256 250,260 
+             C 255,256 270,256 285,268 
+             C 275,285 258,282 250,278 
+             C 242,282 225,285 215,268 Z\" 
+          fill=\"#160a07\" 
+          stroke=\"#0d0707\" 
+          stroke-width=\"2.2\"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 3: UPPER FACE, NOSE & PIERCING GLINT EYES     -->
+  <!-- Eye Centers [212, 206] <-> [288, 206]               -->
+  <!-- =================================================== -->
+  <g id=\"layer3-upper-face\">
+    <polygon points=\"250,195 240,248 250,256\" fill=\"url(#skinSunburnedLit)\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>
+    <polygon points=\"250,195 260,248 250,256\" fill=\"url(#skinSunburnedShadow)\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>
+    <line x1=\"250\" y1=\"195\" x2=\"250\" y2=\"256\" stroke=\"#ffae00\" stroke-width=\"1.2\" opacity=\"0.6\"/>
+
+    <!-- Hunter Eyes: [212, 206] <-> [288, 206] -->
+    <polygon points=\"198,206 212,200 226,208 212,212\" fill=\"#ffffff\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>
+    <circle cx=\"212\" cy=\"206\" r=\"3.4\" fill=\"#0c4a6e\"/>
+    <circle cx=\"212\" cy=\"206\" r=\"1.6\" fill=\"#000000\"/>
+    <circle cx=\"210\" cy=\"204\" r=\"0.8\" fill=\"#ffffff\"/>
+    <path d=\"M 194,200 Q 212,194 228,202\" fill=\"none\" stroke=\"#160a07\" stroke-width=\"3.2\" stroke-linecap=\"round\"/>
+
+    <polygon points=\"302,206 288,200 274,208 288,212\" fill=\"#ffffff\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>
+    <circle cx=\"288\" cy=\"206\" r=\"3.4\" fill=\"#0c4a6e\"/>
+    <circle cx=\"288\" cy=\"206\" r=\"1.6\" fill=\"#000000\"/>
+    <circle cx=\"286\" cy=\"204\" r=\"0.8\" fill=\"#ffffff\"/>
+    <path d=\"M 306,200 Q 288,194 272,202\" fill=\"none\" stroke=\"#160a07\" stroke-width=\"3.2\" stroke-linecap=\"round\"/>
+
+    <!-- Heavy Cast Shadow (#140606) -->
+    <polygon points=\"120,165 380,152 355,216 250,230 145,216\" fill=\"#140606\" opacity=\"0.75\"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 4: ARTHUR'S GAMBLER HAT                       -->
+  <!-- Hat Crown Peaks: [195, 68] <-> [305, 68]            -->
+  <!-- Hat Pinch: [250, 78], Rope: [172, 138] <-> [328, 138]-->
+  <!-- Asymmetrical Brim Tips: [82, 165] <-> [418, 152]    -->
+  <!-- =================================================== -->
+  <g id=\"layer4-gambler-hat\" filter=\"url(#rdrPosterShadow)\">
+    <path d=\"M 172,138 
+             L 182,85 
+             C 185,70 195,68 215,68 
+             L 250,78 
+             L 285,68 
+             C 305,68 315,70 318,85 
+             L 328,138 Z\" 
+          fill=\"url(#hatCrownGrad)\" 
+          stroke=\"#0d0707\" 
+          stroke-width=\"3.8\" 
+          stroke-linejoin=\"round\"/>
+
+    <path d=\"M 215,68 L 250,118 L 285,68\" fill=\"none\" stroke=\"#0a0503\" stroke-width=\"2.8\"/>
+    <line x1=\"250\" y1=\"78\" x2=\"250\" y2=\"128\" stroke=\"#0a0503\" stroke-width=\"2.5\"/>
+
+    <!-- Twisted Rope Band (#9e7340) -->
+    <path d=\"M 172,138 Q 250,146 328,138\" fill=\"none\" stroke=\"url(#ropeGrad)\" stroke-width=\"6.5\" stroke-linecap=\"round\"/>
+    <path d=\"M 172,138 Q 250,146 328,138\" fill=\"none\" stroke=\"#fef08a\" stroke-width=\"1.6\" stroke-dasharray=\"6,4\" stroke-linecap=\"round\"/>
+
+    <!-- Wide Curved Brim with Outlaw Asymmetrical Tilt -->
+    <path d=\"M 82,165 
+             C 125,138 190,136 250,142 
+             C 310,134 375,130 418,152 
+             C 385,188 315,195 250,192 
+             C 185,195 115,188 82,165 Z\" 
+          fill=\"#1c0f0b\" 
+          stroke=\"#0d0707\" 
+          stroke-width=\"4.2\" 
+          stroke-linejoin=\"round\"/>
+
+    <!-- Brim Underside -->
+    <path d=\"M 96,166 C 155,178 250,184 345,176 C 382,170 405,158 412,154 C 375,186 312,192 250,190 C 188,192 125,186 96,166 Z\" 
+          fill=\"#0a0503\"/>
+
+    <!-- Gold Specular Rim -->
+    <path d=\"M 82,165 C 125,138 190,136 250,142 C 310,134 375,130 418,152\" 
+          fill=\"none\" 
+          stroke=\"#ffae00\" 
+          stroke-width=\"1.8\" 
+          stroke-linecap=\"round\" 
+          opacity=\"0.85\"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 5: RDR2 FOREGROUND VIGNETTE & OUTLAW RIDERS   -->
+  <!-- =================================================== -->
+  <g id=\"layer5-outlaw-riders\" fill=\"#0d0707\">
+    <path d=\"M 0,465 Q 120,455 250,460 Q 380,455 500,465 L 500,500 L 0,500 Z\"/>
+
+    <!-- Outlaw Rider 1 on Horseback (Left) -->
+    <ellipse cx=\"65\" cy=\"468\" rx=\"20\" ry=\"11\"/>
+    <path d=\"M 78,465 L 90,448 L 82,445 L 72,460 Z\"/>
+    <polygon points=\"88,446 94,440 92,448\"/>
+    <line x1=\"52\" y1=\"474\" x2=\"48\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>
+    <line x1=\"58\" y1=\"474\" x2=\"56\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.2\"/>
+    <line x1=\"75\" y1=\"474\" x2=\"78\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>
+    <line x1=\"82\" y1=\"474\" x2=\"86\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.2\"/>
+    <ellipse cx=\"64\" cy=\"454\" rx=\"6\" ry=\"9\"/>
+    <circle cx=\"64\" cy=\"443\" r=\"3.5\"/>
+    <line x1=\"56\" y1=\"442\" x2=\"72\" y2=\"442\" stroke=\"#0d0707\" stroke-width=\"2\"/>
+
+    <!-- Outlaw Rider 2 on Horseback (Right - Galloping) -->
+    <ellipse cx=\"435\" cy=\"468\" rx=\"22\" ry=\"11\"/>
+    <path d=\"M 420,465 L 406,448 L 414,445 L 426,460 Z\"/>
+    <polygon points=\"408,446 402,440 404,448\"/>
+    <line x1=\"448\" y1=\"474\" x2=\"456\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>
+    <line x1=\"442\" y1=\"474\" x2=\"446\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.2\"/>
+    <line x1=\"422\" y1=\"474\" x2=\"415\" y2=\"495\" stroke=\"#0d0707\" stroke-width=\"2.5\"/>
+    <ellipse cx=\"436\" cy=\"454\" rx=\"6\" ry=\"9\"/>
+    <circle cx=\"436\" cy=\"443\" r=\"3.5\"/>
+    <line x1=\"428\" y1=\"442\" x2=\"444\" y2=\"442\" stroke=\"#0d0707\" stroke-width=\"2\"/>
+    <line x1=\"432\" y1=\"452\" x2=\"448\" y2=\"435\" stroke=\"#0d0707\" stroke-width=\"1.8\"/>
+  </g>
+</svg>"}, "spiderman": {"title": "Spider-Man (Queens Web-Warrior)", "baseline": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+            <g id=\"spiderman-baseline\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\">
+              <!-- Background -->
+              <rect width=\"500\" height=\"500\" fill=\"#1e293b\"/>
+              <circle cx=\"250\" cy=\"250\" r=\"180\" fill=\"#0284c7\" opacity=\"0.4\"/>
+
+              <!-- Shoulders -->
+              <path d=\"M 100,480 L 160,390 L 340,390 L 400,480 Z\" fill=\"#ef4444\"/>
+
+              <!-- Head Base (Flat red oval) -->
+              <ellipse cx=\"250\" cy=\"260\" rx=\"140\" ry=\"170\" fill=\"#dc2626\"/>
+
+              <!-- Simple Freehand Web Lines -->
+              <line x1=\"250\" y1=\"90\" x2=\"250\" y2=\"430\" stroke=\"#18181b\" stroke-width=\"2.5\"/>
+              <line x1=\"110\" y1=\"260\" x2=\"390\" y2=\"260\" stroke=\"#18181b\" stroke-width=\"2.5\"/>
+              <line x1=\"150\" y1=\"140\" x2=\"350\" y2=\"380\" stroke=\"#18181b\" stroke-width=\"2.5\"/>
+              <line x1=\"150\" y1=\"380\" x2=\"350\" y2=\"140\" stroke=\"#18181b\" stroke-width=\"2.5\"/>
+
+              <!-- Rough Web Arcs -->
+              <ellipse cx=\"250\" cy=\"260\" rx=\"60\" ry=\"70\" fill=\"none\" stroke=\"#18181b\" stroke-width=\"2\"/>
+              <ellipse cx=\"250\" cy=\"260\" rx=\"100\" ry=\"120\" fill=\"none\" stroke=\"#18181b\" stroke-width=\"2\"/>
+
+              <!-- Eyes (Simple Flat White Triangles with Black Border) -->
+              <polygon points=\"140,180 230,230 160,280\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"10\"/>
+              <polygon points=\"360,180 270,230 340,280\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"10\"/>
+            </g>
+          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+  <defs>
+    <!-- Background Spider-Sense Aura -->
+    <radialGradient id=\"spiderSenseAura\" cx=\"50%\" cy=\"35%\" r=\"60%\">
+      <stop offset=\"0%\" stop-color=\"#e62429\" stop-opacity=\"0.35\"/>
+      <stop offset=\"45%\" stop-color=\"#b11317\" stop-opacity=\"0.15\"/>
+      <stop offset=\"85%\" stop-color=\"#070b14\" stop-opacity=\"0\"/>
+    </radialGradient>
+
+    <!-- Suit Blue Gradients -->
+    <linearGradient id=\"suitBlueGradLeft\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#1d4ed8\"/>
+      <stop offset=\"40%\" stop-color=\"#0f2a56\"/>
+      <stop offset=\"100%\" stop-color=\"#06132b\"/>
+    </linearGradient>
+
+    <linearGradient id=\"suitBlueGradRight\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#0f2a56\"/>
+      <stop offset=\"60%\" stop-color=\"#06132b\"/>
+      <stop offset=\"100%\" stop-color=\"#020814\"/>
+    </linearGradient>
+
+    <!-- Torso Red Gradient -->
+    <linearGradient id=\"torsoCenterRed\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#f02830\"/>
+      <stop offset=\"40%\" stop-color=\"#d91c24\"/>
+      <stop offset=\"100%\" stop-color=\"#8a0e13\"/>
+    </linearGradient>
+
+    <!-- 3D Crimson Mask Gradient -->
+    <radialGradient id=\"maskVolume3D\" cx=\"42%\" cy=\"38%\" r=\"65%\">
+      <stop offset=\"0%\" stop-color=\"#ff3b44\"/>
+      <stop offset=\"35%\" stop-color=\"#f02830\"/>
+      <stop offset=\"75%\" stop-color=\"#b91319\"/>
+      <stop offset=\"100%\" stop-color=\"#73080d\"/>
+    </radialGradient>
+
+    <linearGradient id=\"maskShadowPlaneRight\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">
+      <stop offset=\"0%\" stop-color=\"#000000\" stop-opacity=\"0\"/>
+      <stop offset=\"100%\" stop-color=\"#000000\" stop-opacity=\"0.45\"/>
+    </linearGradient>
+
+    <!-- Eye Lens Gradients -->
+    <radialGradient id=\"lensShadingLeft\" cx=\"40%\" cy=\"30%\" r=\"70%\">
+      <stop offset=\"0%\" stop-color=\"#ffffff\"/>
+      <stop offset=\"65%\" stop-color=\"#f8fafc\"/>
+      <stop offset=\"90%\" stop-color=\"#cbd5e1\"/>
+      <stop offset=\"100%\" stop-color=\"#94a3b8\"/>
+    </radialGradient>
+
+    <radialGradient id=\"lensShadingRight\" cx=\"60%\" cy=\"30%\" r=\"70%\">
+      <stop offset=\"0%\" stop-color=\"#ffffff\"/>
+      <stop offset=\"65%\" stop-color=\"#f1f5f9\"/>
+      <stop offset=\"90%\" stop-color=\"#94a3b8\"/>
+      <stop offset=\"100%\" stop-color=\"#64748b\"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id=\"maskDepthShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+      <feDropShadow dx=\"0\" dy=\"14\" stdDeviation=\"12\" flood-color=\"#000000\" flood-opacity=\"0.8\"/>
+    </filter>
+
+    <filter id=\"eyeSpecularGlow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+      <feGaussianBlur stdDeviation=\"3\" result=\"blur\"/>
+      <feMerge>
+        <feMergeNode in=\"blur\"/>
+        <feMergeNode in=\"SourceGraphic\"/>
+      </feMerge>
+    </filter>
+
+    <filter id=\"emblemShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+      <feDropShadow dx=\"0\" dy=\"4\" stdDeviation=\"3\" flood-color=\"#000000\" flood-opacity=\"0.7\"/>
+    </filter>
+
+    <clipPath id=\"maskBoundaryClip\">
+      <path d=\"M 250,55 
+               C 210,55 175,70 148,175 
+               C 130,240 172,295 250,335 
+               C 328,295 370,240 352,175 
+               C 325,70 290,55 250,55 Z\"/>
+    </clipPath>
+  </defs>
+
+  <!-- =================================================== -->
+  <!-- LAYER 0: ATMOSPHERE & BACKGROUND                    -->
+  <!-- =================================================== -->
+  <rect width=\"500\" height=\"500\" fill=\"#070b14\"/>
+  <circle cx=\"250\" cy=\"200\" r=\"230\" fill=\"url(#spiderSenseAura)\"/>
+
+  <!-- =================================================== -->
+  <!-- LAYER 1: SHOULDERS & TORSO BASE                     -->
+  <!-- =================================================== -->
+  <g id=\"layer1-torso-base\" filter=\"url(#maskDepthShadow)\">
+    <polygon points=\"145,340 250,355 355,340 375,500 125,500\" 
+             fill=\"url(#torsoCenterRed)\" 
+             stroke=\"#0a0c10\" 
+             stroke-width=\"3.5\"/>
+
+    <polygon points=\"55,410 145,340 250,355 210,500 0,500 0,430\" 
+             fill=\"url(#suitBlueGradLeft)\" 
+             stroke=\"#0a0c10\" 
+             stroke-width=\"3.5\" 
+             stroke-linejoin=\"round\"/>
+
+    <polygon points=\"445,410 355,340 250,355 290,500 500,500 500,430\" 
+             fill=\"url(#suitBlueGradRight)\" 
+             stroke=\"#0a0c10\" 
+             stroke-width=\"3.5\" 
+             stroke-linejoin=\"round\"/>
+
+    <path d=\"M 160,385 Q 205,405 250,400 Q 295,405 340,385\" fill=\"none\" stroke=\"#660a0e\" stroke-width=\"3\"/>
+    <line x1=\"250\" y1=\"355\" x2=\"250\" y2=\"500\" stroke=\"#660a0e\" stroke-width=\"2.5\"/>
+
+    <g stroke=\"#111318\" stroke-width=\"1.8\" opacity=\"0.75\" fill=\"none\">
+      <line x1=\"200\" y1=\"365\" x2=\"180\" y2=\"500\"/>
+      <line x1=\"300\" y1=\"365\" x2=\"320\" y2=\"500\"/>
+      <path d=\"M 145,385 Q 250,405 355,385\"/>
+      <path d=\"M 135,430 Q 250,450 365,430\"/>
+      <path d=\"M 130,475 Q 250,495 370,475\"/>
+    </g>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 2: THE ICONIC BLACK SPIDER EMBLEM ON CHEST    -->
+  <!-- =================================================== -->
+  <g id=\"chest-spider-emblem\" filter=\"url(#emblemShadow)\" fill=\"#020617\" stroke=\"#000000\" stroke-width=\"1.2\">
+    <!-- Spider Body Core -->
+    <circle cx=\"250\" cy=\"405\" r=\"4.5\"/>
+    <ellipse cx=\"250\" cy=\"422\" rx=\"7\" ry=\"15\"/>
+
+    <!-- 4 UPPER LEGS (Pointing Up over Pectorals) -->
+    <polyline points=\"247,412 225,392 215,365 210,368\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+    <polyline points=\"253,412 275,392 285,365 290,368\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+    <polyline points=\"247,416 218,405 200,388 195,390\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+    <polyline points=\"253,416 282,405 300,388 305,390\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+
+    <!-- 4 LOWER LEGS (Pointing Down toward Abs) -->
+    <polyline points=\"247,425 215,435 205,465 202,472\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+    <polyline points=\"253,425 285,435 295,465 298,472\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+    <polyline points=\"248,432 222,450 216,482 214,488\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+    <polyline points=\"252,432 278,450 284,482 286,488\" fill=\"none\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 3: NECK / TRAPEZIUS BRIDGE                    -->
+  <!-- =================================================== -->
+  <g id=\"layer3-neck\">
+    <polygon points=\"172,285 250,335 250,355 145,340\" fill=\"#8a0e13\" stroke=\"#0a0c10\" stroke-width=\"2\"/>
+    <polygon points=\"328,285 250,335 250,355 355,340\" fill=\"#660a0e\" stroke=\"#0a0c10\" stroke-width=\"2\"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 4: HEAD MASK (CRIMSON CRANIUM)                -->
+  <!-- =================================================== -->
+  <g id=\"layer4-mask-base\" filter=\"url(#maskDepthShadow)\">
+    <path d=\"M 250,55 
+             C 210,55 175,70 148,175 
+             C 130,240 172,295 250,335 
+             C 328,295 370,240 352,175 
+             C 325,70 290,55 250,55 Z\" 
+          fill=\"url(#maskVolume3D)\" 
+          stroke=\"#0a0c10\" 
+          stroke-width=\"5\" 
+          stroke-linejoin=\"round\"/>
+
+    <path d=\"M 250,55 
+             C 290,55 325,70 352,175 
+             C 370,240 328,295 250,335 Z\" 
+          fill=\"url(#maskShadowPlaneRight)\" 
+          clip-path=\"url(#maskBoundaryClip)\"/>
+
+    <path d=\"M 250,56 C 212,56 178,71 150,175 C 134,238 174,292 248,333\" 
+          fill=\"none\" 
+          stroke=\"rgba(255,255,255,0.4)\" 
+          stroke-width=\"1.2\" 
+          stroke-linecap=\"round\"/>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 5: CLEAN MASK WEB MATRIX (FABRIC TEXTURE)     -->
+  <!-- =================================================== -->
+  <g id=\"layer5-mask-webs\" clip-path=\"url(#maskBoundaryClip)\">
+    <line x1=\"250\" y1=\"55\" x2=\"250\" y2=\"335\" stroke=\"#111318\" stroke-width=\"2\"/>
+
+    <!-- Subtle Spoke Rays -->
+    <g stroke=\"#111318\" stroke-width=\"1.6\" stroke-linecap=\"round\" opacity=\"0.85\">
+      <line x1=\"250\" y1=\"210\" x2=\"250\" y2=\"55\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"220\" y2=\"58\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"280\" y2=\"58\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"182\" y2=\"70\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"318\" y2=\"70\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"152\" y2=\"105\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"348\" y2=\"105\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"138\" y2=\"155\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"362\" y2=\"155\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"152\" y2=\"235\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"348\" y2=\"235\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"175\" y2=\"278\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"325\" y2=\"278\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"215\" y2=\"318\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"285\" y2=\"318\"/>
+      <line x1=\"250\" y1=\"210\" x2=\"250\" y2=\"335\"/>
+    </g>
+
+    <!-- Concentric Web Rings -->
+    <g stroke=\"#111318\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" opacity=\"0.85\">
+      <path d=\"M 218,165 Q 234,172 250,172 Q 266,172 282,165\"/>
+      <path d=\"M 195,135 Q 222,148 250,148 Q 278,148 305,135\"/>
+      <path d=\"M 172,105 Q 211,122 250,122 Q 289,122 328,105\"/>
+      <path d=\"M 180,72 Q 215,95 250,95 Q 285,95 320,72\"/>
+      <path d=\"M 224,265 Q 237,258 250,258 Q 263,258 276,265\"/>
+      <path d=\"M 205,292 Q 227,282 250,282 Q 273,282 295,292\"/>
+      <path d=\"M 192,315 Q 221,304 250,304 Q 279,304 308,315\"/>
+    </g>
+  </g>
+
+  <!-- =================================================== -->
+  <!-- LAYER 6: ICONIC WHITE SPIDER-EYES / LENSES          -->
+  <!-- =================================================== -->
+  <g id=\"layer6-lenses\" filter=\"url(#eyeSpecularGlow)\">
+    <path d=\"M 236,220 
+             L 162,162 
+             C 152,198 165,244 238,236 
+             Z\" 
+          fill=\"#0a0c10\" 
+          stroke=\"#000000\" 
+          stroke-width=\"5\" 
+          stroke-linejoin=\"round\"/>
+
+    <path d=\"M 230,218 
+             L 172,172 
+             C 164,198 174,234 231,227 
+             Z\" 
+          fill=\"url(#lensShadingLeft)\" 
+          stroke=\"#334155\" 
+          stroke-width=\"1.2\"/>
+
+    <path d=\"M 176,174 L 226,216\" 
+          fill=\"none\" 
+          stroke=\"#ffffff\" 
+          stroke-width=\"2.5\" 
+          stroke-linecap=\"round\"/>
+
+    <path d=\"M 264,220 
+             L 338,162 
+             C 348,198 335,244 262,236 
+             Z\" 
+          fill=\"#0a0c10\" 
+          stroke=\"#000000\" 
+          stroke-width=\"5\" 
+          stroke-linejoin=\"round\"/>
+
+    <path d=\"M 270,218 
+             L 328,172 
+             C 336,198 326,234 269,227 
+             Z\" 
+          fill=\"url(#lensShadingRight)\" 
+          stroke=\"#334155\" 
+          stroke-width=\"1.2\"/>
+
+    <path d=\"M 324,174 L 274,216\" 
+          fill=\"none\" 
+          stroke=\"#ffffff\" 
+          stroke-width=\"2.5\" 
+          stroke-linecap=\"round\"/>
+  </g>
+</svg>"}, "batman": {"title": "Batman (The Dark Knight Cowl)", "baseline": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+            <g id=\"batman-baseline\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\">
+              <!-- Background -->
+              <rect width=\"500\" height=\"500\" fill=\"#1e293b\"/>
+              <circle cx=\"250\" cy=\"250\" r=\"180\" fill=\"#334155\"/>
+
+              <!-- Cape / Shoulders -->
+              <path d=\"M 80,480 L 170,390 L 330,390 L 420,480 Z\" fill=\"#0f172a\"/>
+
+              <!-- Cowl & Ears (Freehand flat path with asymmetry) -->
+              <path d=\"M 150,110 L 140,40 L 180,95 L 320,95 L 360,40 L 350,110 L 375,250 L 340,380 L 160,380 L 125,250 Z\" 
+                    fill=\"#18181b\"/>
+
+              <!-- Cowl Eye Openings -->
+              <polygon points=\"180,225 230,235 220,245 175,235\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"3\"/>
+              <polygon points=\"320,225 270,235 280,245 325,235\" fill=\"#ffffff\" stroke=\"#000000\" stroke-width=\"3\"/>
+
+              <!-- Nose Guard (Simple flat triangle) -->
+              <polygon points=\"250,220 235,275 265,275\" fill=\"#27272a\"/>
+
+              <!-- Mouth Cutout (Flat Skin Polygon) -->
+              <polygon points=\"185,295 240,285 260,285 315,295 305,385 250,405 195,385\" fill=\"#fed7aa\"/>
+
+              <!-- Mouth Line -->
+              <line x1=\"220\" y1=\"350\" x2=\"280\" y2=\"350\" stroke=\"#000000\" stroke-width=\"3\"/>
+              <!-- Chin line -->
+              <line x1=\"240\" y1=\"380\" x2=\"260\" y2=\"380\" stroke=\"#000000\" stroke-width=\"2\"/>
+            </g>
+          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+  <defs>
+    <!-- Lighting & Shading Gradients -->
+    <radialGradient id=\"moonAura\" cx=\"50%\" cy=\"45%\" r=\"55%\">
+      <stop offset=\"0%\" stop-color=\"#38bdf8\" stop-opacity=\"0.22\"/>
+      <stop offset=\"50%\" stop-color=\"#1e293b\" stop-opacity=\"0.12\"/>
+      <stop offset=\"100%\" stop-color=\"#020617\" stop-opacity=\"0\"/>
+    </radialGradient>
+
+    <!-- Cowl Faceted Armor Gradients (Left-Lit vs Right-Shadow) -->
+    <linearGradient id=\"cowlLitLeft\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#475569\"/>
+      <stop offset=\"45%\" stop-color=\"#334155\"/>
+      <stop offset=\"100%\" stop-color=\"#1e293b\"/>
+    </linearGradient>
+
+    <linearGradient id=\"cowlShadowRight\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#1e293b\"/>
+      <stop offset=\"50%\" stop-color=\"#0f172a\"/>
+      <stop offset=\"100%\" stop-color=\"#020617\"/>
+    </linearGradient>
+
+    <!-- Jaw Skin Tone Gradients (Left-Lit vs Right-Shadow) -->
+    <linearGradient id=\"skinLit\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#ffedd5\"/>
+      <stop offset=\"50%\" stop-color=\"#fed7aa\"/>
+      <stop offset=\"100%\" stop-color=\"#fba468\"/>
+    </linearGradient>
+
+    <linearGradient id=\"skinShadow\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#ea580c\"/>
+      <stop offset=\"50%\" stop-color=\"#c2410c\"/>
+      <stop offset=\"100%\" stop-color=\"#7c2d12\"/>
+    </linearGradient>
+
+    <!-- Eye Radiant Glow -->
+    <linearGradient id=\"eyeGlowGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">
+      <stop offset=\"0%\" stop-color=\"#ffffff\"/>
+      <stop offset=\"40%\" stop-color=\"#e0f2fe\"/>
+      <stop offset=\"100%\" stop-color=\"#38bdf8\"/>
+    </linearGradient>
+
+    <!-- Filters: Deep Armor Drop Shadow & Eye Emission -->
+    <filter id=\"knightShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+      <feDropShadow dx=\"0\" dy=\"16\" stdDeviation=\"14\" flood-color=\"#000000\" flood-opacity=\"0.8\"/>
+    </filter>
+
+    <filter id=\"eyeGlowFilter\" x=\"-40%\" y=\"-40%\" width=\"180%\" height=\"180%\">
+      <feGaussianBlur stdDeviation=\"6\" result=\"glow\"/>
+      <feMerge>
+        <feMergeNode in=\"glow\"/>
+        <feMergeNode in=\"SourceGraphic\"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 0: ATMOSPHERE / BACKGROUND -->
+  <rect width=\"500\" height=\"500\" fill=\"#07090e\"/>
+  <circle cx=\"250\" cy=\"240\" r=\"210\" fill=\"url(#moonAura)\"/>
+
+  <!-- LAYER 1: BACK SILHOUETTE & CAPE MANTLE -->
+  <g filter=\"url(#knightShadow)\">
+    <polygon points=\"120,480 170,395 330,395 380,480 250,500\" fill=\"#0b0f19\" stroke=\"#000000\" stroke-width=\"4\"/>
+    <polygon points=\"120,480 170,395 250,440 210,490\" fill=\"#1e293b\"/>
+    <polygon points=\"380,480 330,395 250,440 290,490\" fill=\"#0f172a\"/>
+  </g>
+
+  <!-- LAYER 2: RAZOR BAT EARS (STRICT MATHEMATICAL SYMMETRY: X_R = 500 - X_L) -->
+  <g filter=\"url(#knightShadow)\">
+    <!-- Left Ear Outer Facet -->
+    <polygon points=\"140,140 155,30 195,115\" fill=\"url(#cowlLitLeft)\" stroke=\"#020617\" stroke-width=\"4\" stroke-linejoin=\"round\"/>
+    <polygon points=\"155,30 175,110 195,115\" fill=\"#64748b\" opacity=\"0.4\"/>
+    <line x1=\"155\" y1=\"30\" x2=\"140\" y2=\"140\" stroke=\"rgba(255,255,255,0.4)\" stroke-width=\"1.2\"/>
+
+    <!-- Right Ear Outer Facet (Exact Mirror: 500 - X) -->
+    <polygon points=\"360,140 345,30 305,115\" fill=\"url(#cowlShadowRight)\" stroke=\"#020617\" stroke-width=\"4\" stroke-linejoin=\"round\"/>
+    <polygon points=\"345,30 325,110 305,115\" fill=\"#020617\" opacity=\"0.6\"/>
+    <line x1=\"345\" y1=\"30\" x2=\"360\" y2=\"140\" stroke=\"rgba(255,255,255,0.15)\" stroke-width=\"1\"/>
+  </g>
+
+  <!-- LAYER 3: PRIMARY STRUCTURAL MASS (PLANE SPLIT DOWN CENTER X=250) -->
+  <g filter=\"url(#knightShadow)\">
+    <!-- Left-Lit Skull Facet -->
+    <polygon points=\"250,115 195,115 140,140 115,275 165,395 250,440\" 
+             fill=\"url(#cowlLitLeft)\" 
+             stroke=\"#020617\" 
+             stroke-width=\"5\" 
+             stroke-linejoin=\"round\"/>
+
+    <!-- Right-Shadow Skull Facet (Exact Mirror: X_R = 500 - X_L) -->
+    <polygon points=\"250,115 305,115 360,140 385,275 335,395 250,440\" 
+             fill=\"url(#cowlShadowRight)\" 
+             stroke=\"#020617\" 
+             stroke-width=\"5\" 
+             stroke-linejoin=\"round\"/>
+
+    <!-- Center Structural Apex Line (X=250) -->
+    <line x1=\"250\" y1=\"115\" x2=\"250\" y2=\"280\" stroke=\"rgba(255,255,255,0.25)\" stroke-width=\"1.5\"/>
+    <path d=\"M 140,140 L 115,275 L 165,395\" fill=\"none\" stroke=\"rgba(255,255,255,0.35)\" stroke-width=\"1.2\"/>
+  </g>
+
+  <!-- LAYER 4: BROW FURROW, NOSE GUARD & LOWER JAW ASSEMBLY -->
+  <!-- Chiseled Forehead Wedge -->
+  <polygon points=\"250,150 205,170 250,195 295,170\" fill=\"#0f172a\" stroke=\"#000000\" stroke-width=\"3\"/>
+  <polygon points=\"250,195 170,205 165,225 215,222 250,210\" fill=\"url(#cowlLitLeft)\" stroke=\"#000000\" stroke-width=\"3\"/>
+  <polygon points=\"250,195 330,205 335,225 285,222 250,210\" fill=\"url(#cowlShadowRight)\" stroke=\"#000000\" stroke-width=\"3\"/>
+
+  <!-- Angular Chiseled Cowl Nose Guard -->
+  <polygon points=\"250,210 234,272 250,284\" fill=\"url(#cowlLitLeft)\" stroke=\"#000000\" stroke-width=\"2.5\"/>
+  <polygon points=\"250,210 266,272 250,284\" fill=\"url(#cowlShadowRight)\" stroke=\"#000000\" stroke-width=\"2.5\"/>
+  <line x1=\"250\" y1=\"210\" x2=\"250\" y2=\"284\" stroke=\"rgba(255,255,255,0.5)\" stroke-width=\"1.5\"/>
+
+  <!-- HUMAN LOWER JAW IN COWL CUTOUT -->
+  <g id=\"human-jaw\" filter=\"url(#knightShadow)\">
+    <polygon points=\"250,284 178,290 188,385 250,420\" fill=\"url(#skinLit)\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\"/>
+    <polygon points=\"250,284 322,290 312,385 250,420\" fill=\"url(#skinShadow)\" stroke=\"#000000\" stroke-width=\"4\" stroke-linejoin=\"round\"/>
+    <polygon points=\"250,284 230,315 270,315\" fill=\"#7c2d12\" opacity=\"0.6\"/>
+
+    <!-- Stern Mouth & Chin Cleft -->
+    <line x1=\"215\" y1=\"352\" x2=\"285\" y2=\"352\" stroke=\"#451a03\" stroke-width=\"4.5\" stroke-linecap=\"round\"/>
+    <line x1=\"215\" y1=\"352\" x2=\"210\" y2=\"356\" stroke=\"#451a03\" stroke-width=\"3\" stroke-linecap=\"round\"/>
+    <line x1=\"285\" y1=\"352\" x2=\"290\" y2=\"356\" stroke=\"#451a03\" stroke-width=\"3\" stroke-linecap=\"round\"/>
+    <line x1=\"250\" y1=\"392\" x2=\"250\" y2=\"408\" stroke=\"#451a03\" stroke-width=\"3.5\" stroke-linecap=\"round\"/>
+    <line x1=\"232\" y1=\"416\" x2=\"250\" y2=\"420\" stroke=\"rgba(255,255,255,0.4)\" stroke-width=\"1.5\"/>
+  </g>
+
+  <!-- Cowl Cutout Edge Bevel -->
+  <polyline points=\"178,290 188,385 250,420 312,385 322,290\" fill=\"none\" stroke=\"#020617\" stroke-width=\"6\"/>
+  <polyline points=\"178,290 250,284 322,290\" fill=\"none\" stroke=\"#020617\" stroke-width=\"5\"/>
+
+  <!-- LAYER 5: FOCAL FOREGROUND DETAILS (WHITE SLIT BAT-EYES) -->
+  <g filter=\"url(#eyeGlowFilter)\">
+    <polygon points=\"174,226 232,234 222,244 176,234\" fill=\"url(#eyeGlowGrad)\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linejoin=\"miter\"/>
+    <polygon points=\"326,226 268,234 278,244 324,234\" fill=\"url(#eyeGlowGrad)\" stroke=\"#020617\" stroke-width=\"3.5\" stroke-linejoin=\"miter\"/>
+    <line x1=\"184\" y1=\"230\" x2=\"224\" y2=\"236\" stroke=\"#ffffff\" stroke-width=\"1.5\"/>
+    <line x1=\"316\" y1=\"230\" x2=\"276\" y2=\"236\" stroke=\"#ffffff\" stroke-width=\"1.5\"/>
+  </g>
+
+  <!-- Master Specular 1px Edge Glints on Cowl Peaks -->
+  <path d=\"M 205,170 L 250,195 L 295,170\" fill=\"none\" stroke=\"rgba(255,255,255,0.4)\" stroke-width=\"1.2\"/>
+  <line x1=\"170\" y1=\"205\" x2=\"250\" y2=\"195\" stroke=\"rgba(255,255,255,0.35)\" stroke-width=\"1.2\"/>
+</svg>"}, "garfield": {"title": "Garfield (Jim Davis Classic Comic)", "baseline": "<svg viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">
+            <g id=\"garfield-baseline\" stroke=\"#18181b\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
+              <!-- Left Ear (Freehand Path) -->
+              <path d=\"M140,165 C125,100 160,80 185,115 C200,135 205,160 205,175\" fill=\"#f97316\"/>
+              <path d=\"M152,150 C145,118 165,105 178,125\" fill=\"#fda4af\" stroke-width=\"4\"/>
+
+              <!-- Right Ear (Slightly asymmetric freehand Path) -->
+              <path d=\"M372,165 C388,100 350,82 328,115 C312,135 306,160 306,175\" fill=\"#f97316\"/>
+              <path d=\"M360,150 C368,118 348,105 334,125\" fill=\"#fda4af\" stroke-width=\"4\"/>
+
+              <!-- Main Head Oval -->
+              <ellipse cx=\"256\" cy=\"275\" rx=\"175\" ry=\"145\" fill=\"#fb923c\"/>
+
+              <!-- Forehead Stripes (Freehand simple black polygons) -->
+              <path d=\"M256,135 L250,175 L262,175 Z\" fill=\"#18181b\" stroke=\"none\"/>
+              <path d=\"M225,142 L228,172 L237,168 Z\" fill=\"#18181b\" stroke=\"none\"/>
+              <path d=\"M287,142 L284,172 L275,168 Z\" fill=\"#18181b\" stroke=\"none\"/>
+
+              <!-- Cheek Stripes Left -->
+              <path d=\"M90,265 L135,268 L110,285 Z\" fill=\"#18181b\" stroke=\"none\"/>
+              <path d=\"M96,298 L138,295 L116,312 Z\" fill=\"#18181b\" stroke=\"none\"/>
+
+              <!-- Cheek Stripes Right -->
+              <path d=\"M422,265 L377,268 L402,285 Z\" fill=\"#18181b\" stroke=\"none\"/>
+              <path d=\"M416,298 L374,295 L396,312 Z\" fill=\"#18181b\" stroke=\"none\"/>
+
+              <!-- Eyes (White large ovals) -->
+              <!-- Left Eye -->
+              <ellipse cx=\"218\" cy=\"225\" rx=\"44\" ry=\"62\" fill=\"#ffffff\"/>
+              <!-- Right Eye -->
+              <ellipse cx=\"294\" cy=\"225\" rx=\"44\" ry=\"62\" fill=\"#ffffff\"/>
+
+              <!-- Sleepy Eyelids (Orange covers top half) -->
+              <path d=\"M174,225 C174,180 200,165 218,165 C236,165 262,180 262,225 Z\" fill=\"#fb923c\"/>
+              <path d=\"M250,225 C250,180 276,165 294,165 C312,165 338,180 338,225 Z\" fill=\"#fb923c\"/>
+
+              <!-- Droopy Eyelid Lines -->
+              <line x1=\"174\" y1=\"225\" x2=\"262\" y2=\"225\" stroke=\"#18181b\" stroke-width=\"6\"/>
+              <line x1=\"250\" y1=\"225\" x2=\"338\" y2=\"225\" stroke=\"#18181b\" stroke-width=\"6\"/>
+
+              <!-- Pupils (Tiny black sleepy ovals near bottom) -->
+              <ellipse cx=\"225\" cy=\"242\" rx=\"7\" ry=\"11\" fill=\"#18181b\" stroke=\"none\"/>
+              <ellipse cx=\"287\" cy=\"242\" rx=\"7\" ry=\"11\" fill=\"#18181b\" stroke=\"none\"/>
+
+              <!-- Puffy Muzzle / Cheeks -->
+              <ellipse cx=\"205\" cy=\"318\" rx=\"60\" ry=\"46\" fill=\"#fed7aa\"/>
+              <ellipse cx=\"307\" cy=\"318\" rx=\"60\" ry=\"46\" fill=\"#fed7aa\"/>
+
+              <!-- Whisker Dots -->
+              <circle cx=\"185\" cy=\"312\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>
+              <circle cx=\"170\" cy=\"324\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>
+              <circle cx=\"192\" cy=\"332\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>
+
+              <circle cx=\"327\" cy=\"312\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>
+              <circle cx=\"342\" cy=\"324\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>
+              <circle cx=\"320\" cy=\"332\" r=\"4\" fill=\"#18181b\" stroke=\"none\"/>
+
+              <!-- Bulbous Pink Nose -->
+              <ellipse cx=\"256\" cy=\"272\" rx=\"28\" ry=\"20\" fill=\"#fb7185\"/>
+
+              <!-- Smug Mouth / Chin Line -->
+              <path d=\"M228,348 C242,364 270,364 284,348\" fill=\"none\"/>
+              <path d=\"M236,375 C246,386 266,386 276,375\" fill=\"none\"/>
+            </g>
+          </svg>", "architect": "<svg viewBox=\"0 0 500 500\" xmlns=\"http://www.w3.org/2000/svg\">
+  <defs>
+    <!-- Soft comic-strip drop shadow -->
+    <filter id=\"comicShadow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+      <feDropShadow dx=\"0\" dy=\"10\" stdDeviation=\"10\" flood-color=\"#000000\" flood-opacity=\"0.45\"/>
+    </filter>
+
+    <!-- Subtle warm comic depth gradients -->
+    <linearGradient id=\"bodyOrange\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#ff9900\"/>
+      <stop offset=\"70%\" stop-color=\"#ff7700\"/>
+      <stop offset=\"100%\" stop-color=\"#e65c00\"/>
+    </linearGradient>
+
+    <linearGradient id=\"muzzleCream\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#fff5d6\"/>
+      <stop offset=\"70%\" stop-color=\"#ffeaad\"/>
+      <stop offset=\"100%\" stop-color=\"#f5d687\"/>
+    </linearGradient>
+
+    <linearGradient id=\"pinkNose\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\">
+      <stop offset=\"0%\" stop-color=\"#ff708f\"/>
+      <stop offset=\"100%\" stop-color=\"#eb2f59\"/>
+    </linearGradient>
+
+    <radialGradient id=\"backdropGlow\" cx=\"50%\" cy=\"50%\" r=\"50%\">
+      <stop offset=\"0%\" stop-color=\"#ff8800\" stop-opacity=\"0.25\"/>
+      <stop offset=\"70%\" stop-color=\"#ff8800\" stop-opacity=\"0.05\"/>
+      <stop offset=\"100%\" stop-color=\"#000000\" stop-opacity=\"0\"/>
+    </radialGradient>
+
+    <!-- Clip Paths for Droopy Lids -->
+    <clipPath id=\"leftEyeClip\">
+      <ellipse cx=\"205\" cy=\"210\" rx=\"45\" ry=\"62\"/>
+    </clipPath>
+    <clipPath id=\"rightEyeClip\">
+      <ellipse cx=\"295\" cy=\"210\" rx=\"45\" ry=\"62\"/>
+    </clipPath>
+  </defs>
+
+  <!-- LAYER 0: ATMOSPHERE / BACKGROUND -->
+  <rect width=\"500\" height=\"500\" fill=\"#111318\"/>
+  <circle cx=\"250\" cy=\"250\" r=\"230\" fill=\"url(#backdropGlow)\"/>
+
+  <!-- LAYER 1: BACK SILHOUETTE (EARS) -->
+  <!-- Authentic small, rounded Garfield cat ears -->
+  <g stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\" stroke-linecap=\"round\">
+    <!-- Left Ear (Center around 165, 115) -->
+    <path d=\"M 135,145 C 130,100 150,80 172,82 C 190,84 200,105 202,130\" fill=\"url(#bodyOrange)\"/>
+    <!-- Left Inner Ear Pink Pad -->
+    <path d=\"M 148,135 C 145,108 156,96 168,98 C 178,100 184,115 186,130\" fill=\"#ff99aa\" stroke-width=\"4\"/>
+    <!-- Left Ear Black Tabby Stripe on rim -->
+    <path d=\"M 134,120 L 148,124 L 138,136 Z\" fill=\"#000000\" stroke=\"none\"/>
+
+    <!-- Right Ear (Mirror: 500 - X) -->
+    <path d=\"M 365,145 C 370,100 350,80 328,82 C 310,84 300,105 298,130\" fill=\"url(#bodyOrange)\"/>
+    <!-- Right Inner Ear Pink Pad -->
+    <path d=\"M 352,135 C 355,108 344,96 332,98 C 322,100 316,115 314,130\" fill=\"#ff99aa\" stroke-width=\"4\"/>
+    <!-- Right Ear Black Tabby Stripe on rim -->
+    <path d=\"M 366,120 L 352,124 L 362,136 Z\" fill=\"#000000\" stroke=\"none\"/>
+  </g>
+
+  <!-- LAYER 2: MAIN SQUASHED OVAL HEAD -->
+  <g filter=\"url(#comicShadow)\" stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\">
+    <!-- Garfield's wide pumpkin/burger-bun head shape -->
+    <path d=\"M 250,118 
+             C 175,118 120,135 105,170
+             C 85,215 65,260 65,300
+             C 65,365 140,410 250,410
+             C 360,410 435,365 435,300
+             C 435,260 415,215 395,170
+             C 380,135 325,118 250,118 Z\" 
+          fill=\"url(#bodyOrange)\"/>
+  </g>
+
+  <!-- LAYER 3: TABBY STRIPES -->
+  <g fill=\"#000000\">
+    <!-- Forehead 3 Classic Tiger Stripes -->
+    <!-- Center Stripe -->
+    <polygon points=\"250,122 243,165 257,165\"/>
+    <!-- Left Forehead Stripe -->
+    <polygon points=\"212,130 216,168 227,162\"/>
+    <!-- Right Forehead Stripe (500 - X) -->
+    <polygon points=\"288,130 284,168 273,162\"/>
+
+    <!-- Left Cheek Stripes (3 Inward Wedges) -->
+    <polygon points=\"66,252 118,258 100,270\"/>
+    <polygon points=\"70,290 126,292 108,305\"/>
+    <polygon points=\"80,328 128,324 115,338\"/>
+
+    <!-- Right Cheek Stripes (Mirror 500 - X) -->
+    <polygon points=\"434,252 382,258 400,270\"/>
+    <polygon points=\"430,290 374,292 392,305\"/>
+    <polygon points=\"420,328 372,324 385,338\"/>
+  </g>
+
+  <!-- LAYER 4: GIANT TOUCHING CARTOON EYES -->
+  <g stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\">
+    <!-- Sclera: Two big white eggs touching seamlessly at Center X = 250 -->
+    <!-- Left Eye (Center 205, rx 45 -> right edge 250) -->
+    <ellipse cx=\"205\" cy=\"210\" rx=\"45\" ry=\"62\" fill=\"#ffffff\"/>
+    <!-- Right Eye (Center 295, rx 45 -> left edge 250) -->
+    <ellipse cx=\"295\" cy=\"210\" rx=\"45\" ry=\"62\" fill=\"#ffffff\"/>
+
+    <!-- Droopy / Cynical Sleepy Eyelids (Clipped) -->
+    <g clip-path=\"url(#leftEyeClip)\">
+      <path d=\"M 150,140 L 260,140 L 260,215 Q 205,225 150,215 Z\" fill=\"url(#bodyOrange)\"/>
+      <path d=\"M 150,215 Q 205,225 260,215\" fill=\"none\" stroke=\"#000000\" stroke-width=\"6\"/>
+      <!-- Eyelid sleepy crease line -->
+      <line x1=\"162\" y1=\"195\" x2=\"248\" y2=\"195\" stroke=\"#cc5500\" stroke-width=\"3\"/>
+    </g>
+
+    <g clip-path=\"url(#rightEyeClip)\">
+      <path d=\"M 240,140 L 350,140 L 350,215 Q 295,225 240,215 Z\" fill=\"url(#bodyOrange)\"/>
+      <path d=\"M 240,215 Q 295,225 350,215\" fill=\"none\" stroke=\"#000000\" stroke-width=\"6\"/>
+      <!-- Eyelid sleepy crease line -->
+      <line x1=\"252\" y1=\"195\" x2=\"338\" y2=\"195\" stroke=\"#cc5500\" stroke-width=\"3\"/>
+    </g>
+
+    <!-- Bored Pupils (Small glossy black ovals gazing slightly to viewer's right) -->
+    <!-- Left Pupil -->
+    <ellipse cx=\"218\" cy=\"235\" rx=\"8\" ry=\"13\" fill=\"#000000\" stroke=\"none\"/>
+    <circle cx=\"215\" cy=\"230\" r=\"2.5\" fill=\"#ffffff\" stroke=\"none\"/>
+
+    <!-- Right Pupil -->
+    <ellipse cx=\"282\" cy=\"235\" rx=\"8\" ry=\"13\" fill=\"#000000\" stroke=\"none\"/>
+    <circle cx=\"279\" cy=\"230\" r=\"2.5\" fill=\"#ffffff\" stroke=\"none\"/>
+  </g>
+
+  <!-- LAYER 5: ICONIC PUFFY WHISKER JOWLS & NOSE -->
+  <g filter=\"url(#comicShadow)\" stroke=\"#000000\" stroke-width=\"6\" stroke-linejoin=\"round\" stroke-linecap=\"round\">
+    <!-- Left Muzzle Cheek Lobe (Cream colored bulbous cheek) -->
+    <ellipse cx=\"182\" cy=\"315\" rx=\"68\" ry=\"50\" fill=\"url(#muzzleCream)\"/>
+    <!-- Right Muzzle Cheek Lobe (Mirror: Center 500 - 182 = 318) -->
+    <ellipse cx=\"318\" cy=\"315\" rx=\"68\" ry=\"50\" fill=\"url(#muzzleCream)\"/>
+
+    <!-- Center Jowl Crease & Smug Smirk -->
+    <path d=\"M 226,352 Q 250,370 274,352\" fill=\"none\"/>
+    
+    <!-- Fat Little Double Chin -->
+    <path d=\"M 234,378 Q 250,392 266,378\" fill=\"none\" stroke-width=\"5\"/>
+  </g>
+
+  <!-- Whisker Dots (3 distinct black dots per cheek) -->
+  <g fill=\"#000000\">
+    <!-- Left Cheek Dots -->
+    <circle cx=\"152\" cy=\"308\" r=\"5\"/>
+    <circle cx=\"136\" cy=\"324\" r=\"5\"/>
+    <circle cx=\"158\" cy=\"336\" r=\"5\"/>
+
+    <!-- Right Cheek Dots (Mirror: 500 - X) -->
+    <circle cx=\"348\" cy=\"308\" r=\"5\"/>
+    <circle cx=\"364\" cy=\"324\" r=\"5\"/>
+    <circle cx=\"342\" cy=\"336\" r=\"5\"/>
+  </g>
+
+  <!-- Signature Pink Button Nose (Center X = 250, Y = 265) -->
+  <g stroke=\"#000000\" stroke-width=\"5.5\" stroke-linejoin=\"round\">
+    <!-- Oval Pink Button -->
+    <ellipse cx=\"250\" cy=\"265\" rx=\"25\" ry=\"18\" fill=\"url(#pinkNose)\"/>
+    <!-- Specular Highlight Shine -->
+    <ellipse cx=\"244\" cy=\"260\" rx=\"9\" ry=\"5\" fill=\"#ffffff\" opacity=\"0.8\" stroke=\"none\" transform=\"rotate(-15 244 260)\"/>
+  </g>
+</svg>"}};
 
     function loadPreset(key) {
       const preset = PRESETS[key];
@@ -453,7 +1754,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      loadPreset('arthur');
+      loadPreset('bugs');
     });
   </script>
 </body>
