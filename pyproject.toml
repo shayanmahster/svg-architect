@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "svg-architect"
-version = "0.1.0"
-description = "Deterministic Spatial Blueprint Engine for Production-Grade Generative Vector Graphics (SVGs) with LLMs"
+version = "0.2.0"
+description = "Deterministic Spatial Blueprint & Multi-Pass Synthesis Engine for Generative Vector Graphics (SVGs)"
 readme = "README.md"
 authors = [{ name = "Shayan Master (@shayanmahster)" }]
 license = "MIT"

@@ -9,11 +9,14 @@ import socketserver
 import click
 from .linter import SVGLinter
 from .generator import ArchitectProtocol
+from .analyzer import GeometricAnalyzer
+from .harmony import ColorHarmonyEngine
+from .pipeline import PipelineConfig
 
 
 @click.group()
 def main():
-    """svg-architect: Deterministic Spatial Blueprint Engine for Vector Graphics."""
+    """svg-architect: Deterministic Spatial Blueprint & Multi-Pass Synthesis Engine."""
     pass
 
 
@@ -46,6 +49,87 @@ def lint(svg_file):
     else:
         click.echo("Clean Architecture! Zero geometric or ordering violations detected.")
     click.echo("=" * 50 + "\n")
+
+
+@main.command()
+@click.argument("svg_file", type=click.Path(exists=True))
+def analyze(svg_file):
+    """Run geometric coordinate-space analysis (shape count, coverage, symmetry drift, disconnections)."""
+    with open(svg_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    analyzer = GeometricAnalyzer()
+    report = analyzer.analyze(content)
+
+    click.echo("\n" + "=" * 50)
+    click.echo(f" Geometric Coordinate Analysis: {os.path.basename(svg_file)}")
+    click.echo("=" * 50)
+    click.echo(f"Shapes Extracted:       {len(report.shapes)}")
+    click.echo(f"Symmetry Drift Score:   {report.symmetry_score:.2f} / 1.00")
+    click.echo(f"Head/Body Ratio:        {f'{report.head_to_body_ratio:.2f}' if report.head_to_body_ratio else 'N/A'}")
+    click.echo(f"Vertical Disconnections: {len(report.disconnections)}")
+
+    if report.disconnections:
+        click.echo("\n  Detected Gaps / Severed Seams:")
+        for g_start, g_end in report.disconnections:
+            click.echo(f"    - Y=[{g_start} to {g_end}] ({g_end - g_start}px gap)")
+    else:
+        click.echo("  Continuity: 100% continuous coverage along central axis.")
+
+    if report.issues:
+        click.echo("\nIssues:")
+        for idx, iss in enumerate(report.issues, 1):
+            click.echo(f"  {idx}. {iss}")
+    click.echo("=" * 50 + "\n")
+
+
+@main.command()
+@click.argument("svg_file", type=click.Path(exists=True))
+def harmony(svg_file):
+    """Analyze color palette harmony, saturation balance, and WCAG contrast."""
+    with open(svg_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    report = ColorHarmonyEngine.analyze_palette(content)
+
+    click.echo("\n" + "=" * 50)
+    click.echo(f" Color Harmony Report: {os.path.basename(svg_file)}")
+    click.echo("=" * 50)
+    click.echo(f"Colors Found:       {len(report.colors_found)}")
+    click.echo(f"Unique Hues:        {report.unique_hues}")
+    click.echo(f"Harmony Scheme:     {report.harmony_type.upper() if report.harmony_type else 'N/A'}")
+    click.echo(f"Saturation Balance: {report.saturation_balance:.2f} (0=flat gray, 1=max saturated)")
+
+    if report.dominant_color:
+        click.echo(f"Dominant Tone:      {report.dominant_color.hex}")
+
+    if report.contrast_pairs:
+        click.echo("\nContrast Ratios (WCAG):")
+        for c1, c2, ratio in report.contrast_pairs:
+            status = "PASS (>= 4.5)" if ratio >= 4.5 else "LOW"
+            click.echo(f"  {c1} vs {c2}: {ratio}:1 [{status}]")
+
+    if report.issues:
+        click.echo("\nPalette Issues:")
+        for idx, iss in enumerate(report.issues, 1):
+            click.echo(f"  {idx}. {iss}")
+    click.echo("=" * 50 + "\n")
+
+
+@main.command()
+@click.argument("subject")
+@click.option("--style", default="cartoon", help="Art style (cartoon, realistic, superhero, etc.)")
+def pipeline(subject, style):
+    """Output the 4-pass iterative synthesis prompts for an LLM."""
+    cfg = PipelineConfig.default_character_pipeline(subject=subject, style=style)
+    click.echo("\n" + "=" * 60)
+    click.echo(f" 🚀 SVG Architect 4-Pass Pipeline: {subject}")
+    click.echo("=" * 60)
+    for idx, stage in enumerate(cfg.stages, 1):
+        click.echo(f"\n--- PASS {idx}: {stage.stage.value.upper()} ---")
+        click.echo(stage.instruction)
+        click.echo(f"Quality Gates: {', '.join(stage.validation_rules)}")
+    click.echo("\n" + "=" * 60 + "\n")
 
 
 @main.command()
